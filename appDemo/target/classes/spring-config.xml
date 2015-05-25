@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd"
+        default-autowire="byName">
+
+    <context:annotation-config></context:annotation-config>
+
+    <context:component-scan base-package="com.umbrella"></context:component-scan>
+
+    <bean id="dsTest" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/test"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="123456"></property>
+    </bean>
+
+    <bean id="jtTest" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dsJtaTest"></property>
+    </bean>
+
+    <!-- 声明式事务 begin -->
+    <!--<bean id="txTest" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dsTest"></property>
+    </bean>
+    <tx:advice id="txAdviceTest" transaction-manager="txTest">
+        <tx:attributes>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="studentServicePC" expression="execution(* com.umbrella.demo.mysql.service.StudentService.saveTwo(..))"></aop:pointcut>
+        <aop:advisor advice-ref="txAdviceTest" pointcut-ref="studentServicePC"></aop:advisor>
+    </aop:config>-->
+    <!-- 声明式事务 end -->
+
+    <bean id="dsDiskmgmt" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/diskmgmt"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="123456"></property>
+    </bean>
+    <bean id="jtDiskmgmt" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dsJtaDiskmgmt"></property>
+    </bean>
+
+    <!-- Atomikos 分布式事务 begin -->
+    <bean id="atomikosUserTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"></bean>
+    <bean id="atomikosUserTransactionImp" class="com.atomikos.icatch.jta.UserTransactionImp"></bean>
+    <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+        <property name="transactionManager" ref="atomikosUserTransactionManager"></property>
+        <property name="userTransaction" ref="atomikosUserTransactionImp"></property>
+    </bean>
+    <bean id="dsJtaTest" class="com.atomikos.jdbc.AtomikosDataSourceBean">
+        <property name="uniqueResourceName" value="mysql_test"></property>
+        <property name="xaDataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"></property>
+        <property name="xaProperties">
+            <props>
+                <prop key="user">root</prop>
+                <prop key="password">123456</prop>
+                <prop key="url">jdbc:mysql://localhost:3306/test</prop>
+            </props>
+        </property>
+        <property name="testQuery" value="select 1"></property>
+    </bean>
+    <bean id="dsJtaDiskmgmt" class="com.atomikos.jdbc.AtomikosDataSourceBean">
+        <property name="uniqueResourceName" value="mysql_diskmgmt"></property>
+        <property name="xaDataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"></property>
+        <property name="xaProperties">
+            <props>
+                <prop key="user">root</prop>
+                <prop key="password">123456</prop>
+                <prop key="url">jdbc:mysql://localhost:3306/diskmgmt</prop>
+            </props>
+        </property>
+        <property name="testQuery" value="select 1"></property>
+    </bean>
+
+    <tx:advice id="txAdviceTestDiskmgmt" transaction-manager="jtaTransactionManager">
+        <tx:attributes>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="studentDiskServicePC" expression="execution(* com.umbrella.demo.atomikos.mysql.service.StudentDiskService.*(..))"></aop:pointcut>
+        <aop:advisor advice-ref="txAdviceTestDiskmgmt" pointcut-ref="studentDiskServicePC"></aop:advisor>
+    </aop:config>
+    <!-- Atomikos 分布式事务 end -->
+
+</beans>
