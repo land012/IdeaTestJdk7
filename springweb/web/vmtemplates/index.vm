@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Velocity!</title>
+</head>
+<body>
+Hello ${name}!
+<br>
+#set($no = 1)
+#set($no = $no + 1)
+${no}
+</body>
+</html>

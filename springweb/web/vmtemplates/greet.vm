@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greet Velocity!</title>
+</head>
+<body>
+Greet ${name}!
+</body>
+</html>

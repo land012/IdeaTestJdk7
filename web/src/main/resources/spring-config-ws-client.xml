@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="myOutInterceptor" class="com.umbrella.cxf.interceptor.MyOutInterceptor">
+        <constructor-arg index="0">
+            <value>send</value>
+        </constructor-arg>
+    </bean>
+
+    <!-- client端 -->
+    <bean id="helloWorldClientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+        <property name="serviceClass" value="com.umbrella.cxf.ws.server.HelloWorldService" ></property>
+        <property name="address" value="http://localhost:9999/ws/helloWorld"></property>
+        <property name="outInterceptors">
+            <list>
+                <ref bean="myOutInterceptor"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="helloWorldClient" class="com.umbrella.cxf.ws.server.HelloWorldService"
+          factory-bean="helloWorldClientFactory" factory-method="create"></bean>
+
+</beans>
