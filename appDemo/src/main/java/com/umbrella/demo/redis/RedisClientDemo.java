@@ -57,6 +57,14 @@ public class RedisClientDemo {
     }
 
     /**
+     * Redis.info()
+     */
+    @Test
+    public void test3_1() {
+        System.out.println(jedisClient.info());
+    }
+
+    /**
      * 删除
      */
     @Test
