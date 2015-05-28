@@ -35,7 +35,7 @@ public class Demo22 {
                 list.add(exec.submit(new Work(i)));
             }
             for(Future f : list) {
-                Object o = f.get(); // 会抛出子线程中的异常
+                Object o = f.get(); // 不抛异常的话，会返回 null
                 Work r = (Work)o;
                 r.getId(); // java.lang.NullPointerException
                 System.out.println("future.get()=" + o); // null

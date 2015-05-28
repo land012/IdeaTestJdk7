@@ -28,7 +28,7 @@ public class Demo21 {
         try {
             ExecutorService exec = Executors.newFixedThreadPool(2);
             List<Future> list = new ArrayList<Future>();
-            for(int i=0; i<2; i++) {
+            for(int i=0; i<3; i++) {
                 list.add(exec.submit(new Work(i)));
             }
             for(Future f : list) {
