@@ -1,4 +1,4 @@
-package com.umbrella.demo.java.concurrent.submit;
+package com.umbrella.demo.concurrent.submit;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -1,4 +1,4 @@
-package com.umbrella.demo.java.concurrent.submit.demo1;
+package com.umbrella.demo.concurrent.submit.demo1;
 
 /**
  * Created by 大洲 on 15-1-15.

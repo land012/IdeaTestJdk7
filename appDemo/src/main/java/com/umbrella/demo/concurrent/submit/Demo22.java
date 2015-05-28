@@ -1,4 +1,4 @@
-package com.umbrella.demo.java.concurrent.submit;
+package com.umbrella.demo.concurrent.submit;
 
 import org.apache.log4j.Logger;
 

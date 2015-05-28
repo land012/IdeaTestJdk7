@@ -1,4 +1,4 @@
-package com.umbrella.demo.java.concurrent.executors;
+package com.umbrella.demo.concurrent.executors;
 
 
 import com.umbrella.vo.User;
