@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
  * Created by 大洲 on 15-5-27.
  * 在 shutdown 后面提交任务
  * Exception in thread "main" java.util.concurrent.RejectedExecutionException
+ * 在执行 shutdown 后，队列不会再接受新的任务，但是线程池会执行完队列中的所有任务才会退出
  */
 public class Demo5 {
 
@@ -31,7 +32,7 @@ public class Demo5 {
 
         User u1 = new User();
         u1.setId(11);
-        exec.submit(new Task(u1));
+        exec.submit(new Task(u1)); // 异常，不会被添加到队列
 
         log.info("i am main end");
     }

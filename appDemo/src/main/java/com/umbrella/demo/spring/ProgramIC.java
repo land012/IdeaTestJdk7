@@ -34,6 +34,7 @@ public class ProgramIC {
         ProgramIC programIC = new ProgramIC();
         // 注入
         programIC.leahService.hello("Leah Dizon");
+
         // 直接从容器中获取
         MikasaService mikasaService = (MikasaService)programIC.springContextHelper.getBean("mikasaService");
         mikasaService.hello("Nobunaga");
