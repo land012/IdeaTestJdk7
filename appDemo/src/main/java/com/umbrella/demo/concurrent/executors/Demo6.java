@@ -8,6 +8,8 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by 大洲 on 15-5-28.
+ * 多级线程
+ * 当Task2没有执行完时，Task1不会结束，所以 main 不会结束
  */
 public class Demo6 {
 

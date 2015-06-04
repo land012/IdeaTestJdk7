@@ -34,7 +34,7 @@ public class Demo5 {
         u1.setId(11);
         exec.submit(new Task(u1)); // 异常，不会被添加到队列
 
-        log.info("i am main end");
+        log.info("I am main end");
     }
 
     static class Task implements Runnable {

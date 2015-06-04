@@ -7,9 +7,11 @@ import java.util.concurrent.*;
 
 /**
  * Created by 大洲 on 15-5-28.
- * 当任务数超过队列大小时，会抛异常，导致主线程无法继续执行，但子线程仍可以执行
+ * ArrayBlockingQueue 使用指定容量大小的队列
+ * 当任务数超过队列大小时，会抛异常 Exception in thread "main" java.util.concurrent.RejectedExecutionException
+ * 导致主线程无法继续执行，但子线程仍可以执行
  * 但子线程消费了任务，主线程也不会继续添加任务了
- * Exception in thread "main" java.util.concurrent.RejectedExecutionException
+ *
  */
 public class Demo2 {
     private static final Logger log = Logger.getLogger(Demo1.class);

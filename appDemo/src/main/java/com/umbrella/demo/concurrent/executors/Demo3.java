@@ -8,6 +8,7 @@ import java.util.concurrent.*;
 /**
  * Created by 大洲 on 15-5-28.
  * SynchronousQueue 队列
+ * 当任务数超过可用线程数时，异常 java.util.concurrent.RejectedExecutionException
  */
 public class Demo3 {
     private static final Logger log = Logger.getLogger(Demo1.class);
@@ -21,6 +22,7 @@ public class Demo3 {
             u.setId(i);
             String userName = new String("aaaaaaaaaaaaaaaaaaaaaaaa" + i);
             u.setUserName(userName);
+            // java.util.concurrent.RejectedExecutionException
             exec.execute(new Task(u));
         }
         exec.shutdown();
