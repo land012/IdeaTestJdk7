@@ -58,7 +58,7 @@
     <!--</servlet-mapping>-->
     <!-- velocity end -->
     
-    <servlet>
+    <!--<servlet>
         <servlet-name>HelloVelocity</servlet-name>
         <servlet-class>com.umbrella.velocity.HelloServlet</servlet-class>
     </servlet>
@@ -91,5 +91,5 @@
     <servlet-mapping>
         <servlet-name>VelocityServlet</servlet-name>
         <url-pattern>/servlet/velocity</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 </web-app>

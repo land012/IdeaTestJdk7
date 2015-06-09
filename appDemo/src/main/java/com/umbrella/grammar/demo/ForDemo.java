@@ -1,4 +1,4 @@
-package com.umbrella.grammar;
+package com.umbrella.grammar.demo;
 
 import org.junit.Test;
 
