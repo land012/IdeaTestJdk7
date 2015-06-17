@@ -15,7 +15,12 @@ import java.util.List;
  * Created by 大洲 on 14-11-24.
  */
 public class JSONDemo {
-    public void main(String[] args) {
+
+    /**
+     * Object to JSON
+     */
+    @Test
+    public void test0() {
         User u1 = new User();
         u1.setId(1);
         u1.setUserName("tom");
@@ -25,10 +30,32 @@ public class JSONDemo {
     }
 
     /**
+     * Object to JSON
      * 日期处理
+     * 空的对象为 null，空的字符串为 ""
      */
     @Test
     public void test1() {
+        User u1 = new User();
+        u1.setId(1);
+        u1.setUserName("tom");
+        u1.setBirthDay(new Date());
+
+        JsonConfig jsonConfig = new JsonConfig();
+        jsonConfig.registerJsonValueProcessor(User.class, Date.class, new DateJsonValueProcesser(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")));
+
+        JSONObject obj1 = JSONObject.fromObject(u1, jsonConfig);
+
+        // {"age":0,"birthDay":"2015-06-17 15:53:36","enrolDate":null,"gender":0,"id":1,"urgencyContactName":"","userName":"tom"}
+        System.out.println(obj1);
+    }
+
+    /**
+     * List to JSON
+     * 日期处理
+     */
+    @Test
+    public void test2() {
         User u1 = new User();
         u1.setId(1);
         u1.setUserName("tom");

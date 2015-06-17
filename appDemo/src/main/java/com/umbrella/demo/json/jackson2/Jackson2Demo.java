@@ -1,4 +1,4 @@
-package com.umbrella.demo.json;
+package com.umbrella.demo.json.jackson2;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;

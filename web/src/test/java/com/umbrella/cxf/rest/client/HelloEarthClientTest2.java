@@ -8,7 +8,7 @@ import org.junit.Test;
 
 /**
  * Created by 大洲 on 14-11-23.
- * REST 客户端
+ * 编码 实现 REST 客户端
  */
 public class HelloEarthClientTest2 {
     @Test

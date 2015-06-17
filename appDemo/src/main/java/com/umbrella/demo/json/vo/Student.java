@@ -45,6 +45,7 @@ public class Student {
     }
 
     public String getAddress() {
+        if(address==null) address = "TengZhou";
         return address;
     }
 

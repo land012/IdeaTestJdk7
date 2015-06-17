@@ -1,9 +1,10 @@
-package com.umbrella.demo.json;
+package com.umbrella.demo.json.gson;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.*;
 import com.umbrella.demo.json.jackson1.domain.Data;
 import com.umbrella.demo.json.jackson1.domain.User;
+import com.umbrella.demo.json.vo.Result;
 import com.umbrella.demo.json.vo.School;
 import com.umbrella.demo.json.vo.Student;
 import org.apache.log4j.Logger;
@@ -23,6 +24,8 @@ public class GsonDemo {
     /**
      * 入门
      * 字段为 null，不会生成到 json中
+     * 生成 Json时，会根据成员变量去生成的，而不是get方法
+     * 比如 get方法返回了值，但生成的json时，值仍为 null
      */
     @Test
     public void testToJson() {
@@ -227,5 +230,19 @@ public class GsonDemo {
 
 //        Lion lion1 = gson.fromJson(objLion, Lion.class);
 //        System.out.println("lion1=" + lion1);
+    }
+
+    /**
+     * 泛型
+     */
+    @Test
+    public void test8() {
+        Result<User> result = new Result<User>();
+        User u1 = new User();
+        u1.setUserName("Shibata Katsuie");
+        result.setSuccess(true);
+        result.setT(u1);
+        Gson gson = new GsonBuilder().create();
+        System.out.println(gson.toJson(result)); // {"success":true,"t":{"id":0,"userName":"Shibata Katsuie","age":0}}
     }
 }

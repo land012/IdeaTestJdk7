@@ -73,4 +73,21 @@ public class LongDemo {
         System.out.println(l1);
     }
 
+    /**
+     * java.lang.NullPointerException
+     */
+    @Test
+    public void test6() {
+        Long l1 = null;
+        System.out.println(l1-1);
+    }
+
+    @Test
+    public void test7() {
+        Long l1 = new Long(5);
+        Long l2 = new Long(2);
+        System.out.println(l1-1); // 4
+        System.out.println(l1%l2); // 1
+    }
+
 }

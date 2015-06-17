@@ -13,7 +13,7 @@ import java.io.InputStream;
 /**
  * Created by 大洲 on 14-11-23.
  * REST 客户端
- * 使用 http 的方式调用 REST 服务端
+ * 使用 http 的方式(Apache httpcomponents-client)调用 REST 服务端
  */
 public class HelloEarthClientTest {
     @Test

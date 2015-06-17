@@ -1,4 +1,4 @@
-package com.umbrella.demo.json.jackson1.json;
+package com.umbrella.demo.json.jackson1;
 
 import com.umbrella.demo.json.jackson1.domain.Course;
 import com.umbrella.demo.json.jackson1.domain.School;
@@ -24,6 +24,7 @@ public class Jackson1Demo {
 
     /**
      * Object to JSON
+     * null字段 会显示为 null
      */
     @Test
     public void test0() {
@@ -33,6 +34,7 @@ public class Jackson1Demo {
         u1.setUserName("Leah Dizon");
         u1.setBirth(new Date());
         try {
+            // {"id":10000,"userName":"Leah Dizon","birth":1434527118518,"age":0,"address":null,"workAddress":null,"school":null,"courses":null}
             om1.writeValue(System.out, u1);
             System.out.println();
         } catch (IOException e) {
