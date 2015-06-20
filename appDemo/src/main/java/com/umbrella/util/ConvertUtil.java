@@ -91,4 +91,18 @@ public class ConvertUtil {
         }
         return res.toString();
     }
+
+    /**
+     * 返回 Unicode 编码，类似 \u0012\u0393
+     * @param str
+     * @return
+     */
+    public static String getUnicode(String str) {
+        StringBuilder res = new StringBuilder();
+        char[] arr = str.toCharArray();
+        for(char c : arr) {
+            res.append("\\u").append(Integer.toHexString(c).toUpperCase());
+        }
+        return res.toString();
+    }
 }
