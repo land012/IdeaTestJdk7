@@ -31,13 +31,13 @@ public class GsonDemo {
     public void testToJson() {
         Student s1 = new Student();
         s1.setSno(1);
-        s1.setName("Uchiha Sasuke");
+        s1.setName("Uchiha = Sasuke");
         s1.setBirth(new Date());
 
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
                 .create();
-        log.info(gson.toJson(s1)); // {"sno":1,"name":"Uchiha Sasuke","birth":"2015-03-11 14:21:30"}
+        log.info(gson.toJson(s1)); // {"sno":1,"name":"Uchiha Sasuke\u003d","birth":"2015-07-01 10:13:31"}
     }
 
     /**

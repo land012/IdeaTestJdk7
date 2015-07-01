@@ -1,11 +1,13 @@
 package com.umbrella.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by 大洲 on 14-11-13.
  */
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = -2982309772740029451L;
     private long id;
     private String userName;
     public Date birthDay;

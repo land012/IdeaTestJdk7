@@ -101,7 +101,15 @@ public class ConvertUtil {
         StringBuilder res = new StringBuilder();
         char[] arr = str.toCharArray();
         for(char c : arr) {
-            res.append("\\u").append(Integer.toHexString(c).toUpperCase());
+            res.append("\\u");
+            String hexStr = Integer.toHexString(c).toUpperCase();
+            int length = hexStr.length();
+            if(length<4) {
+                for(int i=1; i<=4-length; i++) {
+                    res.append("0");
+                }
+            }
+            res.append(hexStr);
         }
         return res.toString();
     }

@@ -1,5 +1,7 @@
 package com.umbrella.grammar.jdk7;
 
+import org.junit.Test;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -31,14 +33,6 @@ public class Demo {
                 System.out.println("other");
                 break;
         }
-
-        /**
-         * 二进制表示
-         */
-        int i1 = 0b1010;
-        int i2 = 123_456;
-        System.out.println(i1);
-        System.out.println(i2);
 
         /**
          * 变长参数
@@ -77,6 +71,20 @@ public class Demo {
         } catch(NumberFormatException | UnsupportedEncodingException e) {
 
         }
+    }
+
+    /**
+     * 二进制表示
+     */
+    @Test
+    public void test1() {
+        /**
+         * 二进制表示
+         */
+        int i1 = 0b1010; // 10
+        int i2 = 123_456;
+        System.out.println(i1);
+        System.out.println(i2);
     }
 
 }

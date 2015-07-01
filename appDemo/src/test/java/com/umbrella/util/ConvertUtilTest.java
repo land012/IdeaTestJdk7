@@ -14,11 +14,11 @@ public class ConvertUtilTest {
         System.out.println(StringEscapeUtils.escapeJava(str)); // \u4F60\u597D
 
         String str1 = "=";
-        System.out.println(ConvertUtil.getUnicode(str1)); // \u3D
+        System.out.println(ConvertUtil.getUnicode(str1)); // \u003D
         System.out.println(StringEscapeUtils.escapeJava(str1)); // =
 
         String str2 = "abc";
-        System.out.println(ConvertUtil.getUnicode(str2)); // \u61\u62\u63
+        System.out.println(ConvertUtil.getUnicode(str2)); // \u0061\u0062\u0063
         System.out.println(StringEscapeUtils.escapeJava(str2)); // abc
     }
 }
