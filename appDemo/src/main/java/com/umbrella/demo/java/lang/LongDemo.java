@@ -90,4 +90,9 @@ public class LongDemo {
         System.out.println(l1%l2); // 1
     }
 
+    @Test
+    public void test9() {
+        System.out.println(Long.MAX_VALUE); // 922 3372 0368 5477 5807
+    }
+
 }

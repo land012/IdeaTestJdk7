@@ -17,4 +17,12 @@ public class IntegerDemo {
         System.out.println("id=" + u1.getId()); // 0
         System.out.println("age=" + u1.getAge()); // null
     }
+
+    /**
+     * 比较
+     */
+    @Test
+    public void test2() {
+        System.out.println(Integer.compare(1, 2)); // -1
+    }
 }

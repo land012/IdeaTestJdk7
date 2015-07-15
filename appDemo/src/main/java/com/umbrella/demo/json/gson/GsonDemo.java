@@ -22,10 +22,10 @@ public class GsonDemo {
     private static Logger log = Logger.getLogger(GsonDemo.class);
 
     /**
+     * Object to JSON
      * 入门
-     * 字段为 null，不会生成到 json中
-     * 生成 Json时，会根据成员变量去生成的，而不是get方法
-     * 比如 get方法返回了值，但生成的json时，值仍为 null
+     * 1. 字段为 null，不会生成到 json中，生成 Json时，会根据成员变量去生成的，而不是get方法，比如 get方法返回了值，但生成的json时，值仍为 null
+     * 2. 特殊字符，如=，会转换为 unicode编码
      */
     @Test
     public void testToJson() {
@@ -37,10 +37,11 @@ public class GsonDemo {
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
                 .create();
-        log.info(gson.toJson(s1)); // {"sno":1,"name":"Uchiha Sasuke\u003d","birth":"2015-07-01 10:13:31"}
+        log.info(gson.toJson(s1)); // {"sno":1,"name":"Uchiha \u003d Sasuke","birth":"2015-07-01 10:13:31"}
     }
 
     /**
+     * Object to JSON
      * 字段为 null，会生成到 json中
      */
     @Test
@@ -59,6 +60,7 @@ public class GsonDemo {
     }
 
     /**
+     * JSON to Object
      * 入门
      */
     @Test
@@ -73,6 +75,7 @@ public class GsonDemo {
     }
 
     /**
+     * JSON to List
      * 列表，有一个对象 [{}]
      * 使用下面的方法解析， 会抛异常
      * com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $
@@ -90,6 +93,7 @@ public class GsonDemo {
     }
 
     /**
+     * JSON to Object
      * 有不识别的属性
      * 会自动过滤掉不识别的属性
      * TODO 怎么在出现不识别的属性时抛异常？？？
@@ -107,7 +111,7 @@ public class GsonDemo {
     }
 
     /**
-     * List 转 Json
+     * List to JSON
      */
     @Test
     public void testToJson2() {
@@ -139,7 +143,7 @@ public class GsonDemo {
     }
 
     /**
-     * Json 转 List
+     * JSON to List
      */
     @Test
     public void testFromJson2() {
