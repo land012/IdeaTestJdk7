@@ -1,5 +1,8 @@
 package com.umbrella.algorithm.rich;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 大富翁游戏问题
  * Created by 大洲 on 15-7-5.
@@ -20,7 +23,10 @@ package com.umbrella.algorithm.rich;
  *
  */
 public class MainDemo {
-    public static void main(String[] args) {
 
+    private static final Logger log = LoggerFactory.getLogger(MainDemo.class);
+
+    public static void main(String[] args) {
+        log.info("I am Rich");
     }
 }

@@ -1,21 +1,5 @@
-/.idea
-/TestApp.iml
-/classes
+.idea/
+classes/
 
-WebServiceInterface/WebServiceInterface.iml
-WebServiceInterface/target/
-
-appDemo/appDemo.iml
-appDemo/target/
-
-springweb/springweb.iml
-springweb/target/
-
-web/web.iml
-web/target/
-
-webservice-client/webservice-client.iml
-webservice-client/target/
-
-webservice-server/webservice-server.iml
-webservice-server/target/
+*.iml
+target/
