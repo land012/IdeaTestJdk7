@@ -8,6 +8,7 @@ import org.junit.Test;
 public class GitDemo {
     @Test
     public void test1() {
+        System.out.println("1");
         System.out.println("2");
     }
 }
