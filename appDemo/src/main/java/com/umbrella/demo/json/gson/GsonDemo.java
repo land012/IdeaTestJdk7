@@ -168,14 +168,28 @@ public class GsonDemo {
         }
     }
 
+    /**
+     * JSON to List 2
+     */
     @Test
-    public void testFromJson21() {
+    public void testFromJson22() {
         String json = "[{\"sno\":1,\"name\":\"Uchiha Sasuke\",\"birth\":\"2015-03-11 14:29:22\",\"school\":{\"id\":1,\"name\":\"Harvard\"}},{\"sno\":2,\"name\":\"Mitarashi Anko\",\"birth\":\"2015-03-11 14:29:22\",\"school\":{\"id\":1,\"name\":\"Harvard\"}}]";
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
                 .create();
         JsonArray jsonArray = gson.fromJson(json, JsonArray.class);
         System.out.println(jsonArray.get(0).getAsJsonObject().get("name").getAsString()); // Uchiha Sasuke
+    }
+
+    /**
+     * JSON to List 3
+     */
+    @Test
+    public void testFromJson23() {
+        String json = "[{\"sno\":1,\"name\":\"Uchiha Sasuke\",\"birth\":\"2015-03-11 14:29:22\",\"school\":{\"id\":1,\"name\":\"Harvard\"}},{\"sno\":2,\"name\":\"Mitarashi Anko\",\"birth\":\"2015-03-11 14:29:22\",\"school\":{\"id\":1,\"name\":\"Harvard\"}}]";
+        JsonParser jsonParser = new JsonParser();
+        JsonElement jsonElement = jsonParser.parse(json);
+        System.out.println(jsonElement.getAsJsonArray().get(1).getAsJsonObject().get("name").getAsString()); // Mitarashi Anko
     }
 
     /**
