@@ -74,6 +74,17 @@ public class GsonDemo {
         log.info(s1.getBirth());
     }
 
+    @Test
+    public void testFromJson01() {
+        String json = "{\"sno\":1,\"name\":\"Uchiha Sasuke\",\"birth\":\"2015-03-11 14:21:30.789\"}";
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .create();
+        JsonObject jsonObj = gson.fromJson(json, JsonObject.class);
+        System.out.println(jsonObj.get("sno"));
+        System.out.println(jsonObj.get("name").getAsString());
+    }
+
     /**
      * JSON to List
      * 列表，有一个对象 [{}]
@@ -155,6 +166,16 @@ public class GsonDemo {
         for(Student s : students) {
             log.info(s.getName());
         }
+    }
+
+    @Test
+    public void testFromJson21() {
+        String json = "[{\"sno\":1,\"name\":\"Uchiha Sasuke\",\"birth\":\"2015-03-11 14:29:22\",\"school\":{\"id\":1,\"name\":\"Harvard\"}},{\"sno\":2,\"name\":\"Mitarashi Anko\",\"birth\":\"2015-03-11 14:29:22\",\"school\":{\"id\":1,\"name\":\"Harvard\"}}]";
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .create();
+        JsonArray jsonArray = gson.fromJson(json, JsonArray.class);
+        System.out.println(jsonArray.get(0).getAsJsonObject().get("name").getAsString()); // Uchiha Sasuke
     }
 
     /**
