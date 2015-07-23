@@ -12,4 +12,9 @@ public class GitDemo2 {
 
         System.out.println("2");
     }
+
+    @Test
+    public void test2() {
+        System.out.println("1");
+    }
 }
