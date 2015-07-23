@@ -20,4 +20,9 @@ public class GitDemo {
     public void test3() {
         System.out.println("1");
     }
+
+    @Test
+    public void test4() {
+        System.out.println("1");
+    }
 }
