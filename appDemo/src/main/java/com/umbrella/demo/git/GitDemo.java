@@ -16,4 +16,9 @@ public class GitDemo {
         System.out.println("1");
     }
 
+    @Test
+    public void test3() {
+        System.out.println("1");
+    }
+
 }
