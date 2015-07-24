@@ -28,4 +28,9 @@ public class GitDemo2 {
         System.out.println("1");
     }
 
+    @Test
+    public void test5() {
+        System.out.println("1");
+    }
+
 }
