@@ -18,6 +18,7 @@ public class MyInInterceptor extends AbstractPhaseInterceptor<Message> {
 
     @Override
     public void handleMessage(Message message) throws Fault {
+        System.out.println("=============== MyInInterceptor begin =============================================");
         System.out.println(message.getId() + "#" + message.getDestination().getMessageObserver());
         System.out.println(message.getExchange().getInMessage() + "#" + message.getExchange().getInFaultMessage());
         System.out.println(message.getExchange().getOutMessage() + "#" + message.getExchange().getOutFaultMessage());
@@ -32,5 +33,6 @@ public class MyInInterceptor extends AbstractPhaseInterceptor<Message> {
             System.out.println();
         }
 //        System.out.println("===================" + message.get("k1") + "===================");
+        System.out.println("=============== MyInInterceptor end =============================================");
     }
 }

@@ -14,7 +14,8 @@ public class HelloEarthClientTest2 {
     @Test
     public void test1() {
         JAXRSClientFactoryBean factory = new JAXRSClientFactoryBean();
-        factory.getOutInterceptors().add(new MyOutInterceptor(Phase.SEND));
+        // 加这句会抛异常
+//        factory.getOutInterceptors().add(new MyOutInterceptor(Phase.SEND));
         factory.setServiceClass(HelloEarthService.class);
         factory.setAddress("http://localhost:8080/rs");
         HelloEarthService service = (HelloEarthService)factory.create();

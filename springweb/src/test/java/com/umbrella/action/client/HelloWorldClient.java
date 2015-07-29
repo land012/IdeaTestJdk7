@@ -1,6 +1,5 @@
 package com.umbrella.action.client;
 
-import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -8,14 +7,13 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.junit.Test;
-import org.springframework.http.RequestEntity;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * Created by 大洲 on 15-1-27.
+ * 以 http 方式调用 springmvc
  */
 public class HelloWorldClient {
     public static void main(String[] args) {
