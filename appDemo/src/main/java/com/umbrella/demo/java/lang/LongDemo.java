@@ -94,7 +94,7 @@ public class LongDemo {
     public void test9() {
         System.out.println(Long.MAX_VALUE); // 922 3372 0368 5477 5807
         System.out.println(1);
-        System.out.println(2.2);
+        System.out.println(2.1);
         System.out.println(3);
     }
 
