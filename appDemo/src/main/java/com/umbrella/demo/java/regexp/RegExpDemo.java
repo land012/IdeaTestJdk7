@@ -9,6 +9,10 @@ import java.util.regex.Pattern;
  * Created by 大洲 on 15-4-20.
  */
 public class RegExpDemo {
+
+    // 数字，包含小数点 .
+    private static final String NUMBER_REG = "^[\\d[\\.]?]+$";
+
     @Test
     public void test1() {
         System.out.println(Pattern.matches("a|b|c", "adef")); // false
@@ -57,5 +61,16 @@ public class RegExpDemo {
         while (matcher.find()) {
             System.out.println(matcher.group());
         }
+    }
+
+    @Test
+    public void test5() {
+        System.out.println(Pattern.matches(NUMBER_REG, "1"));
+        System.out.println(Pattern.matches(NUMBER_REG, "124"));   // true
+
+        System.out.println(Pattern.matches(NUMBER_REG, "1.1"));   // true
+        System.out.println(Pattern.matches(NUMBER_REG, "1.1.1")); // false
+        System.out.println(Pattern.matches(NUMBER_REG, ".1"));    // false
+        System.out.println(Pattern.matches(NUMBER_REG, "1."));    // false
     }
 }
