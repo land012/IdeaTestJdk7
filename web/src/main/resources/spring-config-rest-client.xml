@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://cxf.apache.org/jaxrs
+       http://cxf.apache.org/schemas/jaxrs.xsd">
+
+    <!--<import resource="classpath:META-INF/cxf/cxf.xml"></import>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"></import>-->
+    <!--<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"></import>-->
+
+    <bean id="helloWorldService" class="com.umbrella.cxf.ws.server.impl.HelloWorldServiceImpl"></bean>
+
+    <bean id="helloEarthService" class="org.apache.cxf.jaxrs.client.JAXRSClientFactory" factory-method="create">
+        <constructor-arg type="java.lang.String" value="http://localhost:9999/ws/helloEarth"></constructor-arg>
+        <constructor-arg type="java.lang.Class" value="com.umbrella.cxf.rest.service.HelloEarthService"></constructor-arg>
+    </bean>
+
+</beans>

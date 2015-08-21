@@ -3,13 +3,19 @@ package com.umbrella.cxf.rest.service.impl;
 import com.umbrella.cxf.rest.service.HelloEarthService;
 import com.umbrella.ws.model.Student;
 import com.umbrella.ws.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by 大洲 on 14-11-23.
  */
 public class HelloEarthServiceImpl implements HelloEarthService {
+
+    private static final Logger log = LoggerFactory.getLogger(HelloEarthServiceImpl.class);
+
     @Override
     public User getUserByUserName(String userName) {
+        log.info("User name = " + userName);
         User u = new User();
         u.setUserName(userName);
         u.setAge(19);
@@ -18,6 +24,7 @@ public class HelloEarthServiceImpl implements HelloEarthService {
 
     @Override
     public Student getStudentById(int id) {
+        log.info("studentId=" + id);
         Student student = new Student();
         student.setId(id);
         student.setStuName("Tom");

@@ -1,5 +1,6 @@
 package com.umbrella.demo.java.lang;
 
+import com.umbrella.vo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -23,8 +24,13 @@ public class StringDemo {
         System.out.println(String.format("Hello %s", "Elric")); // Hello Elric
         System.out.println(String.format("Hello {1}", "Orochimaru")); // Hello {1}
         System.out.println(String.format("%1$s is %1$s", "Mikasa")); // Mikasa is Mikasa
+        User u1 = null;
+        System.out.println(String.format("user1=%s", u1));
     }
 
+    /**
+     * 占位符
+     */
     @Test
     public void test3() {
         System.out.println(String.format("%3d", 1)); // 左补空格

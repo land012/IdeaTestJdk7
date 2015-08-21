@@ -17,7 +17,7 @@ public class HelloEarthClientTest2 {
         // 加这句会抛异常
 //        factory.getOutInterceptors().add(new MyOutInterceptor(Phase.SEND));
         factory.setServiceClass(HelloEarthService.class);
-        factory.setAddress("http://localhost:8080/rs");
+        factory.setAddress("http://localhost:9999/ws/helloEarth");
         HelloEarthService service = (HelloEarthService)factory.create();
         System.out.println(service.getStudentById(1));
     }
