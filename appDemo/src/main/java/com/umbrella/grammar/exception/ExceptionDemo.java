@@ -22,6 +22,19 @@ public class ExceptionDemo {
     }
 
     /**
+     * 可以打印 return 后的内容
+     */
+    @Test
+    public void test3() {
+        try {
+            System.out.println(1); // 打印
+            return;
+        } finally {
+            System.out.println(2); // 打印
+        }
+    }
+
+    /**
      * 怎样拿到 e.printStackTrace(); 的内容
      */
     @Test
@@ -56,16 +69,5 @@ public class ExceptionDemo {
         System.out.println("======================================");
     }
 
-    /**
-     * 可以打印 return 后的内容
-     */
-    @Test
-    public void test3() {
-        try {
-            System.out.println(1); // 打印
-            return;
-        } finally {
-            System.out.println(2); // 打印
-        }
-    }
+
 }

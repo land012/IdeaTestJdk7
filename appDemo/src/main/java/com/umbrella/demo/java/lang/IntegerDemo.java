@@ -25,4 +25,17 @@ public class IntegerDemo {
     public void test2() {
         System.out.println(Integer.compare(1, 2)); // -1
     }
+
+    @Test
+    public void test3() {
+        System.out.println(Integer.MAX_VALUE);
+    }
+
+    @Test
+    public void test4() {
+        System.out.println(Integer.toHexString(Integer.MAX_VALUE)); // 7fffffff
+        int hashCode = "abcdsed".hashCode();
+        System.out.println(Integer.toHexString(hashCode & 0xff)); // d0
+        System.out.println(Integer.toHexString(10 & 0xff)); // a
+    }
 }
