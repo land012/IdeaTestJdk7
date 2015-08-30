@@ -68,6 +68,10 @@
                     <artifactId>*</artifactId>
                     <groupId>*</groupId>
                 </exclusion>-->
+                <exclusion>
+                    <groupId>commons-beanutils</groupId>
+                    <artifactId>commons-beanutils</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 

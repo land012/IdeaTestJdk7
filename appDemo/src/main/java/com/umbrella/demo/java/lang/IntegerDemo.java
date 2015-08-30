@@ -28,7 +28,7 @@ public class IntegerDemo {
 
     @Test
     public void test3() {
-        System.out.println(Integer.MAX_VALUE);
+        System.out.println(Integer.MAX_VALUE); // 2147483647
     }
 
     @Test

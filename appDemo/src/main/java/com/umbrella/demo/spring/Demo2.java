@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by 大洲 on 15-5-28.
+ * 编程注入对象
  */
 public class Demo2 {
 

@@ -10,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Created by 大洲 on 15-4-18.
  * 编程注入对象
+ * 从 Spring容器 中手动获取对象
  */
 public class ProgramIC {
 
