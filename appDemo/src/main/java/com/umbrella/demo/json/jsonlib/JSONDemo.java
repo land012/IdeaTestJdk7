@@ -51,6 +51,23 @@ public class JSONDemo {
     }
 
     /**
+     * JSON to Object
+     */
+    @Test
+    public void test1_1() {
+        String json = "{\"age\":0,\"birthDay\":\"2015-06-17 15:53:36\",\"enrolDate\":null,\"gender\":0,\"id\":1,\"urgencyContactName\":\"\",\"userName\":\"tom\"}";
+        JSONObject obj1 = JSONObject.fromObject(json);
+        System.out.println(obj1.get("age"));
+        System.out.println(obj1.get("birthDay"));
+        System.out.println(obj1.get("userName"));
+
+        String json2 = "{\"name\":\"orochimaru\", \"school\":{\"name\":\"Konoha\"}}";
+        JSONObject obj2 = JSONObject.fromObject(json2);
+        System.out.println(obj2.get("name"));
+        System.out.println(obj2.getJSONObject("school").get("name"));
+    }
+
+    /**
      * List to JSON
      * 日期处理
      */

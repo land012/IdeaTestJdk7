@@ -7,6 +7,18 @@ import org.junit.Test;
  * Created by 大洲 on 15-3-12.
  */
 public class IntegerDemo {
+
+    /**
+     * Integer 对象比较
+     */
+    @Test
+    public void test0_1() {
+        Integer i1 = new Integer(1);
+        Integer i2 = new Integer(1);
+        System.out.println(i1==i2); // false
+        System.out.println(i1.equals(i2)); // true
+    }
+
     /**
      * 对于 int 类型，不指定值时，默认为 0
      * 对于 Integer 类型，不指定值时，默认为 null
@@ -31,6 +43,9 @@ public class IntegerDemo {
         System.out.println(Integer.MAX_VALUE); // 2147483647
     }
 
+    /**
+     * 转化为 十六进制
+     */
     @Test
     public void test4() {
         System.out.println(Integer.toHexString(Integer.MAX_VALUE)); // 7fffffff
