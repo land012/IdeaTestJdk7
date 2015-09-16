@@ -51,7 +51,7 @@ public class JSONDemo {
     }
 
     /**
-     * JSON to Object
+     * JSON to JSONObject
      */
     @Test
     public void test1_1() {
