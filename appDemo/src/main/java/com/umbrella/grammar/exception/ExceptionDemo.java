@@ -1,6 +1,10 @@
 package com.umbrella.grammar.exception;
 
+import com.umbrella.vo.User;
 import org.junit.Test;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 /**
  * Created by 大洲 on 15-1-7.
@@ -69,5 +73,19 @@ public class ExceptionDemo {
         System.out.println("======================================");
     }
 
+    /**
+     * 将异常栈的内容保存到字符串
+     */
+    @Test
+    public void test4() {
+        StringWriter stringWriter = new StringWriter();
+        try {
+            User u = null;
+            System.out.println(u.getId());
+        } catch (Exception e) {
+            e.printStackTrace(new PrintWriter(stringWriter));
+            System.out.println(stringWriter.toString());
+        }
+    }
 
 }

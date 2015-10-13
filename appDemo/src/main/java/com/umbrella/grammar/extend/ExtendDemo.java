@@ -1,9 +1,10 @@
 package com.umbrella.grammar.extend;
 
 /**
+ * 继承
  * Created by 大洲 on 14-12-24.
  */
-public class Demo {
+public class ExtendDemo {
     public static void main(String[] args) {
         Person p1 = new Person();
         /*

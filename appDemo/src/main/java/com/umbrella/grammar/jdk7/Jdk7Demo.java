@@ -12,7 +12,7 @@ import java.util.List;
  * @author asdf
  *
  */
-public class Demo {
+public class Jdk7Demo {
 
     /**
      * @param args

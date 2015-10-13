@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * Created by 大洲 on 15-7-5.
  */
-public class DemoTest {
+public class LudoDemoTest {
     /**
      * LudoType 比较
      */
