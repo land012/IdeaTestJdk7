@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
  * Created by 大洲 on 14-11-23.
  * REST 客户端
  * 使用 http 的方式调用 REST 服务端
+ * cxf 的 http
  */
 public class HelloEarthClientTest3 {
 

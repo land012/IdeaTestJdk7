@@ -41,7 +41,7 @@
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
             <entry key="json" value="application/json"></entry>
-            <entry key="xml" value="application/xml"></entry>
+            <!--<entry key="xml" value="application/xml"></entry>-->
         </jaxrs:extensionMappings>
         <jaxrs:providers>
             <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"></bean>

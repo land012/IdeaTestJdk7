@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Created by 大洲 on 15-5-28.
  * 编程注入对象
  */
-public class Demo2 {
+public class SpringDemo {
 
     private YukimuraService yukimuraService;
 
@@ -17,13 +17,13 @@ public class Demo2 {
         this.yukimuraService = yukimuraService;
     }
 
-    public Demo2() {
+    public SpringDemo() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         context.getAutowireCapableBeanFactory().autowireBeanProperties(this, DefaultListableBeanFactory.AUTOWIRE_BY_NAME, false);
     }
 
     public static void main(String[] args) {
-        Demo2 demo2 = new Demo2();
+        SpringDemo demo2 = new SpringDemo();
         new Thread(new Task(demo2.yukimuraService)).start();
         new Thread(new Task(demo2.yukimuraService)).start();
     }

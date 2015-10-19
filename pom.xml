@@ -16,6 +16,7 @@
         <module>springweb</module>
         <module>web</module>
         <module>WebServiceInterface</module>
+        <module>common-util</module>
     </modules>
 
     <dependencies>

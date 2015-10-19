@@ -2,6 +2,7 @@ package com.umbrella.demo.spring;
 
 import com.umbrella.demo.spring.service.LeahService;
 import com.umbrella.demo.spring.service.MikasaService;
+import com.umbrella.demo.spring.util.MyPropertyPlaceholderConfigurer;
 import com.umbrella.demo.spring.util.SpringContextHelper;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -39,5 +40,10 @@ public class ProgramIC {
         // 直接从容器中获取
         MikasaService mikasaService = (MikasaService)programIC.springContextHelper.getBean("mikasaService");
         mikasaService.hello("Nobunaga");
+
+        /**
+         * 获取 Spring 配置文件内容
+         */
+        System.out.println(MyPropertyPlaceholderConfigurer.getProperty("k1"));
     }
 }

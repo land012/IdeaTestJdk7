@@ -10,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by xudazhou on 2015/8/14.
+ * cxf 配置文件1 spring-config-rest-client.xml
  */
 public class HelloEarthClientCxfTest1 {
     private HelloEarthService helloEarthService;

@@ -25,17 +25,21 @@ public class HelloWorldAction {
     @RequestMapping("hello")
     public String hello(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            System.out.println("k1=" + req.getHeader("k1"));
+            System.out.println("h1=" + req.getHeader("h1"));
+            String id = req.getParameter("id");
+            String userName = req.getParameter("userName");
+            System.out.println("id=" + id + ",userName=" + userName);
 
             InputStream is = req.getInputStream();
-            StringBuilder res = new StringBuilder();
+            StringBuilder reqBody = new StringBuilder();
             byte[] buf = new byte[1024];
             int i = -1;
             while((i=is.read(buf))!=-1) {
-                res.append(new String(buf, 0, i, "utf-8"));
+                reqBody.append(new String(buf, 0, i, "utf-8"));
             }
-            System.out.println(res);
-            resp.getWriter().write("Hello World");
+            System.out.println("reqBody=" + reqBody);
+
+            resp.getWriter().write("Hello " + id + "," + userName);
         } catch (IOException e) {
             e.printStackTrace();
         }
