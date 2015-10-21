@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
  * 使用 http 的方式调用 REST 服务端
  * cxf 的 http
  */
-public class HelloEarthClientTest3 {
+public class HelloEarthClientCxfHTTPTest {
 
     @Test
     public void  test1() {

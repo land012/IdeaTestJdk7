@@ -10,7 +10,7 @@ import org.junit.Test;
  * Created by 大洲 on 14-11-23.
  * 编码 实现 REST 客户端
  */
-public class HelloEarthClientTest2 {
+public class HelloEarthClientCxfCodeTest {
     @Test
     public void test1() {
         JAXRSClientFactoryBean factory = new JAXRSClientFactoryBean();

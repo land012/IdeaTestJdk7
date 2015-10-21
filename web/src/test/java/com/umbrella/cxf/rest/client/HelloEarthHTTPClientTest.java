@@ -17,9 +17,9 @@ import java.io.InputStream;
  * REST 客户端
  * 使用 http 的方式(Apache httpcomponents-client)调用 REST 服务端
  */
-public class HelloEarthClientTest {
+public class HelloEarthHTTPClientTest {
 
-    private static final Logger log = LoggerFactory.getLogger(HelloEarthClientTest.class);
+    private static final Logger log = LoggerFactory.getLogger(HelloEarthHTTPClientTest.class);
 
     private static final String REST_PREFIX = "http://localhost:9999/ws/helloEarth";
 

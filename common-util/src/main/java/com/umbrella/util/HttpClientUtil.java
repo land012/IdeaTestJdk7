@@ -43,7 +43,8 @@ public class HttpClientUtil {
                     pairs[i] = new NameValuePair(entry.getKey(), entry.getValue());
                     i++;
                 }
-                postMethod.addParameters(pairs); // request.getParameter(String) 可以取到参数
+//                postMethod.addParameters(pairs); // request.getParameter(String) 可以取到参数
+                postMethod.setRequestBody(pairs);
             }
 
             int httpStatus = httpClient.executeMethod(postMethod);
@@ -104,12 +105,13 @@ public class HttpClientUtil {
 
     /**
      * StringRequestEntity
+     * 当既传 parameter 又传 body 时，parameter 无效
      * @param url
      * @param paramJson
      * @param charset
      * @return
      */
-    public static String doPost3(String url, String paramJson, String charset) {
+    public static String doPostBody(String url, String paramJson, String charset, String contentType) {
         HttpClient httpClient = null;
         PostMethod postMethod = null;
         try {
@@ -125,8 +127,11 @@ public class HttpClientUtil {
 //            methodParams.setParameter("h1", "head1");
 //            postMethod.setParams(methodParams);
 
-            RequestEntity requestEntity = new StringRequestEntity(paramJson, "application/json", charset);
+            RequestEntity requestEntity = new StringRequestEntity(paramJson, contentType, charset);
             postMethod.setRequestEntity(requestEntity); // request.getParameter(String) 取不到参数，request.getInputStream 才能取到参数
+
+            // 如果把这句写到这个位置，会冲掉前面的内容；相反，会被冲掉
+//            postMethod.addParameter("age", "1000");
 
             int httpStatus = httpClient.executeMethod(postMethod);
             log.info("doPost httpStatus=" + httpStatus);

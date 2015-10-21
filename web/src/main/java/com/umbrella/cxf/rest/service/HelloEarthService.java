@@ -5,6 +5,7 @@ import com.umbrella.ws.model.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.InputStream;
 
 /**
  * Created by 大洲 on 14-11-23.
@@ -12,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 @Path("helloEarthService")
 @Produces("*/*")
 public interface HelloEarthService {
+
     /**
      * 调用 url 格式为
      * rs/helloEarth/helloEarth/user/yukimura
@@ -57,4 +59,13 @@ public interface HelloEarthService {
     @Path("/search")
     @Produces({ MediaType.APPLICATION_XML })
     Student getStudentByStuName(@QueryParam("stuName")String stuName);
+
+    /**
+     * cxf REST 获取 POST BODY
+     * @param is
+     * @return
+     */
+    @POST
+    @Path("is")
+    String readInputStream(InputStream is);
 }

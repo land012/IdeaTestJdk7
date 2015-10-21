@@ -10,7 +10,11 @@ import java.util.Map;
 /**
  * Created by xudazhou on 2015/10/16.
  */
-public class HttpClientUtilTest {
+public class HttpClientUtilSpringMVCTest {
+    /**
+     * SpringMVC
+     * POST
+     */
     @Test
     public void test1() {
         String url = "http://localhost:8080/springmvc/hello";
@@ -20,6 +24,10 @@ public class HttpClientUtilTest {
         System.out.println(HttpClientUtil.doPost(url, paramMap, "utf-8"));
     }
 
+    /**
+     * SpringMVC
+     * POST
+     */
     @Test
     public void test2() {
         String url = "http://localhost:8080/springmvc/hello";
@@ -29,39 +37,45 @@ public class HttpClientUtilTest {
         System.out.println(HttpClientUtil.doPost2(url, paramMap, "utf-8"));
     }
 
+    /**
+     * SpringMVC
+     * POST BODY
+     */
     @Test
-    public void test3() {
+    public void test3_1() {
         String url = "http://localhost:8080/springmvc/hello";
         User u = new User();
         u.setId(1111);
         u.setUserName("Yukimura");
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
-        System.out.println(HttpClientUtil.doPost3(url, gson.toJson(u), "utf-8"));
-    }
-
-    class User {
-        private long id;
-        private String userName;
-
-        public long getId() {
-            return id;
-        }
-
-        public void setId(long id) {
-            this.id = id;
-        }
-
-        public String getUserName() {
-            return userName;
-        }
-
-        public void setUserName(String userName) {
-            this.userName = userName;
-        }
+        System.out.println(HttpClientUtil.doPostBody(url, gson.toJson(u), "utf-8", "application/json"));
     }
 
     /**
+     * POST BODY
+     * 即使是 & 分割，request.getParamter() 仍然获取不到
+     */
+    @Test
+    public void test3_2() {
+        String url = "http://localhost:8080/springmvc/hello";
+        String str = "id=1112&userName=Sanada";
+        System.out.println(HttpClientUtil.doPostBody(url, str, "utf-8", "application/x-www-form-urlencoded"));
+    }
+
+    /**
+     * POST BODY
+     * request.getParamter() 可以取到
+     */
+    @Test
+    public void test3_3() {
+        String url = "http://localhost:8080/springmvc/greet";
+        String str = "id=1112&userName=Sanada";
+        System.out.println(HttpClientUtil.doPostBody(url, str, "utf-8", "application/x-www-form-urlencoded"));
+    }
+
+    /**
+     * REST Http
      * 使用自己写的 Sever 启动
      * Get
      * 响应 XML

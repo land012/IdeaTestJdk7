@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.FormParam;
+import java.io.InputStream;
 
 /**
  * Created by 大洲 on 14-11-23.
@@ -51,5 +52,22 @@ public class HelloEarthServiceImpl implements HelloEarthService {
         s.setStuName(stuName);
         s.setGender("female");
         return s;
+    }
+
+    @Override
+    public String readInputStream(InputStream is) {
+        StringBuilder params = new StringBuilder();
+        try {
+            byte[] buf = new byte[1024];
+            int i=-1;
+            while ((i=is.read(buf))!=-1) {
+                params.append(new String(buf, 0, i, "utf-8"));
+            }
+            log.info("params=" + params);
+        } catch (Exception e) {
+            log.error("readInputStream exception,", e);
+        }
+
+        return "Hello InputStream";
     }
 }

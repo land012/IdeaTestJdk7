@@ -24,6 +24,9 @@ public class SpringTest {
         context.getAutowireCapableBeanFactory().autowireBeanProperties(this, DefaultListableBeanFactory.AUTOWIRE_BY_NAME, false);
     }
 
+    /**
+     * AOP
+     */
     @Test
     public void test1() {
         System.out.println("============= test1 begin =========================================");
