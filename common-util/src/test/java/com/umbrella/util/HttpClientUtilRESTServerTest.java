@@ -1,7 +1,6 @@
 package com.umbrella.util;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.umbrella.util.http.HttpClientUtil;
 import org.junit.Test;
 
 import java.util.HashMap;

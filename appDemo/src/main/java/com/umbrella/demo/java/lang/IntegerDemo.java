@@ -53,4 +53,14 @@ public class IntegerDemo {
         System.out.println(Integer.toHexString(hashCode & 0xff)); // d0
         System.out.println(Integer.toHexString(10 & 0xff)); // a
     }
+
+    /**
+     * int 类型的 bit数
+     */
+    @Test
+    public void test5() {
+        System.out.println(Integer.SIZE); // 32
+        System.out.println(Character.SIZE);
+        System.out.println(Byte.SIZE);
+    }
 }

@@ -4,7 +4,7 @@ import com.umbrella.demo.concurrent.executors.Demo1;
 import org.apache.log4j.Logger;
 
 /**
- *
+ * 最基本的线程写法
  */
 public class Demo3 {
     private static final Logger log = Logger.getLogger(Demo1.class);

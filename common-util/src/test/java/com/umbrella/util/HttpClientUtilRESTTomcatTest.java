@@ -1,5 +1,7 @@
 package com.umbrella.util;
 
+import com.umbrella.util.http.HttpClientUtil;
+import com.umbrella.util.json.GsonUtil;
 import org.junit.Test;
 
 import javax.ws.rs.core.MediaType;

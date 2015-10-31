@@ -1,4 +1,4 @@
-package com.umbrella.util;
+package com.umbrella.util.http;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +7,6 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by xudazhou on 2015/10/20.

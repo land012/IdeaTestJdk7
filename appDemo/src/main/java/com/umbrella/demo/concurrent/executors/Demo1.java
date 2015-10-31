@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by 大洲 on 15-5-27.
- * 当任务远多于线程个数时，任务是不是都会被添加而导致内在溢出
+ * 当任务远多于线程个数时，任务是不是都会被添加而导致内存溢出
  * 是的
  */
 public class Demo1 {

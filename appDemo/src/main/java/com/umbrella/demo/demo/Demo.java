@@ -48,4 +48,10 @@ public class Demo {
             System.out.println("<hr />");
         }
     }
+
+    @Test
+    public void test4() {
+        String str1 = "亲亲袋鼠-VINCI";
+        System.out.println(str1.length()); // 10 如果文件是gbk编码，这个长度返回 13！！！！？？？
+    }
 }

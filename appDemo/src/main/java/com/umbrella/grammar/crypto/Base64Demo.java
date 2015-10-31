@@ -11,6 +11,9 @@ import java.io.UnsupportedEncodingException;
  * Created by xudazhou on 2015/10/16.
  */
 public class Base64Demo {
+    /**
+     * Java Base64
+     */
     @Test
     public void test1() {
         BASE64Encoder encoder = new BASE64Encoder();
@@ -26,6 +29,9 @@ public class Base64Demo {
         }
     }
 
+    /**
+     * apache codec
+     */
     @Test
     public void test2() {
         String str1 = "Yukimura";
@@ -34,6 +40,7 @@ public class Base64Demo {
             System.out.println(base64Str1);                                               // WXVraW11cmE=
             String base64Str2 = Base64.encodeBase64URLSafeString(str1.getBytes("utf-8")); // WXVraW11cmE
             System.out.println(base64Str2);
+            System.out.println(new String(Base64.decodeBase64(base64Str2), "utf-8")); // Yukimura
         } catch (Exception e) {
             e.printStackTrace();
         }

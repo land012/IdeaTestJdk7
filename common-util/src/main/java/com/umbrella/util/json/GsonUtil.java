@@ -1,4 +1,4 @@
-package com.umbrella.util;
+package com.umbrella.util.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

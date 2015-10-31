@@ -1,4 +1,4 @@
-package com.umbrella.util;
+package com.umbrella.util.http;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
@@ -7,7 +7,6 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
-import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -14,4 +14,13 @@ public class StringEscapeUtilsDemo {
         System.out.println(StringEscapeUtils.escapeJava(".")); // .
         System.out.println(StringEscapeUtils.escapeJava("。")); // \u3002
     }
+
+    /**
+     * html
+     */
+    @Test
+    public void test2() {
+        System.out.println(StringEscapeUtils.escapeHtml4("你&好 > < = \"")); // 你&amp;好 &gt; &lt; = &quot;
+        System.out.println(StringEscapeUtils.escapeHtml3("你&好 > < = \"")); // 你&amp;好 &gt; &lt; = &quot;
+    }
 }
