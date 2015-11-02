@@ -116,4 +116,15 @@
     </aop:config>
     <!-- AOP 20151014 end -->
 
+    <!-- Spring 工厂模式 begin -->
+    <bean id="user1" class="com.umbrella.demo.spring.factory.UserFactory" factory-method="create">
+        <constructor-arg type="java.lang.Long" value="1"></constructor-arg>
+    </bean>
+
+    <bean id="userFactory2" class="com.umbrella.demo.spring.factory.UserFactory2">
+        <property name="id" value="2"></property>
+    </bean>
+    <bean id="user2" class="com.umbrella.vo.User" factory-bean="userFactory2" factory-method="create"></bean>
+    <!-- Spring 工厂模式 end -->
+
 </beans>

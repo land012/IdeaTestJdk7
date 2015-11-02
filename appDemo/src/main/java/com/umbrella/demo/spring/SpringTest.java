@@ -1,6 +1,7 @@
 package com.umbrella.demo.spring;
 
 import com.umbrella.demo.spring.service.LeahService;
+import com.umbrella.vo.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,25 @@ public class SpringTest {
         System.out.println("============= test1 begin =========================================");
         this.leahService.hello("Leah Dizon");
         System.out.println("============= test1 end =========================================");
+    }
+
+
+    private User user1;
+    private User user2;
+
+    public void setUser1(User user1) {
+        this.user1 = user1;
+    }
+
+    public void setUser2(User user2) {
+        this.user2 = user2;
+    }
+
+    @Test
+    public void test2() {
+        System.out.println("============ test2 begin =============================================================");
+        System.out.println(user1);
+        System.out.println(user2);
+        System.out.println("============ test2 end =============================================================");
     }
 }
