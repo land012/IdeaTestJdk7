@@ -18,12 +18,25 @@
 
     <context:component-scan base-package="com.umbrella"></context:component-scan>
 
+    <!-- 获取配置文件内容 -->
     <bean class="com.umbrella.demo.spring.util.MyPropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
                 <value>classpath:common.properties</value>
             </list>
         </property>
+    </bean>
+
+    <bean id="commonProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:common.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.umbrella.demo.spring.util.MyPropertyFactoryBean">
+        <property name="commonProperties" ref="commonProperties"></property>
     </bean>
 
     <bean id="dsTest" class="org.apache.commons.dbcp2.BasicDataSource">
@@ -117,14 +130,45 @@
     <!-- AOP 20151014 end -->
 
     <!-- Spring 工厂模式 begin -->
-    <bean id="user1" class="com.umbrella.demo.spring.factory.UserFactory" factory-method="create">
+    <!--<bean id="user1" class="com.umbrella.demo.spring.factory.UserFactory" factory-method="create">
         <constructor-arg type="java.lang.Long" value="1"></constructor-arg>
-    </bean>
+    </bean>-->
+
+    <!--<bean id="user11" class="com.umbrella.demo.spring.factory.UserFactory" ></bean>-->
+
+    <bean class="com.umbrella.demo.spring.factory.UserFactory" ></bean>
 
     <bean id="userFactory2" class="com.umbrella.demo.spring.factory.UserFactory2">
         <property name="id" value="2"></property>
     </bean>
     <bean id="user2" class="com.umbrella.vo.User" factory-bean="userFactory2" factory-method="create"></bean>
     <!-- Spring 工厂模式 end -->
+
+    <!-- Spring 定时任务 begin -->
+    <bean id="helloWorldTaskService" class="com.umbrella.demo.spring.task.impl.HelloWorldTaskServiceImpl"></bean>
+    <bean id="helloWorldQuartz" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="helloWorldTaskService"></property>
+        <property name="targetMethod" value="execute"></property>
+        <!-- 这个配置有什么用? -->
+        <property name="concurrent" value="true"></property>
+    </bean>
+    <bean id="helloWorldTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="helloWorldQuartz"></property>
+        <property name="cronExpression" value="0/5 * * * * ?"></property>
+    </bean>
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="helloWorldTrigger"></ref>
+            </list>
+        </property>
+        <property name="autoStartup" value="true"></property>
+        <property name="quartzProperties">
+            <props>
+                <prop key="org.quartz.threadPool.threadCount">1</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- Spring 定时任务 end -->
 
 </beans>

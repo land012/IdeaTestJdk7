@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by 大洲 on 15-1-15.
+ * 子线程抛异常对主线程的影响
  */
 public class ExecutorsDemo {
     public static void main(String[] args) {

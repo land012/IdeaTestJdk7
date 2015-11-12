@@ -11,7 +11,9 @@ import java.util.Date;
  * Created by 大洲 on 14-11-11.
  */
 public class CalendarDemo {
-    public static void main(String[] args) {
+
+    @Test
+    public void test0() {
         Calendar cal1 = Calendar.getInstance();
         System.out.println(cal1);
         System.out.println(cal1.getTimeZone());
@@ -45,5 +47,15 @@ public class CalendarDemo {
         Calendar cal1 = Calendar.getInstance();
         cal1.setTime(d1);
         System.out.println(cal1.getTime());
+    }
+
+    /**
+     * 48小时前的时间
+     */
+    @Test
+    public void test3() {
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.DAY_OF_MONTH, -2);
+        System.out.println(now.getTime());
     }
 }

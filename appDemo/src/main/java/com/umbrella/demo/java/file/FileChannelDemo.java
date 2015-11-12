@@ -9,7 +9,9 @@ import java.nio.channels.FileLock;
 import java.nio.channels.OverlappingFileLockException;
 
 /**
+ * 并发操作文件 保证文件一致性
  * Created by xudazhou on 2015/8/26.
+ *
  * FileOutputStream 的 FileChannel
  */
 public class FileChannelDemo {

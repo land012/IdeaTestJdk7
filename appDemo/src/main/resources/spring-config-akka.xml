@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd"
+        default-autowire="byName">
+
+    <context:annotation-config></context:annotation-config>
+
+    <!--<context:component-scan base-package="com.umbrella"></context:component-scan>-->
+
+    <bean id="actorSystem001" class="akka.actor.ActorSystem" factory-method="create">
+        <constructor-arg type="java.lang.String" value="AS001"></constructor-arg>
+    </bean>
+
+    <bean id="goodmorningActorProps" class="com.umbrella.demo.akka.demo2.PropsCustom" factory-method="create">
+        <constructor-arg type="java.lang.Class" value="com.umbrella.demo.akka.demo2.actor.GoodmorningActor"></constructor-arg>
+    </bean>
+
+    <bean id="goodmorningActorRef" factory-bean="actorSystem001" factory-method="actorOf">
+        <constructor-arg type="akka.actor.Props" ref="goodmorningActorProps"></constructor-arg>
+        <constructor-arg type="java.lang.String" value="goodmorningActorProps"></constructor-arg>
+    </bean>
+
+    <bean id="sanadaService" class="com.umbrella.demo.akka.demo2.service.SanadaServiceImpl"></bean>
+</beans>
