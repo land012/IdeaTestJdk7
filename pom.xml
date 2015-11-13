@@ -17,6 +17,7 @@
         <module>web</module>
         <module>WebServiceInterface</module>
         <module>common-util</module>
+        <module>demo</module>
     </modules>
 
     <dependencies>
