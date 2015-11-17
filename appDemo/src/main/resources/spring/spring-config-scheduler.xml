@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-autowire="byName">
+
+    <!-- Spring 定时任务 begin -->
+    <bean id="helloWorldTaskService" class="com.umbrella.demo.spring.task.impl.HelloWorldTaskServiceImpl"></bean>
+    <!-- MethodInvokingJobDetailFactoryBean 的实例id是 &helloWorldJobDetail -->
+    <bean id="helloWorldJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="helloWorldTaskService"></property>
+        <property name="targetMethod" value="execute"></property>
+        <!-- 这个配置有什么用? -->
+        <property name="concurrent" value="true"></property>
+        <!-- jobDetail 的 name -->
+        <property name="name" value="helloWorldJobDetailFactoryBean"></property>
+    </bean>
+    <bean id="helloWorldTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="helloWorldJobDetail"></property>
+        <property name="cronExpression" value="0 0/2 * * * ?"></property>
+    </bean>
+    <bean id="helloWorldScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="helloWorldTrigger"></ref>
+            </list>
+        </property>
+        <!-- autoStartup=false时，是 standby 状态 -->
+        <property name="autoStartup" value="false"></property>
+        <property name="quartzProperties">
+            <props>
+                <prop key="org.quartz.threadPool.threadCount">1</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="helloWorldJobDetail2" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="helloWorldTaskService"></property>
+        <property name="targetMethod" value="execute"></property>
+        <!-- 这个配置有什么用? -->
+        <property name="concurrent" value="true"></property>
+    </bean>
+    <!-- Spring 定时任务 end -->
+
+</beans>

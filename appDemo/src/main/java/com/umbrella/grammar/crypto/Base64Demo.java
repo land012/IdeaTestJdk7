@@ -50,8 +50,11 @@ public class Base64Demo {
     public void test3() {
         String str1 = "Yukimura";
         try {
-            System.out.println(new String(Base64.encodeBase64(str1.getBytes("utf-8")), "utf-8")); // WXVraW11cmE=
-            System.out.println(new String(Base64.encodeBase64(str1.getBytes("utf-8"), true), "utf-8")); // WXVraW11cmE=
+//            System.out.println(new String(Base64.encodeBase64(str1.getBytes("utf-8")), "utf-8")); // WXVraW11cmE=
+//            System.out.println(new String(Base64.encodeBase64(str1.getBytes("utf-8"), true), "utf-8")); // WXVraW11cmE=
+
+            System.out.println(Base64.encodeBase64String("123456789abcdefg".getBytes("utf-8")));
+            System.out.println(new String(Base64.decodeBase64("MTIzNDU2Nzg5MA=="), "utf-8")); // 1234567890
         } catch (Exception e) {
             e.printStackTrace();
         }

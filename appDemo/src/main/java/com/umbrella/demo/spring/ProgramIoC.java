@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 编程注入对象
  * 从 Spring容器 中手动获取对象
  */
-public class ProgramIC {
+public class ProgramIoC {
 
     private LeahService leahService;
     private SpringContextHelper springContextHelper;
@@ -26,19 +26,19 @@ public class ProgramIC {
         this.springContextHelper = springContextHelper;
     }
 
-    public ProgramIC() {
+    public ProgramIoC() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         // 注入 bean
         context.getAutowireCapableBeanFactory().autowireBeanProperties(this, DefaultListableBeanFactory.AUTOWIRE_BY_NAME, false);
     }
 
     public static void main(String[] args) {
-        ProgramIC programIC = new ProgramIC();
+        ProgramIoC programIoC = new ProgramIoC();
         // 注入
-        programIC.leahService.hello("Leah Dizon");
+        programIoC.leahService.hello("Leah Dizon");
 
         // 直接从容器中获取
-        MikasaService mikasaService = (MikasaService)programIC.springContextHelper.getBean("mikasaService");
+        MikasaService mikasaService = (MikasaService)programIoC.springContextHelper.getBean("mikasaService");
         mikasaService.hello("Nobunaga");
 
         /**

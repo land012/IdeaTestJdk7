@@ -6,13 +6,11 @@ import org.quartz.impl.StdSchedulerFactory;
 
 /**
  * Created by 大洲 on 15-5-29.
- * Cron
- * 任务执行时长大于执行间隔
- * 任务会再指定的间隔执行，不管上一次任务是否结束
+ * Quartz入门
  */
-public class Demo3 {
+public class QuartzDemo1 {
 
-    private static final Logger log = Logger.getLogger(Demo3.class);
+    private static final Logger log = Logger.getLogger(QuartzDemo1.class);
 
     public static void main(String[] args) {
         log.info("I am main begin");
@@ -27,7 +25,9 @@ public class Demo3 {
             Trigger trigger = TriggerBuilder.newTrigger()
                     .withIdentity("hellotrigger", "tgroup1")
                     .startNow()
-                    .withSchedule(CronScheduleBuilder.cronSchedule("0/3 * * * * ?")) // 不加这句，只执行一次
+                    .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                        .withIntervalInSeconds(3)
+                        .repeatForever()) // 不加这句，只执行一次
                     .build();
 
             scheduler.scheduleJob(jobDetail, trigger);
@@ -39,21 +39,15 @@ public class Demo3 {
 
     public static class HelloJob implements Job {
 
-        private static long count = 1;
-
-        private long id;
-
         @Override
         public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-            id = count;
-            count++;
-            log.info(String.format("I am HelloJob %s begin", id));
+            log.info("I am HelloJob begin");
             try {
-                Thread.sleep(5000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            log.info(String.format("I am HelloJob %s end", id));
+            log.info("I am HelloJob end");
         }
     }
 }

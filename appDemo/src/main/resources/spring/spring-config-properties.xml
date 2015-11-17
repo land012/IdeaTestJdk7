@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-autowire="byName">
+
+    <!-- 获取配置文件内容 -->
+    <bean class="com.umbrella.demo.spring.util.MyPropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:common.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="commonProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:common.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.umbrella.demo.spring.util.MyPropertyFactoryBean">
+        <property name="commonProperties" ref="commonProperties"></property>
+    </bean>
+
+</beans>

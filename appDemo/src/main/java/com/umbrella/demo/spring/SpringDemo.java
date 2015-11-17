@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Created by 大洲 on 15-5-28.
  * 编程注入对象
+ * Spring 容器里只有一个 yukimuraService 实例
  */
 public class SpringDemo {
 

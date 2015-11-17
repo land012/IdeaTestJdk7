@@ -7,11 +7,12 @@ import org.quartz.impl.StdSchedulerFactory;
 /**
  * Created by 大洲 on 15-5-29.
  * Cron
- * 每次执行都会new 一个新的 Job
+ * 任务执行时长大于执行间隔
+ * 任务会再指定的间隔执行，不管上一次任务是否结束
  */
-public class Demo2 {
+public class QuartzDemo3 {
 
-    private static final Logger log = Logger.getLogger(Demo2.class);
+    private static final Logger log = Logger.getLogger(QuartzDemo3.class);
 
     public static void main(String[] args) {
         log.info("I am main begin");
@@ -38,18 +39,21 @@ public class Demo2 {
 
     public static class HelloJob implements Job {
 
-        private static long i = 1;
+        private static long count = 1;
+
+        private long id;
 
         @Override
         public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-            log.info(String.format("I am HelloJob %s begin", i));
+            id = count;
+            count++;
+            log.info(String.format("I am HelloJob %s begin", id));
             try {
-                Thread.sleep(1000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            log.info(String.format("I am HelloJob %s end", i));
-            i++;
+            log.info(String.format("I am HelloJob %s end", id));
         }
     }
 }
