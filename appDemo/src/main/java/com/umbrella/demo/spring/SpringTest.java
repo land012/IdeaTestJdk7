@@ -1,5 +1,7 @@
 package com.umbrella.demo.spring;
 
+import com.umbrella.common.service.AchillesService;
+import com.umbrella.common.service.SasukeService;
 import com.umbrella.demo.spring.factory.UserFactory;
 import com.umbrella.demo.spring.factory.UserFactoryBean;
 import com.umbrella.demo.spring.service.LeahService;
@@ -29,6 +31,12 @@ public class SpringTest {
     @Resource
     private LeahService leahService;
 
+    @Autowired
+    private AchillesService achillesService;
+
+    @Autowired
+    private SasukeService sasukeService;
+
     @Before
     public void before() {
         context = new ClassPathXmlApplicationContext("spring-config.xml");
@@ -54,6 +62,14 @@ public class SpringTest {
         System.out.println("============ test3 begin ================================================");
         System.out.println(MyPropertyFactoryBean.getProperty("k1"));
         System.out.println("============ test3 end ================================================");
+    }
+
+    @Test
+    public void test4() throws Exception {
+        System.out.println("============ test4 begin ================================================");
+        this.achillesService.hello();
+//        this.sasukeService.hello();
+        System.out.println("============ test4 end ================================================");
     }
 
 }

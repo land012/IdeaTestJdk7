@@ -16,11 +16,6 @@ public class Demo {
     }
 
 //    @Test
-//    public void test1() {
-//        Lion lion = new Lion();
-//    }
-//
-//    @Test
 //    public void test2() {
 //        DecimalFormat df = new DecimalFormat("0000");
 //        for(int i=1; i<=225; i++) {
@@ -35,10 +30,5 @@ public class Demo {
 //            System.out.println("<hr />");
 //        }
 //    }
-//
-//    @Test
-//    public void test4() {
-//        String str1 = "亲亲袋鼠-VINCI";
-//        System.out.println(str1.length()); // 10 如果文件是gbk编码，这个长度返回 13！！！！？？？
-//    }
+
 }

@@ -18,6 +18,9 @@
 
     <context:component-scan base-package="com.umbrella"></context:component-scan>
 
+    <!-- 如果要使用AOP注解，必须加上这句 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
     <import resource="spring/spring-config-properties.xml"></import>
     <import resource="spring/spring-config-scheduler.xml"></import>
 
@@ -42,7 +45,7 @@
         </tx:attributes>
     </tx:advice>
     <aop:config>
-        <aop:pointcut id="studentServicePC" expression="execution(* com.umbrella.demo.mysql.service.StudentService.saveTwo(..))"></aop:pointcut>
+        <aop:pointcut id="studentServicePC" expression="execution(* com.umbrella.demo.atomikos.mysql.service.StudentService.saveTwo(..))"></aop:pointcut>
         <aop:advisor advice-ref="txAdviceTest" pointcut-ref="studentServicePC"></aop:advisor>
     </aop:config>-->
     <!-- 声明式事务 end -->
@@ -101,14 +104,14 @@
     <!-- Atomikos 分布式事务 end -->
 
     <!-- AOP 20151014 begin -->
-    <bean id="myAspect" class="com.umbrella.demo.spring.aop.MyAspect"></bean>
+    <!--<bean id="myAspect" class="com.umbrella.demo.spring.aop.MyAspect"></bean>
     <aop:config>
         <aop:aspect ref="myAspect">
             <aop:pointcut id="springService" expression="execution(* com.umbrella.demo.spring.service.*.*(..))"></aop:pointcut>
             <aop:before pointcut-ref="springService" method="doBefore"></aop:before>
             <aop:after pointcut-ref="springService" method="doAfter"></aop:after>
         </aop:aspect>
-    </aop:config>
+    </aop:config>-->
     <!-- AOP 20151014 end -->
 
     <!-- Spring 工厂模式 begin -->
@@ -130,7 +133,5 @@
 
     <!-- 当实现 FactoryBean 接口时，bean标签实际返回的对象是 getObject 方法返回的对象 -->
     <bean id="user3" class="com.umbrella.demo.spring.factory.UserFactoryBean"></bean>
-
-
 
 </beans>

@@ -7,6 +7,7 @@ import com.umbrella.demo.json.jackson1.domain.User;
 import com.umbrella.demo.json.vo.Result;
 import com.umbrella.demo.json.vo.School;
 import com.umbrella.demo.json.vo.Student;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
@@ -36,8 +37,13 @@ public class GsonDemo {
 
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .disableHtmlEscaping() // 加上这个后，不会 escapseJava
                 .create();
-        log.info(gson.toJson(s1)); // {"sno":1,"name":"Uchiha \u003d Sasuke","birth":"2015-07-01 10:13:31"}
+
+        String json = gson.toJson(s1);
+        // 默认会进行 escapseJava
+        log.info(json); // {"sno":1,"name":"Uchiha \u003d Sasuke","birth":"2015-07-01 10:13:31"}
+        log.info(StringEscapeUtils.unescapeJava(json));
     }
 
     /**

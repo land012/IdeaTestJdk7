@@ -55,6 +55,15 @@ public class IntegerDemo {
     }
 
     /**
+     * 十六进制 转 十进制
+     */
+    @Test
+    public void test6() {
+        System.out.println(0x66);
+        System.out.println(0x99);
+    }
+
+    /**
      * int 类型的 bit数
      */
     @Test
@@ -63,4 +72,5 @@ public class IntegerDemo {
         System.out.println(Character.SIZE);
         System.out.println(Byte.SIZE);
     }
+
 }
