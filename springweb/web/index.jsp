@@ -3,6 +3,7 @@
 <html>
   <head>
     <title></title>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
       <script type="text/javascript">
           jQuery(function(){
@@ -39,6 +40,8 @@
   this is springweb!
   <ul>
       <li><a href="/springmvc/hello" target="_blank">SpringMVC Hello World</a></li>
+      <li><a href="/springmvc/greet" target="_blank">SpringMVC Greet World</a></li>
+      <li><hr/></li>
       <li><a href="/servlet/hello" target="_blank">Servlet Hello Velocity</a></li>
       <li><a href="/servlet/greet" target="_blank">Servlet Greet Velocity</a></li>
       <li><a href="/servlet/velocity" target="_blank">Hello VelocityViewServlet</a></li>

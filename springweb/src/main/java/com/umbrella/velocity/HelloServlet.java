@@ -4,6 +4,8 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +18,9 @@ import java.util.Properties;
  * Created by 大洲 on 15-3-30.
  */
 public class HelloServlet extends HttpServlet {
+
+    private static final Logger log = LoggerFactory.getLogger(HelloServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doPost(req, resp);
@@ -33,5 +38,7 @@ public class HelloServlet extends HttpServlet {
 
         Template template = engine.getTemplate("hello.vm");
         template.merge(context, resp.getWriter());
+
+        log.info("这是中文");
     }
 }

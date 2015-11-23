@@ -48,6 +48,7 @@ public class StringDemo {
     @Test
     public void test4() throws Exception {
         String str1 = "亲亲袋鼠-VINCI";
+        System.out.println(str1);
         System.out.println(str1.length()); // 10 如果文件是gbk编码，这个长度返回 13！！！！？？？
         System.out.println(str1.getBytes("utf-8").length); // 18 中文三字节 英文一字节
         System.out.println(str1.getBytes("gbk").length);   // 14 中文两字节 英文一字节
