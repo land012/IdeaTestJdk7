@@ -1,5 +1,6 @@
 package com.umbrella.demo.google.guava;
 
+import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
@@ -18,6 +19,9 @@ public class CacheDemo {
 
     private static final Logger log = Logger.getLogger(CacheDemo.class);
 
+    /**
+     * 找不到记录时，自动从数据源加载
+     */
     private LoadingCache<Long, User> userCache = CacheBuilder.newBuilder()
             .maximumSize(2000)
             .expireAfterAccess(1, TimeUnit.MINUTES)
@@ -73,6 +77,7 @@ public class CacheDemo {
 
 //        User u3 = getUser(3L);
 //        System.out.println(u3);
+
     }
 
     /**
@@ -101,7 +106,7 @@ public class CacheDemo {
     }
 
     /**
-     * 获取不存在的记录，抛异常：
+     * 获取不存在的记录，仍会抛出异常：
      * com.google.common.cache.CacheLoader$InvalidCacheLoadException: CacheLoader returned null for key 9.
      */
     @Test
@@ -143,5 +148,16 @@ public class CacheDemo {
 //            e.printStackTrace();
         }
         return u;
+    }
+
+    @Test
+    public void test5() {
+        Cache<String, String> cache1 = CacheBuilder.newBuilder()
+                .build();
+        cache1.put("k1", "v1");
+        cache1.put("k2", "v2");
+        for(Map.Entry<String, String> entry : cache1.asMap().entrySet()) {
+            log.info(entry.getKey() + "=" + entry.getValue());
+        }
     }
 }

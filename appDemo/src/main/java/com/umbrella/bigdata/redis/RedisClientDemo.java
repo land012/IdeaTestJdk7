@@ -7,6 +7,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,7 +29,7 @@ public class RedisClientDemo {
     @Test
     public void test1() {
         Jedis jedis = new Jedis(JedisUtil.REDIS_HOST, JedisUtil.REDIS_PORT);
-        jedis.set("foo", "bar");
+//        jedis.set("foo", "bar");
         System.out.println(jedis.get("foo"));
     }
 
@@ -72,5 +73,23 @@ public class RedisClientDemo {
         jedisClient.set("foo", "bar");
         System.out.println(jedisClient.get("foo"));
         System.out.println(jedisClient.del("foo")); // 1
+    }
+
+    @Test
+    public void test5() {
+        /*
+         * l 是从左边 push
+         * r 是从右边 push
+         * lrange key start end 会包含 end元素(end大于队列长度也没有关系)
+         */
+//        jedisClient.lpush("l1", "b");
+//        jedisClient.rpush("l1", "c");
+//        jedisClient.lpush("l1", "a");
+        Long l1len = jedisClient.llen("l1");
+        System.out.println(l1len);
+        List<String> l1 = jedisClient.lrange("l1", 0, l1len + 3);
+        System.out.println(l1);
+        List<String> l2 = jedisClient.lrange("l1", 0, l1len - 1);
+        System.out.println(l2);
     }
 }

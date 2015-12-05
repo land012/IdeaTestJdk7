@@ -53,4 +53,13 @@ public class StringDemo {
         System.out.println(str1.getBytes("utf-8").length); // 18 中文三字节 英文一字节
         System.out.println(str1.getBytes("gbk").length);   // 14 中文两字节 英文一字节
     }
+
+    @Test
+    public void test5() {
+        String str1 = null;
+        StringBuilder str = new StringBuilder();
+        str.append(str1);
+        str.append("a");
+        System.out.println(str); // nulla
+    }
 }
