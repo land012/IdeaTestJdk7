@@ -11,13 +11,20 @@ public class ClasspathDemo {
      */
     @Test
     public void test1() {
-        // /D:/_idea/TestApp/appDemo/target/classes/
-        System.out.println(ClassLoader.getSystemResource("").getPath());
-        // /D:/_idea/TestApp/appDemo/target/classes/
-        System.out.println(Thread.currentThread().getContextClassLoader().getResource("").getPath());
-        // /D:/_idea/TestApp/appDemo/target/classes/com/umbrella/demo/java/demo/
-        System.out.println(this.getClass().getResource("").getPath());
-        // /D:/_idea/TestApp/appDemo/target/classes/
-        System.out.println(this.getClass().getResource("/").getPath());
+//        // /D:/_idea/TestApp/appDemo/target/classes/
+//        System.out.println(ClassLoader.getSystemResource("").getPath());
+//
+//        // /D:/_idea/TestApp/appDemo/target/classes/
+//        System.out.println(Thread.currentThread().getContextClassLoader().getResource("").getPath());
+//
+//        // /D:/_idea/TestApp/appDemo/target/classes/com/umbrella/demo/java/demo/
+//        System.out.println(this.getClass().getResource("").getPath());
+//
+//        // /D:/_idea/TestApp/appDemo/target/classes/
+//        System.out.println(this.getClass().getResource("/").getPath());
+
+        // 所以 jar路径
+        String java_class_path = System.getProperty("java.class.path");
+        System.out.println(java_class_path);
     }
 }
