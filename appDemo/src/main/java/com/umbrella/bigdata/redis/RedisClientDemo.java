@@ -75,12 +75,15 @@ public class RedisClientDemo {
         System.out.println(jedisClient.del("foo")); // 1
     }
 
+    /**
+     * 队列
+     */
     @Test
     public void test5() {
         /*
          * l 是从左边 push
          * r 是从右边 push
-         * lrange key start end 会包含 end元素(end大于队列长度也没有关系)
+         * lrange key start end : 会包含 end元素(end大于队列长度也没有关系)
          */
 //        jedisClient.lpush("l1", "b");
 //        jedisClient.rpush("l1", "c");
@@ -91,5 +94,37 @@ public class RedisClientDemo {
         System.out.println(l1);
         List<String> l2 = jedisClient.lrange("l1", 0, l1len - 1);
         System.out.println(l2);
+//        jedisClient.lrem
     }
+
+    /**
+     * 队列
+     * 当队列是的值被 pop光时，队列会被删除，这时再 pop，返回 null
+     */
+    @Test
+    public void test6() {
+        String str1 = jedisClient.lpop("l1");
+        System.out.println("str1=" + str1);
+
+        String str2 = jedisClient.lpop("l1");
+        if(str2==null) {
+            System.out.println("str2 is null");
+        } else {
+            System.out.println("str2 is not null, str2=" + str2);
+        }
+    }
+
+    /**
+     * 队列
+     */
+    @Test
+    public void test7() {
+        jedisClient.rpush("l2", "a");
+        jedisClient.rpush("l2", "b");
+        jedisClient.rpush("l2", "c");
+        List<String> l2 = jedisClient.lrange("l2", 0, jedisClient.llen("l2"));
+        System.out.println(l2);
+    }
+
+
 }
