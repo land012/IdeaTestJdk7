@@ -1,11 +1,16 @@
 package com.umbrella.bigdata.redis;
 
+import com.umbrella.util.serialize.SerializeUtil;
+import com.umbrella.vo.User;
 import org.junit.Before;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +59,7 @@ public class RedisClientDemo {
         m1.put("k2", "m1_v2");
         jedisClient.hmset("m1", m1);
         jedisClient.hset("m1", "k3", "m1_v3");
+        jedisClient.expire("m1", 5); // 5秒后失效
         System.out.println(jedisClient.hget("m1", "k2")); // m1_v2
     }
 
@@ -124,6 +130,21 @@ public class RedisClientDemo {
         jedisClient.rpush("l2", "c");
         List<String> l2 = jedisClient.lrange("l2", 0, jedisClient.llen("l2"));
         System.out.println(l2);
+    }
+
+    /**
+     * 保存对象
+     * 需要手动对对象做序列化
+     */
+    @Test
+    public void test8() throws Exception {
+        User u1 = new User();
+        u1.setId(1);
+        u1.setUserName("Yukimura");
+        u1.setBirthDay(new Date());
+        jedisClient.set("u1".getBytes("utf-8"), SerializeUtil.serialize(u1));
+        User u2 = SerializeUtil.unserialize(jedisClient.get("u1".getBytes("utf-8")), User.class);
+        System.out.println(u2);
     }
 
 
