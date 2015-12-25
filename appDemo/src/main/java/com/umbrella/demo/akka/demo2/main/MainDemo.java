@@ -1,7 +1,9 @@
 package com.umbrella.demo.akka.demo2.main;
 
+import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import com.umbrella.demo.akka.demo2.actor.GoodmorningActor;
 import com.umbrella.demo.akka.demo2.actor.HelloActor;
 import com.umbrella.demo.akka.demo2.service.HelloService;
 import org.apache.log4j.Logger;
@@ -38,9 +40,9 @@ public class MainDemo {
         /**
          * Goodmorning Actor
          */
-//        ActorRef goodmorningActor = system.actorOf(Props.create(GoodmorningActor.class), "goodmorning");
-////        goodmorningActor.tell("", ActorRef.noSender());
-//        log.info(goodmorningActor.path());
+        ActorRef goodmorningActor = system.actorOf(Props.create(GoodmorningActor.class), "goodmorning");
+//        goodmorningActor.tell("", ActorRef.noSender());
+        log.info(goodmorningActor.path());
 //
 //        GoodmorningService goodmorningService = new GoodmorningService();
 //        goodmorningService.setActorSystem(system);

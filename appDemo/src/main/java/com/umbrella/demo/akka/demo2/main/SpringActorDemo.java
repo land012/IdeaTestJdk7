@@ -6,7 +6,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
+ * 尝试整合 Spring
  * Created by xudazhou on 2015/11/2.
+ *
+ * 仍然不能将 bean 注入到 Actor，因为 Actor 是 ActorSystem new 出来的，不是 Spring new 出来的
  */
 public class SpringActorDemo {
 
