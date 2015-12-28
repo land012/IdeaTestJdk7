@@ -1,7 +1,15 @@
 package com.umbrella.demo.java.regexp;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,6 +17,8 @@ import java.util.regex.Pattern;
  * Created by 大洲 on 15-4-20.
  */
 public class RegExpDemo {
+
+    private static final Logger log = LoggerFactory.getLogger(RegExpDemo.class);
 
     // 数字，包含小数点 .
     private static final String NUMBER_REG = "^[\\d[\\.]?]+$";
@@ -72,5 +82,38 @@ public class RegExpDemo {
         System.out.println(Pattern.matches(NUMBER_REG, "1.1.1")); // false
         System.out.println(Pattern.matches(NUMBER_REG, ".1"));    // false
         System.out.println(Pattern.matches(NUMBER_REG, "1."));    // false
+    }
+
+    /**
+     * 查找文件 1.txt 中重复出现的子串 {i=xxx}
+     */
+    @Test
+    public void test6() {
+        try {
+            InputStreamReader isr = new InputStreamReader(ClassLoader.getSystemResourceAsStream("1.txt"));
+            BufferedReader br = new BufferedReader(isr);
+
+            Pattern p = Pattern.compile("\\{(.*)\\}");
+
+            List<String> list = new ArrayList<>();
+
+            String line = null;
+            int k = 0;
+            while ((line=br.readLine())!=null) {
+                k++;
+
+                Matcher m = p.matcher(line);
+                m.find();
+                String split = m.group(1);
+                if(list.contains(split)) {
+                    log.info(split);
+                    break;
+                }
+                list.add(split);
+            }
+            log.info("k=" + k);
+        } catch (Exception e) {
+            log.error("", e);
+        }
     }
 }
