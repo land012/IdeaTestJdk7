@@ -1,4 +1,4 @@
-package com.umbrella.demo.akka.demo2;
+package com.umbrella.demo.akka.demo2.myenum;
 
 /**
  * Created by 大洲 on 15-1-16.

@@ -1,4 +1,4 @@
-package com.umbrella.demo.akka.demo2.service;
+package com.umbrella.demo.akka.spring0;
 
 import akka.actor.ActorSelection;
 import akka.actor.ActorSystem;

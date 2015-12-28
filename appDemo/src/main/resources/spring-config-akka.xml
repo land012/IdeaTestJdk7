@@ -17,14 +17,14 @@
 
     <context:annotation-config></context:annotation-config>
 
-    <context:component-scan base-package="com.umbrella.demo.akka.spring"></context:component-scan>
+    <context:component-scan base-package="com.umbrella.demo.akka.spring1"></context:component-scan>
 
     <bean id="actorSystem001" class="akka.actor.ActorSystem" factory-method="create">
         <constructor-arg type="java.lang.String" value="AS001"></constructor-arg>
     </bean>
 
-    <bean id="goodmorningActorProps" class="com.umbrella.demo.akka.demo2.PropsCustom" factory-method="create">
-        <constructor-arg type="java.lang.Class" value="com.umbrella.demo.akka.demo2.actor.GoodmorningActor"></constructor-arg>
+    <bean id="goodmorningActorProps" class="com.umbrella.demo.akka.spring0.PropsCustom" factory-method="create">
+        <constructor-arg type="java.lang.Class" value="com.umbrella.demo.akka.spring0.GoodmorningActor"></constructor-arg>
     </bean>
 
     <bean id="goodmorningActorRef" factory-bean="actorSystem001" factory-method="actorOf">
@@ -32,5 +32,5 @@
         <constructor-arg type="java.lang.String" value="goodmorningActorProps"></constructor-arg>
     </bean>
 
-    <bean id="sanadaService" class="com.umbrella.demo.akka.demo2.service.SanadaServiceImpl"></bean>
+    <bean id="sanadaService" class="com.umbrella.demo.akka.spring0.SanadaServiceImpl"></bean>
 </beans>

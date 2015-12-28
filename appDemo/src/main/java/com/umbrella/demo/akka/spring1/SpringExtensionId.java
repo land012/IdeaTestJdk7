@@ -1,4 +1,4 @@
-package com.umbrella.demo.akka.spring;
+package com.umbrella.demo.akka.spring1;
 
 import akka.actor.AbstractExtensionId;
 import akka.actor.ExtendedActorSystem;

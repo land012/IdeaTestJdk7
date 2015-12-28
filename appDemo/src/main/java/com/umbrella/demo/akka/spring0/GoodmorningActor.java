@@ -1,7 +1,6 @@
-package com.umbrella.demo.akka.demo2.actor;
+package com.umbrella.demo.akka.spring0;
 
 import akka.actor.UntypedActor;
-import com.umbrella.demo.akka.demo2.service.SanadaService;
 import org.apache.log4j.Logger;
 
 /**
@@ -15,7 +14,7 @@ public class GoodmorningActor extends UntypedActor {
 
     @Override
     public void onReceive(Object o) throws Exception {
-        log.info("Good Morning!");
+        log.info("I am GoodmorningActor! msg is " + o);
         this.sanadaService.saySanada();
     }
 

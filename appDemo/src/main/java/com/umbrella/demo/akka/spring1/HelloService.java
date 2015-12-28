@@ -1,4 +1,4 @@
-package com.umbrella.demo.akka.spring;
+package com.umbrella.demo.akka.spring1;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

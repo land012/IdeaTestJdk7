@@ -3,6 +3,7 @@ package com.umbrella.demo.java.net;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 /**
@@ -16,5 +17,11 @@ public class URLEncoderDemo {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void test2() throws Exception {
+        System.out.println(URLDecoder.decode("%3D", "utf-8")); // =
+        System.out.println(URLDecoder.decode("%2B", "utf-8")); // +
     }
 }

@@ -1,4 +1,4 @@
-package com.umbrella.demo.akka.demo2.service;
+package com.umbrella.demo.akka.spring0;
 
 /**
  * Created by xudazhou on 2015/11/2.

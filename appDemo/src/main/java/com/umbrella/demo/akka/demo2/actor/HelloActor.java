@@ -2,7 +2,7 @@ package com.umbrella.demo.akka.demo2.actor;
 
 import akka.actor.Props;
 import akka.actor.UntypedActor;
-import com.umbrella.demo.akka.demo2.Msg;
+import com.umbrella.demo.akka.demo2.myenum.Msg;
 import org.apache.log4j.Logger;
 
 /**

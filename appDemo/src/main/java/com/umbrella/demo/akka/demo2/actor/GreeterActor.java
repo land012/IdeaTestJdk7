@@ -1,7 +1,7 @@
 package com.umbrella.demo.akka.demo2.actor;
 
 import akka.actor.*;
-import com.umbrella.demo.akka.demo2.Msg;
+import com.umbrella.demo.akka.demo2.myenum.Msg;
 import org.apache.log4j.Logger;
 
 
@@ -13,35 +13,40 @@ public class GreeterActor extends UntypedActor {
     private static Logger log = Logger.getLogger(GreeterActor.class);
 
     @Override
+    public void preStart() throws Exception {
+        log.info("I am GreeterActor preStart");
+    }
+
+    @Override
     public void onReceive(Object o) throws Exception {
         if(o== Msg.GREET) {
             log.info("Greet World!");
             // 判断空
-//            ActorRef helloActor = this.getContext().getChild("helloactor");
+//            ActorRef helloActor = this.getContext().getChild("helloActor");
 //            if(helloActor==null) {
 //                log.info("cannot find helloactor, created!");
-//                helloActor = this.getContext().actorOf(Props.create(HelloActor.class), "helloactor");
+//                helloActor = this.getContext().actorOf(Props.create(HelloActor.class), "helloActor");
 //            } else {
 //                log.info("find helloactor");
 //            }
 
             // 判断空2
-            ActorRef helloActor = this.getContext().actorFor("akka://AS001/user/greetactor/helloactor");
+            ActorRef helloActor = this.getContext().actorFor("akka://actorsystem/user/helloActor");
             if(helloActor instanceof EmptyLocalActorRef) {
                 log.info("cannot find helloactor, created!");
-                helloActor = this.getContext().actorOf(Props.create(HelloActor.class), "helloactor");
+                helloActor = this.getContext().actorOf(Props.create(HelloActor.class), "helloActor");
             } else {
                 log.info("find helloactor");
             }
 
-            log.info(helloActor.path()); // akka://actorsystem/user/greetactor/helloactor
+            log.info(helloActor.path()); // akka://actorsystem/user/helloActor
 
 //            // 判断空3 TODO
 //            ActorPath helloPath = this.getContext().
-//            ActorSelection helloActor = this.getContext().actorSelection("helloactor");
+//            ActorSelection helloActor = this.getContext().actorSelection("helloActor");
 //            if(helloActor==null) {
 //                log.info("cannot find helloactor, created!");
-//                ActorRef helloRef = this.getContext().actorOf(Props.create(HelloActor.class), "helloactor");
+//                ActorRef helloRef = this.getContext().actorOf(Props.create(HelloActor.class), "helloActor");
 //                log.info(helloRef.path());
 //            } else {
 //                log.info("find helloactor");
@@ -52,6 +57,7 @@ public class GreeterActor extends UntypedActor {
         } else if(o==Msg.HELLO) {
 
         } else {
+            log.info("Hello GreeterActor");
             unhandled(o);
         }
     }

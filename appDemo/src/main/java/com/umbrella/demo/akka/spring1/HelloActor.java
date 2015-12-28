@@ -1,8 +1,7 @@
-package com.umbrella.demo.akka.spring;
+package com.umbrella.demo.akka.spring1;
 
 import akka.actor.UntypedActor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

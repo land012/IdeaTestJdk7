@@ -1,4 +1,4 @@
-package com.umbrella.demo.akka.demo2.main;
+package com.umbrella.demo.akka.spring0;
 
 import akka.actor.ActorRef;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;

@@ -4,7 +4,7 @@ import akka.actor.ActorPath;
 import akka.actor.ActorRef;
 import akka.actor.ActorSelection;
 import akka.actor.ActorSystem;
-import com.umbrella.demo.akka.demo2.Msg;
+import com.umbrella.demo.akka.demo2.myenum.Msg;
 import org.apache.log4j.Logger;
 
 /**
