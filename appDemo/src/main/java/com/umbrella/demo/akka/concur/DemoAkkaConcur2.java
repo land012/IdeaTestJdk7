@@ -28,6 +28,8 @@ public class DemoAkkaConcur2 {
         ActorRef helloActor = system.actorOf(Props.create(HelloActor.class), "helloActor");
         ActorRef greetActor = system.actorOf(Props.create(GreetActor.class), "greetActor");
 
+        system.actorOf(Props.create(ListenerActor.class), "listenerActor");
+
         MyCounter myCounter = new MyCounter(0);
         CountDownLatch countDownLatch = new CountDownLatch(1);
 
