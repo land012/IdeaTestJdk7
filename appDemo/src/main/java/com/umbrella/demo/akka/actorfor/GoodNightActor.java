@@ -1,4 +1,4 @@
-package com.umbrella.demo.akka.demo2.actor;
+package com.umbrella.demo.akka.actorfor;
 
 import akka.actor.UntypedActor;
 import org.apache.log4j.Logger;
@@ -13,6 +13,10 @@ public class GoodNightActor extends UntypedActor {
     @Override
     public void onReceive(Object o) throws Exception {
         log.info("Good Nigth");
-        this.getContext().stop(this.getSelf());
+        if(o==Msg.DONE) {
+//            log.info("I will DONE");
+//            this.getContext().stop(this.getSelf()); // 这种做法只能 kill 掉自己，不会结束 ActorSystem
+            this.getSender().tell(new Object(), this.getSelf());
+        }
     }
 }

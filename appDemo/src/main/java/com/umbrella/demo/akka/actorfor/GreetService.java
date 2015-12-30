@@ -1,10 +1,9 @@
-package com.umbrella.demo.akka.demo2.service;
+package com.umbrella.demo.akka.actorfor;
 
 import akka.actor.ActorPath;
 import akka.actor.ActorRef;
 import akka.actor.ActorSelection;
 import akka.actor.ActorSystem;
-import com.umbrella.demo.akka.demo2.myenum.Msg;
 import org.apache.log4j.Logger;
 
 /**
