@@ -1,7 +1,6 @@
-package com.umbrella.demo.akka.demo2.service;
+package com.umbrella.demo.akka.actorselection;
 
 import akka.actor.*;
-import com.umbrella.demo.akka.demo2.myenum.Msg;
 import org.apache.log4j.Logger;
 
 /**

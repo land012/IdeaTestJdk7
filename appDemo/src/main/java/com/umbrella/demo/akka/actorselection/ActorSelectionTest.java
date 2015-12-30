@@ -1,9 +1,7 @@
-package com.umbrella.demo.akka.demo2;
+package com.umbrella.demo.akka.actorselection;
 
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import com.umbrella.demo.akka.demo2.service.HelloService;
-import com.umbrella.demo.akka.concur.HelloActor;
 import org.junit.Before;
 import org.junit.Test;
 
