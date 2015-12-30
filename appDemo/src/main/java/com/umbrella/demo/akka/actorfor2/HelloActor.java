@@ -1,8 +1,7 @@
-package com.umbrella.demo.akka.demo2.actor;
+package com.umbrella.demo.akka.actorfor2;
 
 import akka.actor.Props;
 import akka.actor.UntypedActor;
-import com.umbrella.demo.akka.demo2.myenum.Msg;
 import org.apache.log4j.Logger;
 
 /**

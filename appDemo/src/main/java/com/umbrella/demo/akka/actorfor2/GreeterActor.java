@@ -1,7 +1,6 @@
-package com.umbrella.demo.akka.demo2.actor;
+package com.umbrella.demo.akka.actorfor2;
 
 import akka.actor.*;
-import com.umbrella.demo.akka.demo2.myenum.Msg;
 import org.apache.log4j.Logger;
 
 
@@ -30,7 +29,9 @@ public class GreeterActor extends UntypedActor {
 //                log.info("find helloactor");
 //            }
 
-            // 判断空2
+            /**
+             * 可以找到 HelloActor
+             */
             ActorRef helloActor = this.getContext().actorFor("akka://actorsystem/user/helloActor");
             if(helloActor instanceof EmptyLocalActorRef) {
                 log.info("cannot find helloactor, created!");

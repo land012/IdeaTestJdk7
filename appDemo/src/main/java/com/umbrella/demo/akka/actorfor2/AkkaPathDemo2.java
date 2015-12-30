@@ -1,18 +1,15 @@
-package com.umbrella.demo.akka.demo2;
+package com.umbrella.demo.akka.actorfor2;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import com.umbrella.demo.akka.demo2.actor.GreeterActor;
-import com.umbrella.demo.akka.demo2.actor.HelloActor;
-import com.umbrella.demo.akka.demo2.myenum.Msg;
+import com.umbrella.demo.akka.actorfor.Msg;
 import org.apache.log4j.Logger;
 
 
 /**
  * Created by 大洲 on 15-1-16.
- * 根据 ActorPath 查找 Actor
- * 可以找到
+ * 使用 getContext() 查找 Actor
  */
 public class AkkaPathDemo2 {
 
