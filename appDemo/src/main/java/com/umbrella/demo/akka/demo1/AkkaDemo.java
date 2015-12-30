@@ -1,9 +1,5 @@
 package com.umbrella.demo.akka.demo1;
 
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.actor.Props;
-import com.umbrella.demo.akka.demo2.actor.GreeterActor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
