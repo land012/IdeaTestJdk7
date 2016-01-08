@@ -33,7 +33,7 @@ public class AkkaPathDemo13 {
         } else {
             log.info("============================ find");
         }
-        actorRef2.tell(new Object(), terminaterActor);
+        actorRef2.tell(Msg.DONE, terminaterActor);
 
         // 这个命令会立刻结束掉 ActorSystem，不管是不是有没执行完的 Actor
 //        actorSystem.shutdown();
