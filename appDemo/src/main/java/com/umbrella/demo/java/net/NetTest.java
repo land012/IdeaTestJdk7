@@ -57,7 +57,7 @@ public class NetTest {
                             .append("-")
                             .append(inetAddr.isLinkLocalAddress())
                             .append("-")
-                            .append(inetAddr.isSiteLocalAddress())
+                            .append(inetAddr.isSiteLocalAddress()) // 主机所在局域网ip
                             .append("-")
                             .append(inetAddr.isLoopbackAddress());
                     System.out.println(res.toString());
