@@ -51,9 +51,24 @@ public class SimpleDateFormatDemo {
 
     @Test
     public void test2() {
-        DateFormat df1 = DateFormat.getDateTimeInstance();
+        SimpleDateFormat df1 = (SimpleDateFormat)DateFormat.getDateTimeInstance();
         System.out.println(df1.toString());
-        System.out.println(df1.format(new Date())); // 2015-5-8 10:51:41
+        System.out.println(df1.toPattern()); // yyyy-M-d H:mm:ss
+        System.out.println(df1.format(new Date())); // 2016-1-12 16:21:08
+    }
+
+    /**
+     * 异常
+     * java.text.ParseException: Unparseable date: "2015-12-12"
+     * @throws Exception
+     */
+    @Test
+    public void test3() throws Exception {
+        String dateStr = "2015-12-12";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(sdf.toPattern()); // yyyy-MM-dd HH:mm:ss
+        Date d1 = sdf.parse(dateStr);
+        System.out.println(d1);
     }
 }
 
