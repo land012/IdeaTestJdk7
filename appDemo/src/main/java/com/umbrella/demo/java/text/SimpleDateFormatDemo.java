@@ -3,6 +3,7 @@ package com.umbrella.demo.java.text;
 import org.junit.Test;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -14,18 +15,7 @@ public class SimpleDateFormatDemo {
 
     @Test
     public void test1() {
-        /*SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-        try {
-            Date d1 = sdf1.parse("2014-12-12 12:12:12.22");
-            System.out.println(d1);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
-
-        DateFormat df1 = DateFormat.getDateTimeInstance();
         Date d1 = new Date();
-//        System.out.println(d1); // Tue Dec 02 15:37:06 CST 2014
-//        System.out.println(df1.format(d1)); // 2014-12-2 15:37:06
 
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
@@ -49,6 +39,9 @@ public class SimpleDateFormatDemo {
         System.out.println(sdf10.format(d1)); // 2015-05-08 10:35:35 Fri May AM AD
     }
 
+    /**
+     * getDateTimeInstance()
+     */
     @Test
     public void test2() {
         SimpleDateFormat df1 = (SimpleDateFormat)DateFormat.getDateTimeInstance();
@@ -69,6 +62,17 @@ public class SimpleDateFormatDemo {
         System.out.println(sdf.toPattern()); // yyyy-MM-dd HH:mm:ss
         Date d1 = sdf.parse(dateStr);
         System.out.println(d1);
+    }
+
+    @Test
+    public void test4() {
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        try {
+            Date d1 = sdf1.parse("2014-12-12 12:12:12.22");
+            System.out.println(d1); // Fri Dec 12 12:12:12 CST 2014
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }
 
