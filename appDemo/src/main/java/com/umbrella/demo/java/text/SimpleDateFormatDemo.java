@@ -64,8 +64,21 @@ public class SimpleDateFormatDemo {
         System.out.println(d1);
     }
 
+    /**
+     * 不会异常
+     * @throws Exception
+     */
     @Test
-    public void test4() {
+    public void test4() throws Exception {
+        String dateStr = "2015-12-12 00:00:00";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(sdf.toPattern()); // yyyy-MM-dd HH:mm:ss
+        Date d1 = sdf.parse(dateStr); // Sat Dec 12 00:00:00 CST 2015
+        System.out.println(d1);
+    }
+
+    @Test
+    public void test5() {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         try {
             Date d1 = sdf1.parse("2014-12-12 12:12:12.22");

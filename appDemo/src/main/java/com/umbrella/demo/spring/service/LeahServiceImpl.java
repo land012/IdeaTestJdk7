@@ -12,6 +12,10 @@ public class LeahServiceImpl implements LeahService {
 
     private static final Logger log = Logger.getLogger(LeahServiceImpl.class);
 
+    public LeahServiceImpl() {
+        log.info("I am LeahServiceImpl");
+    }
+
     public void hello(String name) {
         log.info("Hello " + name);
     }
