@@ -23,6 +23,8 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by xudazhou on 2015/10/14.
+ * AOP
+ * 配置文件
  */
 public class SpringTest {
 
@@ -45,6 +47,7 @@ public class SpringTest {
 
     /**
      * AOP
+     * xml配置
      */
     @Test
     public void test1() {
@@ -64,6 +67,11 @@ public class SpringTest {
         System.out.println("============ test3 end ================================================");
     }
 
+    /**
+     * AOP
+     * 注解
+     * @throws Exception
+     */
     @Test
     public void test4() throws Exception {
         System.out.println("============ test4 begin ================================================");

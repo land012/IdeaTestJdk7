@@ -1,12 +1,8 @@
 package com.umbrella.demo.spring;
 
-import com.umbrella.common.service.AchillesService;
-import com.umbrella.common.service.SasukeService;
 import com.umbrella.demo.spring.service.LeahService;
-import com.umbrella.demo.spring.util.MyPropertyFactoryBean;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -30,9 +26,17 @@ public class SpringTest2 {
         context.getAutowireCapableBeanFactory().autowireBeanProperties(this, DefaultListableBeanFactory.AUTOWIRE_BY_NAME, false);
     }
 
+    /**
+     * 会扫描多个包路径
+     * 会扫描其它模块下的路径
+     * 会扫描 jar 下的路径
+     */
     @Test
     public void test1() {
         System.out.println("============= test1 begin =========================================");
+        leahService.hello("tom");
+
+        System.out.println("============= test1 end =========================================");
     }
 
 }

@@ -15,7 +15,9 @@
     <context:annotation-config></context:annotation-config>
 
     <!-- 扫描多个包的配置方式 -->
-    <context:component-scan base-package="com.umbrella.demo.spring.service,com.umbrella.demo.spring.task"></context:component-scan>
+    <context:component-scan base-package="com.umbrella.demo.spring.service
+        ,com.umbrella.demo.spring.task
+        ,com.umbrella.helloidea.*"></context:component-scan>
 
     <!-- 如果要使用AOP注解，必须加上这句 -->
     <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>

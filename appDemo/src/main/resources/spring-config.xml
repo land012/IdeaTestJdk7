@@ -16,7 +16,7 @@
 
     <context:annotation-config></context:annotation-config>
 
-    <context:component-scan base-package="com.umbrella"></context:component-scan>
+    <context:component-scan base-package="com.umbrella.demo.spring,com.umbrella.common.service"></context:component-scan>
 
     <!-- 如果要使用AOP注解，必须加上这句 -->
     <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
