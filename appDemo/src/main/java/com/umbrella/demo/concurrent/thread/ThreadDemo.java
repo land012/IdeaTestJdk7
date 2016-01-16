@@ -1,4 +1,4 @@
-package com.umbrella.demo.concurrent.primer;
+package com.umbrella.demo.concurrent.thread;
 
 import com.umbrella.demo.concurrent.executors.Demo1;
 import org.apache.log4j.Logger;
@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 /**
  * 最基本的线程写法
  */
-public class Demo3 {
+public class ThreadDemo {
     private static final Logger log = Logger.getLogger(Demo1.class);
 
     public static void main(String[] args) {
