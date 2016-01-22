@@ -10,6 +10,7 @@ public class GsonUtil {
     public static String toJson(Object obj) {
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd")
+                .disableHtmlEscaping()
                 .create();
         return gson.toJson(obj);
     }
