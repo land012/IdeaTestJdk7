@@ -8,6 +8,9 @@ import java.math.BigDecimal;
  * Created by xudazhou on 2015/7/27.
  */
 public class BigDecimalDemo {
+    /**
+     * 绝对值
+     */
     @Test
     public void test1() {
         BigDecimal bd1 = new BigDecimal(-1);
@@ -15,6 +18,9 @@ public class BigDecimalDemo {
         System.out.println(bd1.abs());
     }
 
+    /**
+     * BigDecimal 0
+     */
     @Test
     public void test2() {
         BigDecimal b1 = new BigDecimal(0);
@@ -30,5 +36,6 @@ public class BigDecimalDemo {
         System.out.println(BigDecimal.ZERO.equals(b2)); // true
         System.out.println(b1.equals(b3)); // false
         System.out.println(BigDecimal.ZERO.equals(b3)); // false
+        System.out.println(BigDecimal.ZERO.compareTo(b3)); // 0
     }
 }
