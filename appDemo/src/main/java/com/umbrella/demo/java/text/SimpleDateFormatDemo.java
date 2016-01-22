@@ -77,6 +77,9 @@ public class SimpleDateFormatDemo {
         System.out.println(d1);
     }
 
+    /**
+     * 不会异常
+     */
     @Test
     public void test5() {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -86,6 +89,20 @@ public class SimpleDateFormatDemo {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 不会抛异常
+     * @throws Exception
+     *
+     */
+    @Test
+    public void test6() throws Exception {
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM");
+        Date d1 = sdf1.parse("2016-01");
+        System.out.println(d1); // Fri Jan 01 00:00:00 CST 2016
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        String d1Str = sdf2.format(d1);
     }
 }
 
