@@ -8,7 +8,7 @@ import org.quartz.impl.StdSchedulerFactory;
  * Created by 大洲 on 15-5-29.
  * Cron
  * 任务执行时长大于执行间隔
- * 任务会再指定的间隔执行，不管上一次任务是否结束
+ * 任务会在指定的间隔执行，不管上一次任务是否结束
  */
 public class QuartzDemo3 {
 
