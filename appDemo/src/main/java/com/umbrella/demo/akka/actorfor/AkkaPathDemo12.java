@@ -16,6 +16,7 @@ public class AkkaPathDemo12 {
 
     /**
      * 根据 ActorPath 仍然找不到 ActorRef
+     * 之前测试一直找不到，是因为 Actor 里执行了关闭操作，把自己 kill掉了
      */
     public static void main(String[] args) {
         ActorSystem actorSystem = ActorSystem.create("AS003");
@@ -25,7 +26,7 @@ public class AkkaPathDemo12 {
         actorRef.tell(new Object(), ActorRef.noSender());
         log.info("1=" + actorRef.path()); // 1=akka://AS003/user/goodnightActor
 
-        ActorRef actorRef2 = actorSystem.actorFor("user/goodnightActor");
+        ActorRef actorRef2 = actorSystem.actorFor("user/" + ACTOR_NAME);
         if(actorRef2 instanceof EmptyLocalActorRef) {
             log.info("============================ not find"); // ============================ not find
             actorRef2 = actorSystem.actorOf(Props.create(GoodNightActor.class), ACTOR_NAME);
