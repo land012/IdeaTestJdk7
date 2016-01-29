@@ -23,6 +23,12 @@ public class HelloWorldAction {
         log.info("this is HelloWorld()");
     }
 
+    /**
+     * request 获取请求参数的方式
+     * @param req
+     * @param resp
+     * @return
+     */
     @RequestMapping("hello")
     public String hello(HttpServletRequest req, HttpServletResponse resp) {
         try {
@@ -57,6 +63,9 @@ public class HelloWorldAction {
     @RequestMapping("greet")
     public String greet(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            /**
+             * 客户端IP
+             */
             String clientIP = "";
             clientIP = req.getHeader("x-forwarded-for");
             if(StringUtils.isEmpty(clientIP) || "unknown".equalsIgnoreCase(clientIP)) {
