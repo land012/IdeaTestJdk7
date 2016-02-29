@@ -76,8 +76,17 @@ public class DateDemo {
      * 1970-1-1 8:00:00
      */
     @Test
-    public void test4() {
-        Date d1 = new Date(0);
-        System.out.println(d1);
+    public void test4() throws Exception {
+        Date d1 = new Date(0); // 0时区的0点
+        System.out.println(d1.getTime()); // 0
+        System.out.println(d1); // Thu Jan 01 08:00:00 CST 1970
+
+        Date d2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("1970-01-01 08:00:00");
+        System.out.println(d2.getTime()); // 0
+
+        Date d3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("1970-01-01 08:00:05");
+        System.out.println(d3.getTime()); // 5000
+
+        System.out.println(new Date().getTime());
     }
 }
