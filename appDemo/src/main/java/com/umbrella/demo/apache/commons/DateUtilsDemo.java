@@ -75,6 +75,7 @@ public class DateUtilsDemo {
     @Test
     public void test6() {
         Date d1 = new Date();
-        log.info(DateUtils.addDays(d1, 1) + ""); // Wed Feb 03 16:26:52 CST 2016
+        log.info(d1+"");                         // Tue Mar 08 15:47:51 CST 2016
+        log.info(DateUtils.addDays(d1, 1) + ""); // Wed Mar 09 15:47:51 CST 2016
     }
 }
