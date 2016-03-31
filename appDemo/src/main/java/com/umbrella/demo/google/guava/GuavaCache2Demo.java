@@ -48,4 +48,50 @@ public class GuavaCache2Demo {
         });
         log.info(v);
     }
+
+    /**
+     * 这种写法会抛异常
+     * java.lang.NullPointerException
+     * @throws Exception
+     */
+    @Test
+    public void test2() throws Exception {
+        String str1 = cache.get(2, null);
+        log.info(str1);
+    }
+
+    @Test
+    public void test3() throws Exception {
+        String str2 = cache.get(2, new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return null;
+            }
+        });
+        log.info(str2); // v2
+    }
+
+    /**
+     * cleanUp
+     * 清除已经过期，但还没有被清理的 key
+     */
+    @Test
+    public void test4() {
+        log.info(cache.size() + ""); // 1
+        cache.cleanUp();
+        log.info(cache.size() + ""); // 1
+    }
+
+    /**
+     * 清除缓存
+     */
+    @Test
+    public void test5() {
+        log.info(cache.size() + ""); // 1
+        cache.invalidateAll();
+        log.info(cache.size() + ""); // 0
+        cache.put(3, "v3");
+        cache.put(4, "v4");
+        log.info(cache.size() + ""); // 2
+    }
 }
