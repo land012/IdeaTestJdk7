@@ -38,6 +38,7 @@ public class DateUtilsDemo {
         log.info(DurationFormatUtils.formatDuration(d2.getTime()-d1.getTime(), "s")); // 299
         log.info(DurationFormatUtils.formatPeriod(d1.getTime(), d2.getTime(), "s"));  // 299
         log.info(DurationFormatUtils.formatPeriod(d2.getTime(), d1.getTime(), "s"));  // 2678101
+        log.info(DurationFormatUtils.formatDuration(d1.getTime()-d2.getTime(), "m")); // -4
     }
 
     /**
@@ -68,8 +69,9 @@ public class DateUtilsDemo {
     @Test
     public void test5() {
         Date d1 = new Date();
-        log.info(DateUtils.truncate(d1, Calendar.DAY_OF_MONTH) + ""); // Tue Feb 02 00:00:00 CST 2016
-        log.info(DateUtils.truncate(d1, Calendar.HOUR_OF_DAY) + "");  // Tue Feb 02 14:00:00 CST 2016
+        log.info(d1 + "");                                            // Mon Mar 14 11:23:32 CST 2016
+        log.info(DateUtils.truncate(d1, Calendar.DAY_OF_MONTH) + ""); // Mon Mar 14 00:00:00 CST 2016
+        log.info(DateUtils.truncate(d1, Calendar.HOUR_OF_DAY) + "");  // Mon Mar 14 11:00:00 CST 2016
     }
 
     @Test
