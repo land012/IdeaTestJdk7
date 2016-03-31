@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<style type="text/css">
+@page {
+    size : 8.27in 11.69in; /* A4 */
+    /*size : 9in 12in;*/
+    margin: 20pt 20pt;
+}
+body {
+	margin:0px 0px;
+    padding:0px;
+	font-size:12pt;
+}
+table {
+	border-collapse:collapse; empty-cells:show;
+}
+table.invoicelist tr.title td {
+	background-color:#EEECE1; padding:5px 0px;
+}
+table.invoicelist td {
+	height:40px; font-size:11pt; text-align:center;
+}
+.borderleft {
+	border-left:1px solid #000000;
+	border-top:1px solid #000000;
+	border-bottom:1px solid #000000;
+}
+.borderright {
+	border-right:1px solid #000000;
+	border-top:1px solid #000000;
+	border-bottom:1px solid #000000;
+}
+.bordertopbottom {
+	border-top:1px solid #000000;
+	border-bottom:1px solid #000000;
+}
+.width20per {
+	width:20%;
+}
+.width10per {
+	width:10%;
+}
+</style>
+</head>
+<body>
+<div style="font-size:16pt; font-weight:bold; line-height:30px; color:#808080;">JD.COM INTERNATIONAL LIMITED</div>
+<table width="100%">
+    <tr>
+        <td>Telephone: $!{telephone}</td>
+        <td rowspan="2" style="text-align: right; vertical-align: top;">
+            JD address: $!{jdAddress}
+        </td>
+    </tr>
+    <tr>
+        <td>FAX: XX</td>
+    </tr>
+</table>
+<div style="float:right;"></div><div style="float:left;"></div>
+<div style="clear:both; height:0px;"></div>
+<div style="float:right;"></div><div style="float:left;"></div>
+<div style="clear:both; height:0px;"></div>
+<div style="height: 45px;">
+    To:
+</div>
+<div style="color:red;">
+    <div>Champs Rhein GmbH</div>
+    <div>Lohmühlenstr. 49, 45897 Gelsenkirchen Buer, Germany</div>
+</div>
+
+<div style="height: 45px; clear: both;"></div>
+
+<div style="font-weight:bold;">Invoice No. 121212121212
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;
+Invoice Date: 23 April 2015
+</div>
+
+<div style="height: 90px; clear: both;"></div>
+
+<div style="font-size:16pt; font-weight:bold; text-align: center;">INVOICE</div>
+<p>Please pay upon receipt</p>
+<table width="100%" cellspacing="0" cellpadding="0" class="invoicelist">
+<tr class="title">
+<td class="borderleft width10per">LINE</td>
+<td class="bordertopbottom width10per">QTY</td>
+<td class="bordertopbottom width10per">CHANGE ACTIVITY</td>
+<td class="bordertopbottom width10per">RELATED ACCT</td>
+<td class="bordertopbottom width20per">DESCRIPTION</td>
+<td class="bordertopbottom width10per">RATE</td>
+<td class="bordertopbottom width10per">PERIOD START</td>
+<td class="bordertopbottom width10per">PERIOD END</td>
+<td class="borderright width10per">AMOUNT (USD)</td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Platform Service Fee</td>
+<td></td>
+<td>04/01/2015</td>
+<td>04/30/2015</td>
+<td>1,000.00</td>
+</tr>
+<tr>
+<td colspan="9"></td>
+</tr>
+<tr>
+<td colspan="9" style="text-align:right;">Total (USD)：1,000.00</td>
+</tr>
+</table>
+<div style="height: 45px; clear: both;"></div>
+Please transfer to our bank account below:
+<div style="height: 45px; clear: both;"></div>
+
+Beneficiary Name: JD.com International Limited
+<div style="clear: both"></div>
+Beneficiary Account No.:01287592582581
+<div style="clear: both"></div>
+Bank Name:BANK OF CHINA(HK)LTD
+<div style="clear: both"></div>
+Bank Address:HONGKONG
+<div style="clear: both"></div>
+SWIFT CODE:BKCHHKHHXXX
+<div style="clear: both"></div>
+IBAN NO.:
+<div style="clear: both"></div>
+<div style="height: 45px; clear: both;"></div>
+Thank You!
+<div style="clear: both;"></div>
+For and on behalf ofJD.COM INTERNATIONAL LIMITE
+<div style="height: 45px; clear: both;"></div>
+---------------------------------------
+<div style="height: 45px; clear: both;"></div>
+Name: XXX
+<div style="clear: both;"></div>
+Position: 如XXX Manager
+</body>
+</html>
