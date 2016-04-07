@@ -34,10 +34,16 @@ public class ArraysTest {
         arr1[2] = 3;
         System.out.println("arr1[]=" + Arrays.toString(arr1));
 
-        int[] arr2 = Arrays.copyOf(arr1, arr1.length);
+        int[] arr2 = Arrays.copyOf(arr1, arr1.length-1);
+        System.out.println("arr2[]=" + Arrays.toString(arr2));
         Arrays.sort(arr2);
+        // arr1 不受影响
         System.out.println("arr1[]=" + Arrays.toString(arr1));
         System.out.println("sorted arr2[]=" + Arrays.toString(arr2));
+        // 不会包括 2
+        int[] arr3 = Arrays.copyOfRange(arr1, 1, 2);
+        System.out.println("arr3[]=" + Arrays.toString(arr3));
+
     }
 
     /**

@@ -34,7 +34,7 @@ public class RandomDemo {
     }
 
     /**
-     * 会出现连续相同的值
+     * 同一个值，会有可能连续出现
      */
     @Test
     public void test2() {
