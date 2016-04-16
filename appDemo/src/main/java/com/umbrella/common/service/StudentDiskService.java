@@ -1,4 +1,4 @@
-package com.umbrella.demo.atomikos.mysql.service;
+package com.umbrella.common.service;
 
 import com.umbrella.demo.atomikos.mysql.vo.Disk;
 import com.umbrella.vo.Student;

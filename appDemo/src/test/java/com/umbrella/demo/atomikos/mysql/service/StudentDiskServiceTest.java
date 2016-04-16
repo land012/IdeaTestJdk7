@@ -1,5 +1,6 @@
 package com.umbrella.demo.atomikos.mysql.service;
 
+import com.umbrella.common.service.StudentDiskService;
 import com.umbrella.demo.atomikos.mysql.vo.Disk;
 import com.umbrella.vo.Student;
 import org.junit.Test;

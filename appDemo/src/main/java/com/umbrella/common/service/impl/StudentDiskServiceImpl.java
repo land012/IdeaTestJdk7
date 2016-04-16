@@ -1,5 +1,6 @@
-package com.umbrella.demo.atomikos.mysql.service;
+package com.umbrella.common.service.impl;
 
+import com.umbrella.common.service.StudentDiskService;
 import com.umbrella.demo.atomikos.mysql.dao.DiskDao;
 import com.umbrella.demo.atomikos.mysql.dao.StudentDao;
 import com.umbrella.demo.atomikos.mysql.vo.Disk;
