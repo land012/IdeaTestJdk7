@@ -33,4 +33,13 @@ public class Soldier {
     public void setBirth(Date birth) {
         this.birth = birth;
     }
+
+    @Override
+    public String toString() {
+        return "Soldier{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birth=" + birth +
+                '}';
+    }
 }
