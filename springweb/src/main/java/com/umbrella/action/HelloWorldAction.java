@@ -6,10 +6,12 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 
 /**
  * Created by 大洲 on 14-11-22.
@@ -95,6 +97,51 @@ public class HelloWorldAction {
             pw.close();
         } catch (Exception e) {
             log.error("", e);
+        }
+        return null;
+    }
+
+    /**
+     * TODO 以下是 Struts2 实际 jsonp 的代码示例
+     * @param req
+     * @param resp
+     * @return
+     */
+    public String testJsonp(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            String result = "";
+            //生成返回结果
+            String content = "{"
+                    + "\"venderId\":21234,"
+                    + "\"count\":3}";
+            String callback = req.getParameter("callback");
+
+            if(StringUtils.isEmpty(callback)) {
+                result = content;
+            } else {
+                result = callback + "(" + content + ")";
+            }
+
+//            resp.setCharacterEncoding("UTF-8");
+            resp.setContentType("application/javascript");
+            ServletOutputStream output = resp.getOutputStream();
+
+            output.write(result.getBytes(Charset.forName("UTF-8")));
+        } catch (Exception e) {
+
+        /*
+        struts.xml 配置
+        <action name="getPendingConfirmCount" method="getPendingConfirmCount"
+                class="com.jd.pop.finance.vendor.web.action.finance.VenderStatementAction">
+            <result name="ajax" type="json">
+                <param name="callbackParameter">callback</param>
+                <param name="ignoreHierarchy">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="includeProperties">pendingCount</param>
+                <!--<param name="root">PendingConfirmCount</param>-->
+            </result>
+        </action>
+         */
         }
         return null;
     }
