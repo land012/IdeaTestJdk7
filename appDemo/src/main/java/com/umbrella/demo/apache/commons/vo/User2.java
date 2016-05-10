@@ -1,12 +1,13 @@
 package com.umbrella.demo.apache.commons.vo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  * Created by xudazhou on 2015/8/27.
  */
-public class User2 {
+public class User2 implements Serializable {
     private Long id;
     private String name;
     private int age;
@@ -98,19 +99,4 @@ public class User2 {
         this.salary = salary;
     }
 
-    @Override
-    public String toString() {
-        return "User2{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", birth=" + birth +
-                ", friend=" + friend +
-                ", workAddress='" + workAddress + '\'' +
-                ", score=" + score +
-                ", enrollTime=" + enrollTime +
-                ", score1=" + score1 +
-                ", salary=" + salary +
-                '}';
-    }
 }

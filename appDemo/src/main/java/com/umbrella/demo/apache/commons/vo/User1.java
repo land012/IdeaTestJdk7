@@ -98,19 +98,4 @@ public class User1 {
         this.salary = salary;
     }
 
-    @Override
-    public String toString() {
-        return "User1{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", birth=" + birth +
-                ", friend=" + friend +
-                ", homeAddress='" + homeAddress + '\'' +
-                ", score='" + score + '\'' +
-                ", enrollTime=" + enrollTime +
-                ", score1=" + score1 +
-                ", salary=" + salary +
-                '}';
-    }
 }
