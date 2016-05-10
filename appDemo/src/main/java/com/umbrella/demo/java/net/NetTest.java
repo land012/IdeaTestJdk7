@@ -9,6 +9,9 @@ import java.util.Enumeration;
  * Created by 大洲 on 15-5-27.
  */
 public class NetTest {
+    /**
+     * InetAddress 示例
+     */
     @Test
     public void test1() {
         try {
@@ -26,25 +29,31 @@ public class NetTest {
     }
 
     /**
+     * 获取本机IP
      * 机器有多张网卡
      */
     @Test
     public void test2() {
         try {
+            long start = System.currentTimeMillis();
             Enumeration<NetworkInterface> enumeration = NetworkInterface.getNetworkInterfaces();
-            System.out.println("===================================================");
+            System.out.println("======================== begin ===========================" + (System.currentTimeMillis()-start));
             while (enumeration.hasMoreElements()) {
+                long start1 = System.currentTimeMillis();
                 NetworkInterface ni = enumeration.nextElement();
                 if(!ni.isUp()) {
                     continue;
                 }
-                System.out.println(String.format("%s-%s-%s-%s-%s-%s",
+                System.out.println(String.format("%s|%s|%s|%s|%s|%s|%s",
                         ni.getName(),
                         ni.getDisplayName(),
                         ni.isUp(),
                         ni.isVirtual(),
                         ni.isLoopback(),
-                        ni.isPointToPoint()));
+                        ni.isPointToPoint()
+                        , System.currentTimeMillis()-start1
+                        )
+                    );
                 Enumeration<InetAddress> inets = ni.getInetAddresses();
                 System.out.println("--------");
                 while (inets.hasMoreElements()) {
@@ -52,18 +61,19 @@ public class NetTest {
                     if(inetAddr instanceof Inet6Address) continue;
                     StringBuilder res = new StringBuilder();
                     res.append(inetAddr.getHostName())
-                            .append("-")
+                            .append("|")
                             .append(inetAddr.getHostAddress())
-                            .append("-")
+                            .append("|")
                             .append(inetAddr.isLinkLocalAddress())
-                            .append("-")
+                            .append("|")
                             .append(inetAddr.isSiteLocalAddress()) // 主机所在局域网ip
-                            .append("-")
+                            .append("|")
                             .append(inetAddr.isLoopbackAddress());
                     System.out.println(res.toString());
                 }
                 System.out.println("===================================================");
             }
+            System.out.println("耗时:" + (System.currentTimeMillis()-start));
         } catch (SocketException e) {
             e.printStackTrace();
         }

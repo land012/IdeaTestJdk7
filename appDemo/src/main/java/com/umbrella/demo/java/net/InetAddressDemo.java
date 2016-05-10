@@ -8,6 +8,11 @@ import java.net.InetAddress;
  * Created by xudazhou on 2015/11/10.
  */
 public class InetAddressDemo {
+
+    /**
+     * 获取本机IP
+     * @throws Exception
+     */
     @Test
     public void test1() throws Exception {
         System.out.println(InetAddress.getLocalHost().getCanonicalHostName()); // xudazhou-PC
