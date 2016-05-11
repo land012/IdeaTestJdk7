@@ -60,8 +60,12 @@ public class GuavaCache2Demo {
         log.info(str1);
     }
 
+    /**
+     * 不会抛异常
+     * @throws Exception
+     */
     @Test
-    public void test3() throws Exception {
+    public void test3_1() throws Exception {
         String str2 = cache.get(2, new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -69,6 +73,36 @@ public class GuavaCache2Demo {
             }
         });
         log.info(str2); // v2
+    }
+
+    /**
+     * com.google.common.cache.CacheLoader$InvalidCacheLoadException: CacheLoader returned null for key 3.
+     * @throws Exception
+     */
+    @Test
+    public void test3_2() throws Exception {
+        String str2 = cache.get(3, new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return null;
+            }
+        });
+        log.info(str2);
+    }
+
+    /**
+     * 不会抛异常，返回 空串
+     * @throws Exception
+     */
+    @Test
+    public void test3_3() throws Exception {
+        String str2 = cache.get(3, new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return "";
+            }
+        });
+        log.info(str2);
     }
 
     /**
