@@ -3,6 +3,7 @@ package com.umbrella.demo.java.math;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Created by xudazhou on 2015/7/27.
@@ -37,5 +38,16 @@ public class BigDecimalDemo {
         System.out.println(b1.equals(b3)); // false
         System.out.println(BigDecimal.ZERO.equals(b3)); // false
         System.out.println(BigDecimal.ZERO.compareTo(b3)); // 0
+    }
+
+    /**
+     *  valueOf 方法的 scale
+     */
+    @Test
+    public void test3() {
+        System.out.println("======================= begin ============================");
+        System.out.println(new BigDecimal(200.234).setScale(2, RoundingMode.HALF_UP)); // 200.23
+        System.out.println(BigDecimal.valueOf(200, 2)); // 2
+        System.out.println("======================= end ============================");
     }
 }
