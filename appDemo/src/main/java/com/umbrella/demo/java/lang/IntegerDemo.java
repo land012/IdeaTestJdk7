@@ -45,6 +45,7 @@ public class IntegerDemo {
 
     /**
      * 转化为 十六进制
+     * 补码表示
      */
     @Test
     public void test4() {
@@ -52,6 +53,20 @@ public class IntegerDemo {
         int hashCode = "abcdsed".hashCode();
         System.out.println(Integer.toHexString(hashCode & 0xff)); // d0
         System.out.println(Integer.toHexString(10 & 0xff)); // a
+        System.out.println(Integer.toHexString(7)); // 7
+        System.out.println(Integer.toHexString(-7)); // fffffff9
+    }
+
+    /**
+     * 二进制
+     * 补码表示
+     */
+    @Test
+    public void test4_1() {
+        byte btye1 = 0b0010;
+        System.out.println(Integer.toBinaryString(btye1)); // 10
+        System.out.println(Integer.toBinaryString(-54));   // 11111111111111111111111111001010
+        System.out.println(Integer.toBinaryString(-254));  // 11111111111111111111111100000010
     }
 
     /**
