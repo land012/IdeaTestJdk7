@@ -26,7 +26,7 @@ public class ExceptionDemo {
     }
 
     /**
-     * 可以打印 return 后的内容
+     * 会执行 return 后的内容
      */
     @Test
     public void test3() {
