@@ -8,29 +8,35 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by xudazhou on 2016/3/31.
- * 实际 1*1 + 2*2 + ... + 5*5=55
+ * 计算 1*1 + 2*2 + ... + 5*5=55
  */
 public class CalcTask extends RecursiveTask<Integer> {
 
     private static final Logger log = LoggerFactory.getLogger(CalcTask.class);
 
-    private Integer i;
+    private Integer startNum;
+    private Integer maxNum;
 
-    public CalcTask(Integer i) {
-        this.i = i;
+    public CalcTask(Integer startNum) {
+        this.startNum = startNum;
+    }
+
+    public CalcTask(Integer startNum, Integer maxNum) {
+        this.startNum = startNum;
+        this.maxNum = maxNum;
     }
 
     @Override
     protected Integer compute() {
-        if(i>100) return 0;
+        if(startNum >this.maxNum) return 0;
         try {
-            log.info("I am " + Thread.currentThread().getName() + ",i=" + i);
+            log.info("I am " + Thread.currentThread().getName() + ",startNum=" + startNum);
             TimeUnit.MILLISECONDS.sleep(100);
         } catch (InterruptedException e) {
             log.error("", e);
         }
-        CalcTask calcTask = new CalcTask(i+1);
+        CalcTask calcTask = new CalcTask(startNum +1, this.maxNum);
         calcTask.fork();
-        return i*i + calcTask.join();
+        return startNum * startNum + calcTask.join();
     }
 }

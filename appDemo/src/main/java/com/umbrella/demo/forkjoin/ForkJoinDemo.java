@@ -19,9 +19,9 @@ public class ForkJoinDemo {
     @Test
     public void test1() {
         ForkJoinPool fjPool = new ForkJoinPool();
-        log.info(fjPool.invoke(new CalcTask(1)) + "");
+        log.info(fjPool.invoke(new CalcTask(1, 5)) + "");
         fjPool.shutdown();
-        log.info("I am main end");
+        log.info("I am main test end");
     }
 
     @Test
