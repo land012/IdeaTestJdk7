@@ -13,21 +13,14 @@
     <groupId>groupId</groupId>
     <artifactId>springweb</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <dependencies>
-
-
         <!-- hessian -->
         <dependency>
             <groupId>com.caucho</groupId>
             <artifactId>hessian</artifactId>
             <version>4.0.38</version>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
         </dependency>
 
         <dependency>
@@ -61,6 +54,7 @@
     </dependencies>
 
     <build>
+        <finalName>springweb</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -69,6 +63,15 @@
                     <source>1.7</source>
                     <target>1.7</target>
                     <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <webappDirectory>${basedir}/web</webappDirectory>
+                    <warSourceDirectory>${basedir}/web</warSourceDirectory>
                 </configuration>
             </plugin>
         </plugins>

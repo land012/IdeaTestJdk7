@@ -11,7 +11,15 @@
 
     <artifactId>web</artifactId>
 
+    <packaging>war</packaging>
+
     <dependencies>
+        <!-- hessian -->
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>4.0.38</version>
+        </dependency>
         <!--<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -87,6 +95,23 @@
             <version>2.7.13</version>
         </dependency>-->
 
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>2.3.24.1</version>
+        </dependency>
+
     </dependencies>
+
+    <build>
+        <finalName>web</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

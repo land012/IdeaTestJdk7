@@ -3,3 +3,5 @@ classes/
 
 *.iml
 target/
+*.jar
+MANIFEST.MF
