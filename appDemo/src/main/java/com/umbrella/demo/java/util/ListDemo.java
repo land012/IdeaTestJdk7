@@ -90,4 +90,19 @@ public class ListDemo {
             System.out.println(String.format("%s-%s-%s", list1.hashCode(), list1.size(), str1));
         }
     }
+
+    /**
+     * subList
+     */
+    @Test
+    public void test6() {
+        List<String> list1 = new CopyOnWriteArrayList<>();
+        list1.add("a");
+        list1.add("b");
+        list1.add("c");
+        list1.add("d");
+        List<String> list2 = list1.subList(1, 2);
+        System.out.println(list1); // [a, b, c, d]
+        System.out.println(list2); // [b]
+    }
 }
