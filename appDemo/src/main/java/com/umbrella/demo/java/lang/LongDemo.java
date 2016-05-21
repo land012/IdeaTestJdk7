@@ -12,7 +12,7 @@ public class LongDemo {
 //        DecimalFormat df1 = new DecimalFormat("0.0");
 //        System.out.println(df1.format(Math.pow(2, 32))); // 4294967296.0
 //        System.out.println(Integer.MAX_VALUE);         // 2147483647
-//        System.out.println(Long.MAX_VALUE);            // 9223372036854775807
+//        System.out.println(Long.MAX_VALUE);            // 922 3372 0368 5477 5807
 
         /**
          * long 转 int
