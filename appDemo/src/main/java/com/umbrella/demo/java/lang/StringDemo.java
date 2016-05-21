@@ -45,6 +45,10 @@ public class StringDemo {
         System.out.println(String.format("%05d", 1234)); // 01234
     }
 
+    /**
+     * 编码问题
+     * @throws Exception
+     */
     @Test
     public void test4() throws Exception {
         String str1 = "亲亲袋鼠-VINCI";
@@ -60,6 +64,16 @@ public class StringDemo {
         System.out.println("str1.getBytes(\"gbk\").length=" + str1.getBytes("gbk").length);   // 14 中文两字节 英文一字节
     }
 
+    @Test
+    public void test4_2() throws Exception {
+        String str1 = "哈";
+        System.out.println(str1.getBytes("GBK").length); // 2
+        System.out.println(str1.getBytes("UTF-8").length); // 3
+    }
+
+    /**
+     * append 对 null不会抛异常
+     */
     @Test
     public void test5() {
         String str1 = null;
