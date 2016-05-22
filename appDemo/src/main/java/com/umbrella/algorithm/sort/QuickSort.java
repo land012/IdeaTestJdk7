@@ -3,6 +3,7 @@ package com.umbrella.algorithm.sort;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public class QuickSort {
             arr[j] = t;
             privot = j;
             i++;
-            printArr(arr);
+            System.out.println(Arrays.toString(arr));
 
             while (arr[i]<arr[j] && i<j) {
                 i++;
@@ -37,7 +38,7 @@ public class QuickSort {
             arr[i] = t;
             privot = i;
             j--;
-            printArr(arr);
+            System.out.println(Arrays.toString(arr));
         }
         if(privot-1>start) quicksort(arr, start, privot-1);
         if(privot+1<end) quicksort(arr, privot+1, end);
@@ -55,7 +56,7 @@ public class QuickSort {
     public void test1() {
         Integer[] arr1 = { 4, 6, 1, 2, 7, 3, 5 };
         quicksort(arr1, 0, arr1.length - 1);
-        printArr(arr1);
+        System.out.println(Arrays.toString(arr1));
     }
 
 }
