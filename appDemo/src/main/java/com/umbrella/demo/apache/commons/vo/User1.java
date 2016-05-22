@@ -1,38 +1,24 @@
 package com.umbrella.demo.apache.commons.vo;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  * Created by xudazhou on 2015/8/27.
  */
-public class User1 {
-    private Long id;
-    private String name;
+public class User1 extends Person {
     private int age;
+    private String phone;
     private Date birth;
     private Friend friend;
     private String homeAddress; // 这个属性 User2 中没有
-    private String score;
+    private String score; // 类型不同
     private Date enrollTime;
-    private Long score1;
+    private Long score1; // 类型不同
     private BigDecimal salary;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getAge() {
         return age;
@@ -40,6 +26,14 @@ public class User1 {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Date getBirth() {
@@ -98,4 +92,8 @@ public class User1 {
         this.salary = salary;
     }
 
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+    }
 }

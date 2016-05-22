@@ -1,5 +1,8 @@
 package com.umbrella.demo.apache.commons.vo;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -7,10 +10,9 @@ import java.util.Date;
 /**
  * Created by xudazhou on 2015/8/27.
  */
-public class User2 implements Serializable {
-    private Long id;
-    private String name;
+public class User2 extends Person implements Serializable {
     private int age;
+    private String phone;
     private Date birth;
     private Friend friend;
     private String workAddress; // 这个属性 User1 中没有
@@ -18,22 +20,6 @@ public class User2 implements Serializable {
     private Date enrollTime;
     private Integer score1;
     private BigDecimal salary;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getAge() {
         return age;
@@ -45,6 +31,14 @@ public class User2 implements Serializable {
 
     public Date getBirth() {
         return birth;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setBirth(Date birth) {
@@ -97,6 +91,11 @@ public class User2 implements Serializable {
 
     public void setSalary(BigDecimal salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
 }
