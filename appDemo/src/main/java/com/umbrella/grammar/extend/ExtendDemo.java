@@ -7,6 +7,9 @@ import org.junit.Test;
  * Created by 大洲 on 14-12-24.
  */
 public class ExtendDemo {
+    /**
+     * 将父类对象强制转换为子类对象，异常
+     */
     @Test
     public void test1() {
         Person p1 = new Person();
@@ -26,5 +29,14 @@ public class ExtendDemo {
     public void test2() {
         Student s1 = new Student();
         s1.perform();
+    }
+
+    /**
+     * 父类和子类的构造函数调用顺序问题
+     * 先创建父类，再创建子类
+     */
+    @Test
+    public void test3() {
+        Student s1 = new Student();
     }
 }

@@ -12,6 +12,10 @@ public class Person {
 
     private String name;
 
+    public Person() {
+        log.info("I am person");
+    }
+
     public String getName() {
         return "person";
     }
@@ -26,5 +30,15 @@ public class Person {
 
     public void run() {
         log.info("I am running");
+    }
+
+    /**
+     * 垃圾回收的时候调用
+     * @throws Throwable
+     */
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        log.info("I am person finalize()");
     }
 }
