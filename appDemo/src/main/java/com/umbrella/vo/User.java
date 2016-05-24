@@ -16,6 +16,14 @@ public class User implements Serializable {
     private Integer age;
     private Date enrolDate;
 
+    public User() {
+    }
+
+    public User(long id, String userName) {
+        this.id = id;
+        this.userName = userName;
+    }
+
     public long getId() {
         return id;
     }
@@ -88,5 +96,10 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         return (id+userName).hashCode();
+    }
+
+    @Override
+    public User clone() throws CloneNotSupportedException {
+        return (User)super.clone();
     }
 }
