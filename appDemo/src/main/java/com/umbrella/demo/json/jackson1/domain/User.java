@@ -11,8 +11,8 @@ public class User {
     private String userName;
     private Date birth;
     private int age;
-    private String address;
-    private String workAddress;
+    private transient String address;
+    private static String workAddress;
 
     private School school;
     private List<Course> courses;

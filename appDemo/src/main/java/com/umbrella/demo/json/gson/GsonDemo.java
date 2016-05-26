@@ -219,6 +219,10 @@ public class GsonDemo {
         System.out.println(s1.getSchool().getName());
     }
 
+    /**
+     * 序列化的对象有类成员变量
+     * 值为 null 的成员变量也会序列化
+     */
     @Test
     public void testToJson4() {
         User u1 = new User();
@@ -226,12 +230,18 @@ public class GsonDemo {
         u1.setUserName("Hatake Kakashi");
         Data data = new Data();
         data.setUser(u1);
+
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
                 .serializeNulls()
                 .create();
+        // {"user":{"id":1,"userName":"Hatake Kakashi","birth":null,"age":0,"workAddress":null,"school":null,"courses":null},"lion":null}
         System.out.println(gson.toJson(data));
     }
+
+    /**
+     * 反序列
+     */
     @Test
     public void testFromJson4() {
         String json = "{\"user\":{\"id\":1,\"userName\":\"Hatake Kakashi\",\"birth\":null,\"age\":0,\"address\":null,\"workAddress\":null,\"school\":null,\"courses\":null},\"lion\":null}";
@@ -282,12 +292,31 @@ public class GsonDemo {
      */
     @Test
     public void test8() {
-        Result<User> result = new Result<User>();
+        Result<User> result = new Result<>();
         User u1 = new User();
         u1.setUserName("Shibata Katsuie");
         result.setSuccess(true);
         result.setT(u1);
         Gson gson = new GsonBuilder().create();
         System.out.println(gson.toJson(result)); // {"success":true,"t":{"id":0,"userName":"Shibata Katsuie","age":0}}
+    }
+
+    /**
+     * transient关键字 address没有被序列化
+     * static 的成员变量也不能被序列化
+     */
+    @Test
+    public void test9() {
+        User u1 = new User();
+        u1.setId(1);
+        u1.setUserName("Susanoo");
+        u1.setAddress("Beijing");
+        u1.setWorkAddress("BJ");
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .serializeNulls()
+                .create();
+        // {"id":1,"userName":"Susanoo","birth":null,"age":0,"school":null,"courses":null}
+        System.out.println(gson.toJson(u1));
     }
 }
