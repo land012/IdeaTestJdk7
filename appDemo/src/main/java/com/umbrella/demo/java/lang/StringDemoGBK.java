@@ -4,14 +4,14 @@ import org.junit.Test;
 
 /**
  * Created by xudazhou on 2016/5/8.
- * ¹¤³Ì±àÂëÊÇ utf-8
- * ÎÄ¼ş±àÂëÊÇgbk
+ * å·¥ç¨‹ç¼–ç æ˜¯ utf-8
+ * æ–‡ä»¶ç¼–ç æ˜¯gbk
  */
 public class StringDemoGBK {
     @Test
     public void test1() {
-        String str1 = "Ç×Ç×´üÊó-VINCI";
-        System.out.println("str1.length()=" + str1.length()); // 13 ?????ÎªÉ¶ÊÇ 13??
+        String str1 = "äº²äº²è¢‹é¼ -VINCI";
+        System.out.println("str1.length()=" + str1.length()); // 13 ?????ä¸ºå•¥æ˜¯ 13??
         for(int i=0; i<str1.length(); i++) {
             System.out.print(str1.charAt(i));
             System.out.print(",");

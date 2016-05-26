@@ -9,13 +9,13 @@ import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 
 /**
- * Created by ´óÖŞ on 15-3-31.
- * Ä¬ÈÏÄ£°å·Åµ½¹¤³ÌÄ¿Â¼ÏÂ
+ * Created by å¤§æ´² on 15-3-31.
+ * é»˜è®¤æ¨¡æ¿æ”¾åˆ°å·¥ç¨‹ç›®å½•ä¸‹
  */
 public class VelocityTest {
     @Test
     public void test1() {
-        // Ä£°å·Åµ½ resources(classpath)ÏÂ£¬ÒÔÏÂÈıÖÖ¶¼¿ÉÒÔÖ´ĞĞ
+        // æ¨¡æ¿æ”¾åˆ° resources(classpath)ä¸‹ï¼Œä»¥ä¸‹ä¸‰ç§éƒ½å¯ä»¥æ‰§è¡Œ
 //        Velocity.setProperty(Velocity.FILE_RESOURCE_LOADER_PATH, "./springweb/target/test-classes");
 //        Velocity.setProperty(Velocity.FILE_RESOURCE_LOADER_PATH, "D:\\_idea\\TestApp\\springweb\\target\\test-classes");
         Velocity.setProperty(Velocity.FILE_RESOURCE_LOADER_PATH, this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());

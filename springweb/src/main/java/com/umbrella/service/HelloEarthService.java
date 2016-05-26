@@ -3,9 +3,9 @@ package com.umbrella.service;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by ´óÖŞ on 14-12-25.
- * ÑéÖ¤ »¥Ïàµ÷ÓÃ£¬Ê¹ÓÃ Spring ×¢Èë»á²»»áËÀÑ­»·£¿
- * ²»»á
+ * Created by å¤§æ´² on 14-12-25.
+ * éªŒè¯ äº’ç›¸è°ƒç”¨ï¼Œä½¿ç”¨ Spring æ³¨å…¥ä¼šä¸ä¼šæ­»å¾ªç¯ï¼Ÿ
+ * ä¸ä¼š
  */
 @Service
 public class HelloEarthService {

@@ -19,6 +19,7 @@
         <module>common-util</module>
         <module>demo</module>
         <module>hello-idea-service</module>
+        <module>common-domain</module>
     </modules>
 
     <dependencies>
