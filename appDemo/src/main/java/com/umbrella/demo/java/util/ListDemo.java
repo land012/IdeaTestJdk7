@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -104,5 +105,18 @@ public class ListDemo {
         List<String> list2 = list1.subList(1, 2);
         System.out.println(list1); // [a, b, c, d]
         System.out.println(list2); // [b]
+    }
+
+    /**
+     * LinkedList 本身就是双向队列
+     */
+    @Test
+    public void test7() {
+        LinkedList<String> list1 = new LinkedList<>();
+        list1.add("a");
+        list1.addFirst("b");
+        list1.addLast("c");
+        list1.add(2, "d");
+        System.out.println(list1); // [b, a, d, c]
     }
 }
