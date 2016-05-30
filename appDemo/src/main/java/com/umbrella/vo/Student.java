@@ -10,6 +10,7 @@ public class Student implements Serializable {
     private String name;
     private String school;
     private int classId; // 班级
+    private volatile ClassGrade classGrade;
 
     public long getId() {
         return id;
@@ -41,6 +42,14 @@ public class Student implements Serializable {
 
     public void setClassId(int classId) {
         this.classId = classId;
+    }
+
+    public ClassGrade getClassGrade() {
+        return classGrade;
+    }
+
+    public void setClassGrade(ClassGrade classGrade) {
+        this.classGrade = classGrade;
     }
 
     @Override
