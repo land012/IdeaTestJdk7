@@ -58,4 +58,18 @@ public class CalendarDemo {
         now.add(Calendar.DAY_OF_MONTH, -2);
         System.out.println(now.getTime());
     }
+
+    /**
+     * clone
+     */
+    @Test
+    public void test4() {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = (Calendar)cal1.clone();
+        Calendar cal3 = cal1;
+        System.out.println(cal1.hashCode());
+        System.out.println(cal2.hashCode());
+        System.out.println(cal1==cal2); // false
+        System.out.println(cal1==cal3); // true
+    }
 }
