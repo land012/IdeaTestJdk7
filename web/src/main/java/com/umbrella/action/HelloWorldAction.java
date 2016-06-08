@@ -1,12 +1,17 @@
 package com.umbrella.action;
 
-import com.opensymphony.xwork2.ActionSupport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by xudazhou on 2016/5/15.
  */
-public class HelloWorldAction extends ActionSupport {
+public class HelloWorldAction extends BaseAction {
+
+    private static final Logger log = LoggerFactory.getLogger(HelloWorldAction.class);
+
     public String helloworld() {
+        Long id = Long.parseLong(request.getParameter("id"));
         return "helloworld";
     }
 }

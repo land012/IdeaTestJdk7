@@ -9,6 +9,13 @@
 
     <package name="helloworld" extends="struts-default">
 
+        <global-results>
+            <result name="error">/struts2/errorPage.jsp</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"></exception-mapping>
+        </global-exception-mappings>
+
         <action name="helloworld_*" class="com.umbrella.action.HelloWorldAction" method="{1}">
             <result name="helloworld">/struts2/helloworld.jsp</result>
         </action>
