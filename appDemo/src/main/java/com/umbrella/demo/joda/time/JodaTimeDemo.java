@@ -14,7 +14,8 @@ import java.util.Date;
 public class JodaTimeDemo {
 
     /**
-     * DateTime
+     * 入门
+     * 创建 DateTime
      */
     @Test
     public void test0() {
@@ -28,7 +29,7 @@ public class JodaTimeDemo {
     }
 
     /**
-     * DateTime
+     * 创建 DateTime (2)
      */
     @Test
     public void test0_1() {
@@ -105,11 +106,26 @@ public class JodaTimeDemo {
      * Days
      */
     @Test
-    public void test3() {
+    public void test3_0() {
         DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
         DateTime dt1 = DateTime.parse("2016-02-13 12:12:00", dtfer);
         System.out.println(dt1); // 2016-02-13T12:12:00.000+08:00
         DateTime dt2 = DateTime.parse("2016-02-16 12:00:00", dtfer);
+
+        Days days1 = Days.daysBetween(dt1, dt2);
+        System.out.println(days1); // P2D
+        System.out.println(days1.getDays()); // 2
+        System.out.println(days1.getPeriodType().getName()); // Days
+    }
+
+    /**
+     * Days
+     */
+    @Test
+    public void test3_0_2() {
+        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd");
+        DateTime dt1 = DateTime.parse("2015-11-09", dtfer);
+        DateTime dt2 = DateTime.parse("2016-06-05", dtfer);
 
         Days days1 = Days.daysBetween(dt1, dt2);
         System.out.println(days1); // P2D
@@ -147,14 +163,14 @@ public class JodaTimeDemo {
 
     /**
      * 日期 的日间隔
-     *
+     * 这种算法，必须是在同一年同一个月
      */
     @Test
     public void test6() {
         DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
         DateTime dt1 = DateTime.parse("2016-02-13 12:12:00", dtfer);
         System.out.println(dt1); // 2016-02-13T12:12:00.000+08:00
-        DateTime dt2 = DateTime.parse("2016-02-16 12:00:00", dtfer);
+        DateTime dt2 = DateTime.parse("2016-03-16 12:00:00", dtfer);
 
         System.out.println(dt2.dayOfMonth().get()-dt1.dayOfMonth().get()); // 3
     }
