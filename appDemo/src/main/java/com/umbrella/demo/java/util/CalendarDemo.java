@@ -72,4 +72,26 @@ public class CalendarDemo {
         System.out.println(cal1==cal2); // false
         System.out.println(cal1==cal3); // true
     }
+
+    /**
+     * 打印星期一
+     * @throws Exception
+     */
+    @Test
+    public void test5() throws Exception {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date d1 = sdf.parse("2015-09-07");
+        cal.setTime(d1);
+
+        Date d2 = sdf.parse("2016-06-06");
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(d2);
+        for(int i=46; cal.before(cal2); cal.add(Calendar.DAY_OF_MONTH, 1)) {
+            if(cal.get(Calendar.DAY_OF_WEEK)==2) {
+                System.out.println(sdf.format(cal.getTime()) + "-" + i);
+                i++;
+            }
+        }
+    }
 }
