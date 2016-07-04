@@ -3,6 +3,7 @@ package com.umbrella.demo.java.util;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by 大洲 on 15-7-5.
@@ -63,5 +64,15 @@ public class ArraysTest {
 
     private void sortArr(int[] arr) {
         Arrays.sort(arr);
+    }
+
+    /**
+     * asList
+     */
+    @Test
+    public void test4() {
+        String[] strArr1 = { "a", "b", "c" };
+        List<String> list1 = Arrays.asList(strArr1);
+        System.out.println(list1); // [a, b, c]
     }
 }

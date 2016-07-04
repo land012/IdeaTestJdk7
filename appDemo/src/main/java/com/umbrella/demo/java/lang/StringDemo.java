@@ -39,7 +39,7 @@ public class StringDemo {
         System.out.println(String.format("%3d", 1234));
         System.out.println(String.format("%-3d", 1)); // 左对齐， 不足补空格
         System.out.println(String.format("%-3d", 1234));
-        System.out.println(String.format("%+d", 12)); // +12
+        System.out.println(String.format("%+d", 12)); // +12 显示正负号
         System.out.println(String.format("%+d", -12)); // -12
         System.out.println(String.format("%05d", 123456)); // 123456
         System.out.println(String.format("%05d", 1234)); // 01234
@@ -81,5 +81,10 @@ public class StringDemo {
         str.append(str1);
         str.append("a");
         System.out.println(str); // nulla
+    }
+
+    @Test
+    public void test6Concat() {
+        System.out.println("hel".concat("lo")); // hello
     }
 }

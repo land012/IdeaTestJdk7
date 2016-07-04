@@ -184,6 +184,7 @@ public class StringUtilsTest {
 	}
 	
 	/**
+     * split()
 	 * 子串的前后空格会被会保留
 	 * - aasd-
 	 * - 3sdf-
@@ -257,6 +258,46 @@ public class StringUtilsTest {
     @Test
     public void test7() {
         System.out.println(StringUtils.replace(null, "a", "b")); // null
+    }
+
+    /**
+     * 取子串 substring
+     */
+    @Test
+    public void test8() {
+        String str1 = "abcd|efg";
+        System.out.println(StringUtils.substringBefore(str1, "|")); // abcd
+        System.out.println(StringUtils.substringAfter(str1, "|")); // efg
+    }
+
+    /**
+     * isNotBlank
+     * isNotEmpty
+     */
+    @Test
+    public void test21() {
+        info.info(StringUtils.isNotBlank(null) + ""); // false
+        info.info(StringUtils.isNotBlank("") + ""); // false
+        info.info(StringUtils.isNotBlank(" ") + ""); // false 空格
+        info.info(StringUtils.isNotBlank("  ") + ""); // false 制表符
+        info.info(StringUtils.isNotBlank("a") + ""); // true
+        info.info("=========================================================");
+        info.info(StringUtils.isNotEmpty(null) + ""); // false
+        info.info(StringUtils.isNotEmpty("") + ""); // false
+        info.info(StringUtils.isNotEmpty(" ") + ""); // true 空格
+        info.info(StringUtils.isNotEmpty("  ") + ""); // true 制表符
+        info.info("=========================================================");
+        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank(null) + ""); // false
+        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank("") + ""); // false
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void test22() {
+        info.info(org.apache.commons.lang.StringUtils.isNotBlank(null) + ""); // false
+        info.info(org.apache.commons.lang.StringUtils.isNotBlank("") + ""); // false
     }
 
 }

@@ -4,6 +4,7 @@ import com.umbrella.demo.json.jackson1.domain.Course;
 import com.umbrella.demo.json.jackson1.domain.School;
 import com.umbrella.demo.json.jackson1.domain.User;
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -254,5 +255,16 @@ public class Jackson1Demo {
         } catch (Exception e) {
             log.info("", e);
         }
+    }
+
+    /**
+     * 数组 转 json
+     * @throws Exception
+     */
+    @Test
+    public void testArrayToJson() throws Exception {
+        String[] arr1 = {"a", "b", "c"};
+        ObjectMapper om = new ObjectMapper();
+        log.info(om.writeValueAsString(arr1)); // ["a","b","c"]
     }
 }
