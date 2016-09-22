@@ -1,4 +1,4 @@
-package com.umbrella.demo.java.demo;
+package com.umbrella.systemdemo;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;

@@ -137,21 +137,9 @@ public class StringUtilsTest {
 //		info.info("子串：" + StringUtils.substring(str4, 6));
 //		info.info("子串：" + StringUtils.substring(str4, 7));
 //		info.info(str4.substring(1));
-		
-		
-		
-//		/// 分割函数
+
 //		String str1 = "abc";
-//		String str2 = "a,b,c";
-//		String[] arr1 = StringUtils.split(str2, ",");
-//		for(String s : arr1) {
-//			info.info(s);
-//		}
-		
-//		// 不会抛异常
-//		String[] arr2 = StringUtils.split(null, ",");
-//		// 异常 java.lang.NullPointerException
-////		info.info(arr2.length);
+
 		
 //		info.info(StringUtils.capitalize("abCDefg"));
 //		String str1 = "abcdef";
@@ -183,75 +171,6 @@ public class StringUtilsTest {
 		
 	}
 	
-	/**
-     * split()
-	 * 子串的前后空格会被会保留
-	 * - aasd-
-	 * - 3sdf-
-	 * - df -
-	 * -23423 -
-	 */
-	@Test
-	public void test2() {
-		String str1 = " aasd, 3sdf, df ,23423 ";
-		String[] str1Arr = StringUtils.split(str1, ",");
-		for(int i=0; i<str1Arr.length; i++) {
-			System.out.println("-" + str1Arr[i] + "-");
-		}
-	}
-	
-	/**
-	 * 长度为1的数组
-	 * 没有分割符
-	 * 子串的前后空格会被会保留
-	 * - aasd-
-	 */
-	@Test
-	public void test3() {
-		String str1 = " aasd";
-		String[] str1Arr = StringUtils.split(str1, ",");
-		for(int i=0; i<str1Arr.length; i++) {
-			System.out.println("-" + str1Arr[i] + "-");
-		}
-	}
-	
-	/**
-	 * 长度为1的数组
-	 */
-	@Test
-	public void test4() {
-		String str1 = "aasd,";
-		String[] str1Arr = StringUtils.split(str1, ",");
-		for(int i=0; i<str1Arr.length; i++) {
-			System.out.println("-" + str1Arr[i] + "-");
-		}
-	}
-	
-	/**
-	 * 长度为2的数组
-	 */
-	@Test
-	public void test5() {
-		String str1 = "aasd,,bb,";
-		String[] str1Arr = StringUtils.split(str1, ",");
-		for(int i=0; i<str1Arr.length; i++) {
-			System.out.println("-" + str1Arr[i] + "-");
-		}
-	}
-	
-	/**
-	 * 长度为0的数组
-	 */
-	@Test
-	public void test6() {
-		String str1 = ",";
-		String[] str1Arr = StringUtils.split(str1, ",");
-		for(int i=0; i<str1Arr.length; i++) {
-			System.out.println("-" + str1Arr[i] + "-");
-		}
-		
-	}
-
     /**
      * 不会抛异常
      */

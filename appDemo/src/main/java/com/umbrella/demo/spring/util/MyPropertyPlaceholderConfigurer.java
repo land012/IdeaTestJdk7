@@ -10,6 +10,7 @@ import java.util.Properties;
 
 /**
  * Created by xudazhou on 2015/10/14.
+ * 从 Spring 中 .properties 中的配置
  */
 public class MyPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
 

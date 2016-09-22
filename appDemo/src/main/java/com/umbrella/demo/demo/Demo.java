@@ -1,5 +1,7 @@
 package com.umbrella.demo.demo;
 
+import org.junit.Test;
+
 import java.net.InetAddress;
 
 /**
@@ -14,21 +16,5 @@ public class Demo {
             e.printStackTrace();
         }
     }
-
-//    @Test
-//    public void test2() {
-//        DecimalFormat df = new DecimalFormat("0000");
-//        for(int i=1; i<=225; i++) {
-//            System.out.println("<img src=\"images/" + df.format(i) + ".png\" />");
-//        }
-//    }
-//
-//    @Test
-//    public void test3() {
-//        for(int i=1; i<=775; i++) {
-//            System.out.println("<img src=\"images/" + i + ".jpg\" />");
-//            System.out.println("<hr />");
-//        }
-//    }
 
 }

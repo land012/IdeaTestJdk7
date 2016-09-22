@@ -81,6 +81,7 @@ public class DateDemo {
         System.out.println(d1.getTime()); // 0
         System.out.println(d1); // Thu Jan 01 08:00:00 CST 1970
 
+        // 对于 东8区来说，getTime 是从 1970-01-01 08:00:00 到现在的毫秒数
         Date d2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("1970-01-01 08:00:00");
         System.out.println(d2.getTime()); // 0
 
@@ -88,5 +89,19 @@ public class DateDemo {
         System.out.println(d3.getTime()); // 5000
 
         System.out.println(new Date().getTime());
+    }
+
+    @Test
+    public void test5() {
+        Date d2 = new Date();
+        System.out.println(d2.toString()); // Mon Sep 12 19:08:05 CST 2016
+        System.out.println(d2.getHours()); // 19
+        System.out.println(d2.getMinutes()); // 8
+        System.out.println(d2.getTime()); // 14736 78485 934
+        /*
+         * Mon Sep 12 19:27:54 CST 2016
+         * 8526320325
+         */
+        System.out.println(String.format("%010d", 9999999999L - d2.getTime()/1000));
     }
 }

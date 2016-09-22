@@ -11,4 +11,17 @@ public class DoubleDemo {
         double d1 = 3d; // 双精度浮点数表示法
 
     }
+
+    /**
+     * 进行耗时的浮点运算
+     */
+    @Test
+    public void test2() {
+        long start = System.currentTimeMillis();
+        double k = 1d;
+        for(int i=0; i<1000000; i++) {
+            k += k*Math.E;
+        }
+        System.out.println((System.currentTimeMillis()-start));
+    }
 }

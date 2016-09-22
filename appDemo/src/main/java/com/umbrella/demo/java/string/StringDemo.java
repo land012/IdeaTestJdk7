@@ -1,4 +1,4 @@
-package com.umbrella.demo.java.lang;
+package com.umbrella.demo.java.string;
 
 import com.umbrella.vo.User;
 import org.apache.commons.lang3.StringUtils;
@@ -10,6 +10,9 @@ import java.io.UnsupportedEncodingException;
  * Created by 大洲 on 15-4-20.
  */
 public class StringDemo {
+    /**
+     * contains
+     */
     @Test
     public void test1() {
         System.out.println("abc".contains("a")); // true
@@ -37,12 +40,18 @@ public class StringDemo {
     public void test3() {
         System.out.println(String.format("%3d", 1)); // 左补空格
         System.out.println(String.format("%3d", 1234));
-        System.out.println(String.format("%-3d", 1)); // 左对齐， 不足补空格
+        System.out.println(String.format("%-3d", 1)); // 左对齐， 不足右补空格
         System.out.println(String.format("%-3d", 1234));
         System.out.println(String.format("%+d", 12)); // +12 显示正负号
         System.out.println(String.format("%+d", -12)); // -12
         System.out.println(String.format("%05d", 123456)); // 123456
         System.out.println(String.format("%05d", 1234)); // 01234
+        System.out.println(String.format("%010d", 1234)); // 00000 01234
+        /*
+         * java.util.IllegalFormatConversionException: d != java.lang.String
+         */
+//        System.out.println(String.format("%010d", "1234"));
+        System.out.println(String.format("%010d", Integer.parseInt("1234"))); // 00000 01234
     }
 
     /**
@@ -86,5 +95,18 @@ public class StringDemo {
     @Test
     public void test6Concat() {
         System.out.println("hel".concat("lo")); // hello
+    }
+
+    /**
+     * NullPointerException
+     */
+    @Test
+    public void testValueof() {
+        System.out.println(String.valueOf(null));
+    }
+
+    @Test
+    public void testEqual() {
+        System.out.println("s".equals(null)); // false
     }
 }

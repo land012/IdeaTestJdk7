@@ -20,7 +20,13 @@ public class StringEscapeUtilsDemo {
      */
     @Test
     public void test2() {
-        System.out.println(StringEscapeUtils.escapeHtml4("你&好 > < = \"")); // 你&amp;好 &gt; &lt; = &quot;
-        System.out.println(StringEscapeUtils.escapeHtml3("你&好 > < = \"")); // 你&amp;好 &gt; &lt; = &quot;
+        String str1 = "你&好 > < = \" _";
+        System.out.println(StringEscapeUtils.escapeHtml4(str1)); // 你&amp;好 &gt; &lt; = &quot;
+        System.out.println(StringEscapeUtils.escapeHtml3(str1)); // 你&amp;好 &gt; &lt; = &quot;
+    }
+
+    @Test
+    public void test3() {
+        System.out.println(StringEscapeUtils.unescapeHtml4("&#124;")); // |
     }
 }

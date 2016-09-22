@@ -2,10 +2,7 @@ package com.umbrella.demo.java.util;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -124,7 +121,7 @@ public class ListDemo {
      * 交集
      */
     @Test
-    public void testRetainAll() {
+    public void test8RetainAll() {
         List<Integer> list1 = new ArrayList<>();
         list1.add(1);
         list1.add(2);
@@ -133,7 +130,63 @@ public class ListDemo {
         list2.add(2);
         list2.add(3);
         list2.add(4);
-        list1.retainAll(list2);
+        System.out.println(list1.retainAll(list2)); // true
         System.out.println(list1); // [2, 3]
+    }
+
+    /**
+     * 交集
+     * 没有交集
+     */
+    @Test
+    public void test8RetainAll2() {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(5);
+        list2.add(4);
+        System.out.println(list1.retainAll(list2)); // true
+        System.out.println(list1.size()); // 0
+        System.out.println(list1); // []
+    }
+
+    /**
+     * 交集
+     * 当前list是目标list的子集
+     */
+    @Test
+    public void test8RetainAll3() {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+        list2.add(4);
+        System.out.println(list1.retainAll(list2)); // false
+        System.out.println(list1); // [1, 2, 3]
+    }
+
+    /**
+     * toArray()
+     */
+    @Test
+    public void test9() {
+        List<String> list1 = new ArrayList<>();
+        list1.add("a");
+        list1.add("b");
+        list1.add("a");
+        String[] strArr1 = new String[list1.size()];
+        list1.toArray(strArr1);
+        System.out.println(Arrays.toString(strArr1)); // [a, b, a]
+
+        String[] strArr2 = new String[0];
+        String[] strArr3 = list1.toArray(strArr2);
+        System.out.println(Arrays.toString(strArr2)); // []
+        System.out.println(Arrays.toString(strArr3)); // [a, b, a]
     }
 }

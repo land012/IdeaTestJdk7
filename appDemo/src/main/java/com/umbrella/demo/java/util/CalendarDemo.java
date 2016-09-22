@@ -31,11 +31,13 @@ public class CalendarDemo {
         System.out.println(cal1.get(Calendar.MONTH)); // 月比实际数值小1
         System.out.println(cal1.get(Calendar.DAY_OF_MONTH));
 
+        // 减一天
         cal1.add(Calendar.DAY_OF_MONTH, -1); // 前一天
         System.out.println(cal1.get(Calendar.YEAR));
         System.out.println(cal1.get(Calendar.MONTH));
         System.out.println(cal1.get(Calendar.DAY_OF_MONTH));
 
+        // 将时间指定为 0
         System.out.println(cal1.getTime());
         cal1.set(cal1.get(Calendar.YEAR), cal1.get(Calendar.MONTH), cal1.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
         System.out.println(cal1.getTime());

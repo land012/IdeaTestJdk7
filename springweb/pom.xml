@@ -77,7 +77,9 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
-                    <webappDirectory>${basedir}/web</webappDirectory>
+                    <!-- 这个路径标识 class文件 jar文件 vm js 等文件保存的位置，也即抽包路径 -->
+                    <!--<webappDirectory>${basedir}/web</webappDirectory>-->
+                    <!-- 指定 web 目录 -->
                     <warSourceDirectory>${basedir}/web</warSourceDirectory>
                 </configuration>
             </plugin>

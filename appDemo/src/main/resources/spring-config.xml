@@ -114,7 +114,7 @@
     </aop:config>-->
     <!-- AOP 20151014 end -->
 
-    <!-- Spring 工厂模式 begin -->
+    <!-- ========================= Spring 工厂模式 begin ========================= -->
     <!-- 静态工厂 -->
     <!--<bean id="user1" class="com.umbrella.demo.spring.factory.UserFactory" factory-method="create">
         <constructor-arg type="java.lang.Long" value="1"></constructor-arg>
@@ -122,14 +122,15 @@
 
     <!--<bean id="user11" class="com.umbrella.demo.spring.factory.UserFactory" ></bean>-->
 
+    <!-- 实例化了一个 UserFactory，同时将这个实例按类型注入到 UserFactory 中的 uFactory -->
     <bean class="com.umbrella.demo.spring.factory.UserFactory" ></bean>
 
-    <!-- 动态工厂 -->
+    <!-- 动态工厂/实例工厂 -->
     <bean id="userFactory2" class="com.umbrella.demo.spring.factory.UserFactory2">
         <property name="id" value="2"></property>
     </bean>
     <bean id="user2" class="com.umbrella.vo.User" factory-bean="userFactory2" factory-method="create"></bean>
-    <!-- Spring 工厂模式 end -->
+    <!-- ========================= Spring 工厂模式 end ========================= -->
 
     <!-- 当实现 FactoryBean 接口时，bean标签实际返回的对象是 getObject 方法返回的对象 -->
     <bean id="user3" class="com.umbrella.demo.spring.factory.UserFactoryBean"></bean>
