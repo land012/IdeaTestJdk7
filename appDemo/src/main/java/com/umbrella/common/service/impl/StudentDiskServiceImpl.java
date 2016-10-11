@@ -14,8 +14,8 @@ import javax.annotation.Resource;
  */
 @Service("studentDiskService")
 public class StudentDiskServiceImpl implements StudentDiskService {
-    @Resource
-    private StudentDao studentDao;
+//    @Resource
+//    private StudentDao studentDao;
     @Resource
     private DiskDao diskDao;
 
@@ -23,6 +23,6 @@ public class StudentDiskServiceImpl implements StudentDiskService {
     public void saveStudentDisk(Student s, Disk d) {
         diskDao.save(d);
 //        if(true) throw new RuntimeException("here is an exception!");
-        studentDao.save(s);
+//        studentDao.save(s);
     }
 }

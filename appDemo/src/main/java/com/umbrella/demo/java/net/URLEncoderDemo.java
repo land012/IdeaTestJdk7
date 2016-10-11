@@ -26,5 +26,7 @@ public class URLEncoderDemo {
         System.out.println(URLDecoder.decode("%2B", "utf-8")); // +
         System.out.println(URLDecoder.decode("%2B", "utf-8")); // +
         System.out.println(URLDecoder.decode("%28%29", "utf-8")); // ()
+        System.out.println(URLDecoder.decode("%2C", "utf-8")); // , 逗号
+        System.out.println(URLDecoder.decode("%2F", "utf-8")); // /
     }
 }

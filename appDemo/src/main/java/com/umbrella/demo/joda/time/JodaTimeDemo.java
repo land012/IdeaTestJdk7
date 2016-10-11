@@ -79,6 +79,7 @@ public class JodaTimeDemo {
     public void test4() {
         DateTime dt1 = new DateTime(2016, 2, 16, 12, 12, 0); // 2016-02-16T12:12:00.000+08:00
         System.out.println(dt1); // 2016-02-16T12:12:00.000+08:00
+        System.out.println(dt1.toString("yyyy-MM-dd HH:mm:ss")); // 2016-02-16 12:12:00
 
         DateTimeFormatter dtfer1 = DateTimeFormat.shortDate();
         System.out.println(dtfer1.print(dt1)); // 16-2-16

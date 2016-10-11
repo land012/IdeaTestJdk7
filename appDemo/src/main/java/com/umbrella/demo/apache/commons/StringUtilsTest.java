@@ -190,8 +190,8 @@ public class StringUtilsTest {
     }
 
     /**
-     * isNotBlank
-     * isNotEmpty
+     * isNotBlank(null，空字符串，空格，制表符 都是blank)
+     * isNotEmpty(null和空字符串是 empty；空格 和 制表符 不是 empty)
      */
     @Test
     public void test21() {
@@ -208,6 +208,8 @@ public class StringUtilsTest {
         info.info("=========================================================");
         info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank(null) + ""); // false
         info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank("") + ""); // false
+        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank(" ") + ""); // false
+        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank("    ") + ""); // false
     }
 
     /**

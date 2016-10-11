@@ -1,6 +1,7 @@
 package com.umbrella.demo.spring;
 
 import com.umbrella.demo.spring.factory.UserFactory;
+import com.umbrella.demo.spring.factory.UserFactory3;
 import com.umbrella.demo.spring.factory.UserFactoryBean;
 import com.umbrella.demo.spring.service.LeahService;
 import com.umbrella.demo.spring.util.MyPropertyFactoryBean;
@@ -28,7 +29,10 @@ public class SpringFactoryTest {
         context.getAutowireCapableBeanFactory().autowireBeanProperties(this, DefaultListableBeanFactory.AUTOWIRE_BY_NAME, false);
     }
 
+    // 自动注入
+    // 静态工厂
     private User user1;
+    // 动态工厂
     private User user2;
 
     public void setUser1(User user1) {
@@ -40,7 +44,7 @@ public class SpringFactoryTest {
     }
 
     /**
-     * 工厂
+     * Spring 静态工厂 和 实例工厂
      */
     @Test
     public void test2() {
@@ -51,15 +55,17 @@ public class SpringFactoryTest {
     }
 
     /**
+     * 奇葩的用法
      * 工厂方法
      * @throws Exception
      * 使用 getInstance()，UserFactory 中的 static 成员变量可以注入
-     * 原因：因为实际上有两个实例，使用了 static 只有一个特性
+     * 原因：
+     *     因为实际上有两个实例，使用了 static jvm只有一个实例的特性
      */
     @Test
     public void test5() throws Exception {
-        UserFactory userFactory = UserFactory.getInstance();
-        userFactory.hello();
+        UserFactory3 userFactory3 = UserFactory3.getInstance();
+        userFactory3.hello();
     }
 
     /**

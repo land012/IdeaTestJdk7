@@ -16,7 +16,7 @@
 
     <context:annotation-config></context:annotation-config>
 
-    <context:component-scan base-package="com.umbrella.demo.spring,com.umbrella.common.service"></context:component-scan>
+    <context:component-scan base-package="com.umbrella.demo.spring,com.umbrella.common.service,com.umbrella.demo.atomikos.mysql.dao"></context:component-scan>
 
     <!-- 如果要使用AOP注解，必须加上这句 -->
     <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
@@ -116,14 +116,14 @@
 
     <!-- ========================= Spring 工厂模式 begin ========================= -->
     <!-- 静态工厂 -->
-    <!--<bean id="user1" class="com.umbrella.demo.spring.factory.UserFactory" factory-method="create">
+    <bean id="user1" class="com.umbrella.demo.spring.factory.UserFactory" factory-method="create">
         <constructor-arg type="java.lang.Long" value="1"></constructor-arg>
-    </bean>-->
+    </bean>
 
-    <!--<bean id="user11" class="com.umbrella.demo.spring.factory.UserFactory" ></bean>-->
-
-    <!-- 实例化了一个 UserFactory，同时将这个实例按类型注入到 UserFactory 中的 uFactory -->
-    <bean class="com.umbrella.demo.spring.factory.UserFactory" ></bean>
+    <!-- 不必指定id，像下一行那样 -->
+    <!--<bean id="user11" class="com.umbrella.demo.spring.factory.UserFactory3" ></bean>-->
+    <!-- 实例化了一个 UserFactory3， -->
+    <bean class="com.umbrella.demo.spring.factory.UserFactory3" ></bean>
 
     <!-- 动态工厂/实例工厂 -->
     <bean id="userFactory2" class="com.umbrella.demo.spring.factory.UserFactory2">

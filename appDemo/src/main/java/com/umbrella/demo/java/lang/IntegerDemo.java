@@ -3,6 +3,8 @@ package com.umbrella.demo.java.lang;
 import com.umbrella.vo.User;
 import org.junit.Test;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by 大洲 on 15-3-12.
  */
@@ -41,6 +43,8 @@ public class IntegerDemo {
     @Test
     public void test3() {
         System.out.println(Integer.MAX_VALUE); // 2147483647
+        // 无符号整数的最大值
+        System.out.println(new DecimalFormat("0").format(Math.pow(2, 32)-1)); // 4294967295
     }
 
     /**

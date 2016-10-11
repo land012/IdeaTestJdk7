@@ -31,6 +31,7 @@ public class RandomDemo {
         log.info(r3.nextInt(6) + ""); // 4
         log.info(r3.nextInt(6) + ""); // 0
         log.info(r3.nextInt(6) + ""); // 2
+        log.info(r3.nextInt(1) + "");
     }
 
     /**
