@@ -40,11 +40,19 @@ public class IntegerDemo {
         System.out.println(Integer.compare(1, 2)); // -1
     }
 
+    /**
+     * 最大整数
+     */
     @Test
     public void test3() {
         System.out.println(Integer.MAX_VALUE); // 2147483647
         // 无符号整数的最大值
         System.out.println(new DecimalFormat("0").format(Math.pow(2, 32)-1)); // 4294967295
+
+        int i1 = (int)2147483648L;
+        System.out.println(i1); // -2147483648
+        int i2 = (int)21474836480L;
+        System.out.println(i2); // 0
     }
 
     /**
