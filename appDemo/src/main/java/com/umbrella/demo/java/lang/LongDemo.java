@@ -65,12 +65,13 @@ public class LongDemo {
     }
 
     /**
-     * 整数除法 /，保留整数部分
+     * 整数除法 /，默认保留整数部分
      */
     @Test
     public void test5() {
         long l1 = 10/3;
         System.out.println(l1);
+        System.out.println(10 * 1.0/3);
     }
 
     /**
