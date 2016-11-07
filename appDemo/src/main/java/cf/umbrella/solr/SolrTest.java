@@ -121,4 +121,9 @@ public class SolrTest {
     public void test7() {
         
     }
+
+    @Test
+    public void test8() {
+
+    }
 }
