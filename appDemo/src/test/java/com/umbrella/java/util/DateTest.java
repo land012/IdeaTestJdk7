@@ -23,4 +23,9 @@ public class DateTest {
         System.out.println(c1==c2);        // false
         System.out.println(c1.equals(c2)); // false
     }
+
+    @Test
+    public void test2() {
+        
+    }
 }
