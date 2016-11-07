@@ -271,5 +271,11 @@
             <version>2.18.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+
     </dependencies>
 </project>

@@ -46,6 +46,8 @@ public class StringDemo {
         System.out.println(String.format("%+d", -12)); // -12
         System.out.println(String.format("%05d", 123456)); // 123456
         System.out.println(String.format("%05d", 1234)); // 01234
+        // 负数的处理
+        System.out.println(String.format("%05d", -1234)); // -1234
         System.out.println(String.format("%010d", 1234)); // 00000 01234
         /*
          * java.util.IllegalFormatConversionException: d != java.lang.String

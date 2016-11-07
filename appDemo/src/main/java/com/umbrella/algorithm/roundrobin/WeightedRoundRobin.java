@@ -3,7 +3,7 @@ package com.umbrella.algorithm.roundrobin;
 /**
  * 带权重的 roundrobin
  * Created by xudazhou on 2016/10/25.
- *
+ * 数值越大表示权重越高
  */
 public class WeightedRoundRobin {
     private int[] servers;
