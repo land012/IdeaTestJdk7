@@ -116,4 +116,9 @@ public class SolrTest {
     public void test6() throws Exception {
         
     }
+
+    @Test
+    public void test7() {
+        
+    }
 }
