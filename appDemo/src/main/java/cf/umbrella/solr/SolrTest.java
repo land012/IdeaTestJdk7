@@ -111,4 +111,9 @@ public class SolrTest {
     public void test5() throws Exception {
         System.out.println(server.ping());
     }
+
+    @Test
+    public void test6() throws Exception {
+        
+    }
 }
