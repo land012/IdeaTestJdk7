@@ -31,6 +31,9 @@ public class MockitoDemo {
         MockitoAnnotations.initMocks(this);
     }
 
+    /**
+     * verify
+     */
     @Test
     public void test0() {
         List list1 = Mockito.mock(List.class);
@@ -42,11 +45,14 @@ public class MockitoDemo {
         list1.add("two");
         list1.clear();
 
+        // 验证通过
+        Mockito.verify(list1).add("one");
+
         /*
           * 验证 list1 是否添加过 "three"
           * 结果：验证失败
           */
-        Mockito.verify(list1).add("three");
+//        Mockito.verify(list1).add("three");
     }
 
     @Test

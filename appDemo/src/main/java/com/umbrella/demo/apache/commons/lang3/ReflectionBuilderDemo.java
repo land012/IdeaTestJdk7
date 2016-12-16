@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by xudazhou on 2016/4/27.
  */
-public class BuilderDemo {
+public class ReflectionBuilderDemo {
     /**
      * 打印类的属性值
      */

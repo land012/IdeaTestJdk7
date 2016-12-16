@@ -221,4 +221,12 @@ public class StringUtilsTest {
         info.info(org.apache.commons.lang.StringUtils.isNotBlank("") + ""); // false
     }
 
+    /**
+     * 查子串
+     */
+    @Test
+    public void test3() {
+        info.info("{}", StringUtils.indexOf("abcdef", "g")); // -1
+    }
+
 }

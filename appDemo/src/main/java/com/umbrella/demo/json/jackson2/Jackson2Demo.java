@@ -1,5 +1,6 @@
 package com.umbrella.demo.json.jackson2;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 大洲 on 14-12-2.
@@ -110,7 +112,7 @@ public class Jackson2Demo {
     }
 
     /**
-     * 解析 JSON 对 Object
+     * 解析 JSON 到 Object
      */
     @Test
     public void test2() {
@@ -151,7 +153,65 @@ public class Jackson2Demo {
      * 复杂 json 解析
      * 获取 data Node
      */
-    public void testFromJson4() {
-        String json = "\"status\":\"true\", \"data\":{\"sno\":1,\"name\":\"Uchiha Sasuke\",\"birth\":\"2015-03-11 14:29:22\",\"school\":{\"id\":1,\"name\":\"Harvard\"}}";
+    @Test
+    public void testFromJson4() throws Exception {
+        String json = "{ \"status\":\"true\", \"data\":{\"sno\":1,\"name\":\"Uchiha Sasuke\",\"birth\":\"2015-03-11 14:29:22\",\"school\":{\"id\":1,\"name\":\"Harvard\"}}, \"num1\":1, \"num2\":1.1, \"str1\":\"\", \"str2\":null,\"birth\":\"2015-03-11 14:29:22\" }";
+        ObjectMapper om = new ObjectMapper();
+        Map<String, Object> map1 = om.readValue(json, Map.class);
+        System.out.println(map1.get("status").getClass()); // class java.lang.String
+        System.out.println(map1.get("data").getClass()); // class java.util.LinkedHashMap
+        System.out.println(map1.get("num1").getClass()); // class java.lang.Integer
+        System.out.println(map1.get("num2").getClass()); // class java.lang.Double
+        System.out.println(map1.get("str1").getClass());
+        // java.lang.NullPointerException
+//        System.out.println(map1.get("str2").getClass());
+        System.out.println(map1.get("birth").getClass()); // class java.lang.String
+        // java.lang.NullPointerException
+//        System.out.println(map1.get("xxx").getClass());
+    }
+
+    /**
+     * UNWRAP_ROOT_VALUE
+     * 最外层的 Map属性作为 root，会被忽略掉
+     * 但是属性名必须是 Map
+     */
+    @Test
+    public void testFromJson5() throws Exception {
+        String json = "{\"Map\":{\"status\":\"true\", \"data\":{\"sno\":1,\"name\":\"Uchiha Sasuke\",\"birth\":\"2015-03-11 14:29:22\",\"school\":{\"id\":1,\"name\":\"Harvard\"}}}}";
+        ObjectMapper om = new ObjectMapper();
+        om.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
+        Map<String, Object> map1 = om.readValue(json, Map.class);
+        System.out.println(map1.get("status"));
+        System.out.println(map1.get("status").getClass()); // class java.lang.String
+        System.out.println(map1.get("data").getClass()); // class java.util.LinkedHashMap
+    }
+
+    /**
+     * Object 是 null
+     * @throws Exception
+     */
+    @Test
+    public void test5() throws Exception {
+        ObjectMapper om = new ObjectMapper();
+        String str1 = om.writeValueAsString(null);
+        if (str1 == null) {
+            System.out.println("str1 == null");
+        } else {
+            System.out.println("str1 is null"); // str1 is null
+        }
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void test6() throws Exception {
+        String str1 = "\uFEFF{\"sno\":1,\"name\":\"Uchiha Sasuke\",\"birth\":\"2015-03-11 14:29:22\"}";
+        if (str1!=null && str1.startsWith("\uFEFF")) {
+            str1 = str1.substring(1);
+        }
+        ObjectMapper om = new ObjectMapper();
+        Map<String, Object> map1 = om.readValue(str1, Map.class);
+        System.out.println(map1.get("name"));
     }
 }

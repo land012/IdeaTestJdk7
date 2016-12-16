@@ -4,7 +4,6 @@ import com.umbrella.demo.json.jackson1.domain.Course;
 import com.umbrella.demo.json.jackson1.domain.School;
 import com.umbrella.demo.json.jackson1.domain.User;
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -120,6 +119,7 @@ public class Jackson1Demo {
 
     /**
      * json 转 List
+     * 泛型的处理
      */
     @Test
     public void toList() {
@@ -172,7 +172,7 @@ public class Jackson1Demo {
             String json = "{\"id\":1,\"userName\":\"Hatake Kakashi\",\"birth\":1426052390671,\"age\":0,\"address\":null,\"workAddress\":null,\"school\":{\"id\":1,\"name\":\"Harvard\"}}";
 
             ObjectMapper om = new ObjectMapper();
-           User u1 = om.readValue(json, User.class);
+            User u1 = om.readValue(json, User.class);
             log.info(u1.getUserName());
             log.info(u1.getSchool().getName());
         } catch (Exception e) {

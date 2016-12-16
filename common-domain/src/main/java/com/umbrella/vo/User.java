@@ -1,5 +1,8 @@
 package com.umbrella.vo;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -74,15 +77,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", birthDay=" + birthDay +
-                ", gender=" + gender +
-                ", urgencyContactName='" + urgencyContactName + '\'' +
-                ", age=" + age +
-                ", enrolDate=" + enrolDate +
-                '}';
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
     public Date getEnrolDate() {

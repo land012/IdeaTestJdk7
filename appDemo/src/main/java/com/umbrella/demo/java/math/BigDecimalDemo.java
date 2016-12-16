@@ -50,4 +50,14 @@ public class BigDecimalDemo {
         System.out.println(BigDecimal.valueOf(200, 2)); // 2
         System.out.println("======================= end ============================");
     }
+
+    /**
+     * 超过 long 的最大值 9223372036854775807
+     */
+    @Test
+    public void test4() {
+        BigDecimal b1 = new BigDecimal("19223372036854775807");
+        System.out.println(b1);
+        System.out.println(b1.longValue());
+    }
 }

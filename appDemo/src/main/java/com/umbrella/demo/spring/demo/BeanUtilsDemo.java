@@ -14,10 +14,15 @@ import java.util.Date;
  */
 public class BeanUtilsDemo {
     /**
+     *
+     * 不是同一个类的两个对象，也可以进行属性拷贝
+     *
      * 可以兼容值为 null 的 Date属性
      * 对于名称相同，类型不同的属性，会忽略，不赋值
      * 也会复制父类的成员变量值
      * 如果成员变量是对象，则成员变量指定同一对象
+     *
+     * 第一值是 source, 第二值是 target
      */
     @Test
     public void test1() {
@@ -63,7 +68,9 @@ public class BeanUtilsDemo {
     }
 
     /**
+     * 目标对象不能为 null
      * java.lang.IllegalArgumentException: Target must not be null
+     *
      */
     @Test
     public void test3() {

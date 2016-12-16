@@ -33,6 +33,14 @@ public class LongDemo {
 
     }
 
+    @Test
+    public void test1_1() {
+        Long l1 = new Long(1);
+        Long l2 = new Long(1);
+        System.out.println(l1==l2); // false
+        System.out.println(l1!=l2); // true
+    }
+
     /**
      *
      */
@@ -87,13 +95,15 @@ public class LongDemo {
     public void test7() {
         Long l1 = new Long(5);
         Long l2 = new Long(2);
-        System.out.println(l1-1); // 4
-        System.out.println(l1%l2); // 1
+        System.out.println(l1 - 1); // 4
+        System.out.println(l1 % l2); // 1
     }
 
     @Test
     public void test9() {
         System.out.println(Long.MAX_VALUE); // 922 3372 0368 5477 5807
+        // 无符号整数的最大值
+        System.out.println(new DecimalFormat("0").format(Math.pow(2, 64)-1)); // 18446744073709552000
         System.out.println(1);
         System.out.println(2.1);
         System.out.println(2.2);

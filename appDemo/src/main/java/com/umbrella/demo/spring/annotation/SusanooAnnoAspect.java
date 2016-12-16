@@ -4,9 +4,12 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Method;
 
 /**
  * Created by xudazhou on 2015/11/20.
@@ -24,6 +27,11 @@ public class SusanooAnnoAspect {
     @Before("@annotation(com.umbrella.demo.spring.annotation.SusanooAnno)")
     public void before(JoinPoint joinPoint) {
         log.info("I am SusanooAnno before, " + joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName());
+
+        MethodSignature signature = (MethodSignature)joinPoint.getSignature();
+        Method method = signature.getMethod();
+        SusanooAnno susanooAnno = method.getDeclaredAnnotation(SusanooAnno.class);
+        log.info(susanooAnno.value());
     }
 
     /**
