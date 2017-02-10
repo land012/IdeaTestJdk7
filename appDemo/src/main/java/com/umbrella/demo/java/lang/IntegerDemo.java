@@ -15,10 +15,17 @@ public class IntegerDemo {
      */
     @Test
     public void test0_1() {
-        Integer i1 = new Integer(1);
-        Integer i2 = new Integer(1);
+        Integer i1 = new Integer(5);
+        Integer i2 = new Integer(5);
         System.out.println(i1==i2); // false
         System.out.println(i1.equals(i2)); // true
+
+        Integer i3 = new Integer(7);
+        Integer i4 = new Integer(1);
+        System.out.println(i3 > i1); // true
+        System.out.println(i3 > i2); // true
+        System.out.println(i4 < i1); // true
+        System.out.println(i4 < i2); // true
     }
 
     /**
@@ -45,9 +52,9 @@ public class IntegerDemo {
      */
     @Test
     public void test3() {
-        System.out.println(Integer.MAX_VALUE); // 2147483647
+        System.out.println(Integer.MAX_VALUE); // 21 4748 3647
         // 无符号整数的最大值
-        System.out.println(new DecimalFormat("0").format(Math.pow(2, 32)-1)); // 4294967295
+        System.out.println(new DecimalFormat("0").format(Math.pow(2, 32)-1)); // 42 9496 7295
 
         int i1 = (int)2147483648L;
         System.out.println(i1); // -2147483648
@@ -98,6 +105,13 @@ public class IntegerDemo {
         System.out.println(Integer.SIZE); // 32
         System.out.println(Character.SIZE);
         System.out.println(Byte.SIZE);
+    }
+
+    @Test
+    public void test7() {
+        int count = 1;
+        count ++;
+        System.out.println(count); // 2
     }
 
 }

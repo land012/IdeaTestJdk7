@@ -52,6 +52,7 @@ public class BigDecimalDemo {
     }
 
     /**
+     * BigDecimal 可以保存超过 long 的值
      * 超过 long 的最大值 9223372036854775807
      */
     @Test

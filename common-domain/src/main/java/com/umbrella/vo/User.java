@@ -1,5 +1,6 @@
 package com.umbrella.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -43,6 +44,11 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
+    /**
+     * 注解的作用 是用来定制 springmvc 响应的json格式
+     * @return
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getBirthDay() {
         return birthDay;
     }
@@ -75,10 +81,10 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-    }
+//    @Override
+//    public String toString() {
+//        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+//    }
 
     public Date getEnrolDate() {
         return enrolDate;

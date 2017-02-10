@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd"
+        default-autowire="byName">
+
+    <!--<context:annotation-config></context:annotation-config>
+
+    <context:component-scan base-package="com.umbrella.demo.spring,com.umbrella.common.service,com.umbrella.demo.atomikos.mysql.dao,com.umbrella.demo.mock.subjects.service"></context:component-scan>
+-->
+
+    <!-- ========================= Spring 工厂模式 begin ========================= -->
+    <!-- 静态工厂 -->
+    <bean id="user1" class="com.umbrella.demo.spring.factory.UserFactory" factory-method="create">
+        <constructor-arg type="java.lang.Long" value="1"></constructor-arg>
+    </bean>
+
+    <!-- 不必指定id，像下一行那样 ??? -->
+    <!--<bean id="user11" class="com.umbrella.demo.spring.factory.UserFactory3" ></bean>-->
+
+    <!-- 实例化了一个 UserFactory3， -->
+    <bean class="com.umbrella.demo.spring.factory.UserFactory3" ></bean>
+
+    <!-- 动态工厂/实例工厂 -->
+    <bean id="userFactory2" class="com.umbrella.demo.spring.factory.UserFactory2">
+        <property name="id" value="2"></property>
+    </bean>
+    <bean id="user2" class="com.umbrella.vo.User" factory-bean="userFactory2" factory-method="create"></bean>
+    <!-- ========================= Spring 工厂模式 end ========================= -->
+
+    <!-- 当实现 FactoryBean 接口时，bean标签实际返回的对象是 getObject 方法返回的对象 -->
+    <bean id="user3" class="com.umbrella.demo.spring.factory.UserFactoryBean"></bean>
+
+    <bean id="userService" class="com.umbrella.demo.spring.factory.UserService"></bean>
+
+</beans>

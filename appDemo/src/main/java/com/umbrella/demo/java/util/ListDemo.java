@@ -1,5 +1,7 @@
 package com.umbrella.demo.java.util;
 
+import com.umbrella.vo.People;
+import com.umbrella.vo.User;
 import org.junit.Test;
 
 import java.util.*;
@@ -60,6 +62,7 @@ public class ListDemo {
     }
 
     /**
+     * CopyOnWriteArrayList
      * 不会抛异常
      */
     @Test
@@ -119,11 +122,13 @@ public class ListDemo {
 
     /**
      * 交集
+     * 当有重复值时，交集也会保存两条
      */
     @Test
     public void test8RetainAll() {
         List<Integer> list1 = new ArrayList<>();
         list1.add(1);
+        list1.add(2);
         list1.add(2);
         list1.add(3);
         List<Integer> list2 = new ArrayList<>();
@@ -131,7 +136,26 @@ public class ListDemo {
         list2.add(3);
         list2.add(4);
         System.out.println(list1.retainAll(list2)); // true
-        System.out.println(list1); // [2, 3]
+        System.out.println(list1); // [2, 2, 3]
+    }
+
+    /**
+     * 交集
+     * 这种情况下，当有重复值时，只保存一条
+     */
+    @Test
+    public void test8RetainAll1_1() {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(2);
+        list1.add(3);
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(2);
+        list2.add(3);
+        list2.add(4);
+        System.out.println(list2.retainAll(list1)); // true
+        System.out.println(list2); // [2, 3]
     }
 
     /**
@@ -172,6 +196,48 @@ public class ListDemo {
     }
 
     /**
+     * 并集
+     * 不会过滤掉重复的元素
+     */
+    @Test
+    public void testMerge() {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(2);
+        list2.add(3);
+        list2.add(4);
+        System.out.println(list1.addAll(list2)); // true
+        System.out.println(list1); // [1, 2, 3, 2, 3, 4]
+    }
+
+    /**
+     * 差集
+     * 当有重复时，两条都会删除
+     */
+    @Test
+    public void testDifferenceSet() {
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(2);
+        list1.add(3);
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(2);
+        list2.add(3);
+        list2.add(4);
+        System.out.println(list1.removeAll(list2)); // true
+        System.out.println(list1); // [1]
+
+        // 另外一个集合是 empty
+        List<Integer> list3 = new ArrayList<>();
+        System.out.println(list2.removeAll(list3)); // false
+        System.out.println(list2); // [2, 3, 4]
+    }
+
+    /**
      * toArray()
      */
     @Test
@@ -188,5 +254,84 @@ public class ListDemo {
         String[] strArr3 = list1.toArray(strArr2);
         System.out.println(Arrays.toString(strArr2)); // []
         System.out.println(Arrays.toString(strArr3)); // [a, b, a]
+    }
+
+    /**
+     * 浅拷贝
+     * 同时修改了 list2 的内容
+     */
+    @Test
+    public void testListCopy() {
+        People u1 = new People();
+        u1.setId(1);
+        u1.setName("tom");
+        List<People> list1 = new ArrayList<>();
+        list1.add(u1);
+
+        List<People> list2 = new ArrayList<>();
+        list2.addAll(list1);
+        People u11 = list1.get(0);
+        u11.setName("jim");
+        System.out.println(list1); // [People[id=1,name=jim]]
+        System.out.println(list2); // [People[id=1,name=jim]]
+    }
+
+    /**
+     * 深拷贝
+     */
+    @Test
+    public void testListCopy1_1() throws Exception {
+        People u1 = new People();
+        u1.setId(1);
+        u1.setName("tom");
+        List<People> list1 = new ArrayList<>();
+        list1.add(u1);
+
+        List<People> list2 = new ArrayList<>();
+        list2.add(u1.clone());
+
+        People u11 = list1.get(0);
+        u11.setName("jim");
+
+        System.out.println(list1); // [People[id=1,name=jim]]
+        System.out.println(list2); // [People[id=1,name=tom]]
+    }
+
+    /**
+     * 不会影响 List 的值
+     */
+    @Test
+    public void testListCopy2() {
+        String str1 = "a";
+        List<String> list1 = new ArrayList<>();
+        list1.add(str1);
+        str1 = "b";
+        System.out.println(list1); // [a]
+    }
+
+    /**
+     * list 本身拷贝
+     */
+    @Test
+    public void testListCopy3() {
+        List<People> list1 = new ArrayList<>();
+
+        People p1 = new People();
+        p1.setId(1);
+        p1.setName("tom");
+        People p2 = new People();
+        p2.setId(2);
+        p2.setName("jim");
+
+        list1.add(p1);
+        list1.add(p2);
+
+        List<People> list2 = new ArrayList<>();
+        list2.addAll(list1);
+
+        list1.remove(0);
+
+        System.out.println(list1); // [People[id=2,name=jim]]
+        System.out.println(list2); // [People[id=1,name=tom], People[id=2,name=jim]]
     }
 }

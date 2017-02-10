@@ -20,11 +20,14 @@ import java.util.Map;
  */
 public class RedisClientDemo {
 
+    public static final String REDIS_HOST = "192.168.186.3";
+    public static final int REDIS_PORT = 6379;
+
     Jedis jedisClient;
 
     @Before
     public void before() {
-        JedisPool pool = new JedisPool(new JedisPoolConfig(), JedisUtil.REDIS_HOST, JedisUtil.REDIS_PORT);
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), REDIS_HOST, REDIS_PORT);
         jedisClient = pool.getResource();
     }
 
@@ -33,7 +36,7 @@ public class RedisClientDemo {
      */
     @Test
     public void test1() {
-        Jedis jedis = new Jedis(JedisUtil.REDIS_HOST, JedisUtil.REDIS_PORT);
+        Jedis jedis = new Jedis(REDIS_HOST, REDIS_PORT);
 //        jedis.set("foo", "bar");
         System.out.println(jedis.get("foo"));
     }
@@ -43,7 +46,7 @@ public class RedisClientDemo {
      */
     @Test
     public void test2() {
-        JedisPool pool = new JedisPool(new JedisPoolConfig(), JedisUtil.REDIS_HOST, JedisUtil.REDIS_PORT);
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), REDIS_HOST, REDIS_PORT);
         Jedis jedis = pool.getResource();
         System.out.println(jedis.ping()); // PONG
         System.out.println(jedis.get("foo"));
@@ -76,7 +79,7 @@ public class RedisClientDemo {
      */
     @Test
     public void test4() {
-        jedisClient.set("foo", "bar");
+        System.out.println(jedisClient.set("foo", "bar")); // OK
         System.out.println(jedisClient.get("foo"));
         System.out.println(jedisClient.del("foo")); // 1
     }
@@ -147,5 +150,13 @@ public class RedisClientDemo {
         System.out.println(u2);
     }
 
+    /**
+     * 消息队列发布端
+     * 返回订阅者数量
+     */
+    @Test
+    public void test9() {
+        System.out.println(jedisClient.publish("mq1", "msg7"));
+    }
 
 }

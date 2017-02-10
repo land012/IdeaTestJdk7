@@ -29,6 +29,7 @@ public class WeightedRoundRobin {
 
     /**
      * 求最大公约数
+     * greatest common divisor
      * @return
      */
     private int getBCD() {

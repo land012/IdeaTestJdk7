@@ -52,6 +52,7 @@ public class SimpleDateFormatDemo {
 
     /**
      * 异常
+     * 长 pattern 解析短日期会抛异常
      * java.text.ParseException: Unparseable date: "2015-12-12"
      * @throws Exception
      */
@@ -65,6 +66,20 @@ public class SimpleDateFormatDemo {
     }
 
     /**
+     * 不会抛异常
+     * 短 pattern 解析长日期不会异常，会忽略掉后面的时间
+     * @throws Exception
+     */
+    @Test
+    public void test4_2() throws Exception {
+        String dateStr = "2015-12-12 11:10:00";
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(sdf2.toPattern()); // yyyy-MM-dd
+        Date d1 = sdf2.parse(dateStr); // Sat Dec 12 00:00:00 CST 2015
+        System.out.println(d1);
+    }
+
+    /**
      * 不会异常
      * @throws Exception
      */
@@ -74,19 +89,6 @@ public class SimpleDateFormatDemo {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(sdf.toPattern()); // yyyy-MM-dd HH:mm:ss
         Date d1 = sdf.parse(dateStr); // Sat Dec 12 00:00:00 CST 2015
-        System.out.println(d1);
-    }
-
-    /**
-     * 不会抛异常
-     * @throws Exception
-     */
-    @Test
-    public void test4_2() throws Exception {
-        String dateStr = "2015-12-12 11:10:00";
-        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(sdf2.toPattern()); // yyyy-MM-dd
-        Date d1 = sdf2.parse(dateStr); // Sat Dec 12 00:00:00 CST 2015
         System.out.println(d1);
     }
 

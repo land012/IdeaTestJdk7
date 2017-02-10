@@ -3,6 +3,7 @@ package com.umbrella.demo.spring;
 import com.umbrella.demo.spring.factory.UserFactory;
 import com.umbrella.demo.spring.factory.UserFactory3;
 import com.umbrella.demo.spring.factory.UserFactoryBean;
+import com.umbrella.demo.spring.factory.UserService;
 import com.umbrella.demo.spring.service.LeahService;
 import com.umbrella.demo.spring.util.MyPropertyFactoryBean;
 import com.umbrella.vo.User;
@@ -25,7 +26,7 @@ public class SpringFactoryTest {
 
     @Before
     public void before() {
-        context = new ClassPathXmlApplicationContext("spring-config.xml");
+        context = new ClassPathXmlApplicationContext("spring/spring-config-factory.xml");
         context.getAutowireCapableBeanFactory().autowireBeanProperties(this, DefaultListableBeanFactory.AUTOWIRE_BY_NAME, false);
     }
 
@@ -35,12 +36,18 @@ public class SpringFactoryTest {
     // 动态工厂
     private User user2;
 
+    private UserService userService;
+
     public void setUser1(User user1) {
         this.user1 = user1;
     }
 
     public void setUser2(User user2) {
         this.user2 = user2;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     /**
@@ -52,6 +59,26 @@ public class SpringFactoryTest {
         System.out.println(user1);
         System.out.println(user2);
         System.out.println("============ test2 end =============================================================");
+    }
+
+    /**
+     * 不同线程中的 User 是同一个实例
+     */
+    @Test
+    public void test2_1() {
+        System.out.println("============ test2_1 begin =============================================================");
+        new Thread(() -> {
+            this.userService.fn1();
+        }).start();
+        new Thread(() -> {
+            this.userService.fn1();
+        }).start();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("============ test2_1 end =============================================================");
     }
 
     /**
@@ -78,6 +105,32 @@ public class SpringFactoryTest {
         System.out.println(obj2 instanceof User); // true
         System.out.println(obj2 instanceof UserFactoryBean); // false
         new CountDownLatch(1).await();
+    }
+
+    /**
+     * 不同线程中的 User 是同一个实例，内存地址相同
+     */
+    @Test
+    public void test6_1() {
+        System.out.println("============ test6_1 begin =============================================================");
+        new Thread(() -> {
+            this.userService.fn3();
+        }).start();
+        new Thread(() -> {
+            this.userService.fn3();
+        }).start();
+        new Thread(() -> {
+            this.userService.fn3();
+        }).start();
+        new Thread(() -> {
+            this.userService.fn3();
+        }).start();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("============ test6_1 end =============================================================");
     }
 
     /**

@@ -1,8 +1,8 @@
 package com.umbrella.demo.json.jackson2;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.umbrella.vo.User;
 import org.apache.log4j.Logger;
@@ -10,10 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by 大洲 on 14-12-2.
@@ -55,6 +52,8 @@ public class Jackson2Demo {
 
     /**
      * 对象生成 JSON
+     * jackson 2.4.3
+     * 日期的默认格式为 yyyy-MM-dd HH:mm:ss
      */
     @Test
     public void test1()  {
@@ -66,9 +65,9 @@ public class Jackson2Demo {
             u1.setGender(0);
             u1.setUrgencyContactName("Leah Dizon");
             ObjectMapper om = new ObjectMapper();
-            om.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")); // Date类型转化为 JSON 时的样式
+//            om.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")); // Date类型转化为 JSON 时的样式
             String str1 = om.writeValueAsString(u1); // 生成JSON串
-            System.out.println(str1);
+            System.out.println(str1); // {"id":1,"userName":"Alphonse Elric","birthDay":"2017-01-23 16:58:50","gender":0,"urgencyContactName":"Leah Dizon","age":null,"enrolDate":null}
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -202,7 +201,7 @@ public class Jackson2Demo {
     }
 
     /**
-     *
+     * BOM开关的字符串
      */
     @Test
     public void test6() throws Exception {
@@ -213,5 +212,48 @@ public class Jackson2Demo {
         ObjectMapper om = new ObjectMapper();
         Map<String, Object> map1 = om.readValue(str1, Map.class);
         System.out.println(map1.get("name"));
+    }
+
+    /**
+     * Map 内嵌 List
+     * @throws Exception
+     */
+    @Test
+    public void test7() throws Exception {
+        Map<String, List<String>> m1 = new HashMap<>();
+        List<String> l1 = new ArrayList<>();
+        l1.add("a");
+        l1.add("b");
+        List<String> l2 = new ArrayList<>();
+        l2.add("c");
+        l2.add("d");
+        m1.put("k1", l1);
+        m1.put("k2", l2);
+        ObjectMapper om = new ObjectMapper();
+        System.out.println(om.writeValueAsString(m1)); // {"k1":["a","b"],"k2":["c","d"]}
+    }
+
+    @Test
+    public void test7_2() throws Exception {
+        String json = "{\"k1\":[\"a\",\"b\"],\"k2\":[\"c\",\"d\"]}";
+        ObjectMapper om = new ObjectMapper();
+        JavaType javaType = om.getTypeFactory().constructMapType(Map.class,
+                om.constructType(String.class),
+                om.getTypeFactory().constructType(List.class, String.class));
+        Map<String, List<String>> m1 = om.readValue(json, javaType);
+        System.out.println(m1.get("k1"));
+    }
+
+    @Test
+    public void test8() throws Exception {
+        List<String> list1 = new ArrayList<>();
+        list1.add("a");
+        list1.add("b");
+        list1.add("a");
+        ObjectMapper om = new ObjectMapper();
+        String json = om.writeValueAsString(list1);
+        Set<String> set1 = om.readValue(json, om.getTypeFactory().constructType(Set.class, String.class));
+        System.out.println(json); // ["a","b","a"]
+        System.out.println(set1); // [a, b]
     }
 }

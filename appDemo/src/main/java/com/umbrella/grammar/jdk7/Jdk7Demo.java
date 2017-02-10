@@ -15,9 +15,10 @@ import java.util.List;
 public class Jdk7Demo {
 
     /**
-     * @param args
+     * switch
      */
-    public static void main(String[] args) {
+    @Test
+    public void test0() {
         /**
          * switch 支持 String
          */
@@ -33,7 +34,13 @@ public class Jdk7Demo {
                 System.out.println("other");
                 break;
         }
+    }
 
+    /**
+     * 变长参数
+     */
+    @Test
+    public void test2() {
         /**
          * 变长参数
          */
@@ -77,14 +84,14 @@ public class Jdk7Demo {
      * 二进制表示
      */
     @Test
-    public void test1() {
+    public void test3() {
         /**
          * 二进制表示
          */
         int i1 = 0b1010; // 10
         int i2 = 123_456;
-        System.out.println(i1);
-        System.out.println(i2);
+        System.out.println(i1); // 10
+        System.out.println(i2); // 123456
     }
 
 }

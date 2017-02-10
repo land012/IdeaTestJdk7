@@ -36,6 +36,8 @@ public class AchillesAspect {
     @Around("execution(* com.umbrella.demo.spring.service..*(..))")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("begin");
+        // 当验证失败时，返回；可用于权限管理
+        if (false) return null;
         Object obj = pjp.proceed();
         System.out.println("end");
         return obj;

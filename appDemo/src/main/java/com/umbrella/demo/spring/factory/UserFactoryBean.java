@@ -1,6 +1,8 @@
 package com.umbrella.demo.spring.factory;
 
 import com.umbrella.vo.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.FactoryBean;
 
 /**
@@ -8,10 +10,13 @@ import org.springframework.beans.factory.FactoryBean;
  */
 public class UserFactoryBean implements FactoryBean<User> {
 
+    private static Logger log = LoggerFactory.getLogger(UserFactoryBean.class);
+
     private User user;
 
     @Override
     public User getObject() throws Exception {
+        log.info("hello factory bean");
         this.user = new User();
         this.user.setId(1L);
         this.user.setUserName("Susanoo");

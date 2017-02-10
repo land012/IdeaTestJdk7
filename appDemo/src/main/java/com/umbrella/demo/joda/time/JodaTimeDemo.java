@@ -175,4 +175,17 @@ public class JodaTimeDemo {
 
         System.out.println(dt2.dayOfMonth().get()-dt1.dayOfMonth().get()); // 3
     }
+
+    /**
+     * 仅获取日期部分
+     */
+    @Test
+    public void test7() {
+        DateTime dt = DateTime.now();
+        System.out.println(dt);
+
+        LocalDate ld = new LocalDate();
+        System.out.println(ld);
+        System.out.println(ld.toDate());
+    }
 }
