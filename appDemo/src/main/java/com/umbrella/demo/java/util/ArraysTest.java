@@ -75,4 +75,13 @@ public class ArraysTest {
         List<String> list1 = Arrays.asList(strArr1);
         System.out.println(list1); // [a, b, c]
     }
+
+    /**
+     * null 安全
+     */
+    @Test
+    public void test5_null() {
+        String[] arr = null;
+        System.out.println(Arrays.toString(arr));
+    }
 }
