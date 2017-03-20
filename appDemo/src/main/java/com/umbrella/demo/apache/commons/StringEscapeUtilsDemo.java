@@ -60,6 +60,9 @@ public class StringEscapeUtilsDemo {
         System.out.println(StringEscapeUtils.unescapeHtml4("&#58;")); // :
     }
 
+    /**
+     * 中文转 unicode
+     */
     @Test
     public void test4() {
         // Unicode编码
@@ -74,6 +77,7 @@ public class StringEscapeUtilsDemo {
 //
 //		System.out.println(org.apache.commons.lang.StringEscapeUtils.escapeHtml("你好")); // &#20320;&#22909;
 
-        System.out.println(StringEscapeUtils.escapeJava("射雕ZERO"));
+        System.out.println(StringEscapeUtils.escapeJava("射雕ZERO")); // \u5C04\u96D5ZERO
+        System.out.println(StringEscapeUtils.escapeJava("汤姆")); // \u6C64\u59C6
     }
 }

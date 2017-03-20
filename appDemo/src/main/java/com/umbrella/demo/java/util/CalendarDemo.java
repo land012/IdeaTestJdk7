@@ -96,4 +96,46 @@ public class CalendarDemo {
             }
         }
     }
+
+    /**
+     * 日期比较
+     */
+    @Test
+    public void test6_compare() {
+        Date d1 = new Date();
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(d1);
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(d1);
+        cal2.add(Calendar.MINUTE, 50);
+        System.out.println(cal1.compareTo(cal2)); // -1
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
+        System.out.println(sdf.format(cal2.getTime())); // 2024
+        // 循环 5 次
+        while (cal1.compareTo(cal2) < 0) {
+            System.out.println(sdf.format(cal1.getTime()));
+            cal1.add(Calendar.MINUTE, 10);
+        }
+
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        System.out.println(sdf2.format(cal1.getTime())); // 20170303203543794
+        System.out.println(sdf2.format(cal2.getTime())); // 20170303202543798
+    }
+
+    @Test
+    public void test6_compare_2() {
+        Date d1 = new Date();
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(d1);
+
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(d1);
+
+        System.out.println(cal1.before(cal2)); // false
+
+        cal2.add(Calendar.MINUTE, 1);
+
+        System.out.println(cal1.before(cal2)); // true
+    }
 }

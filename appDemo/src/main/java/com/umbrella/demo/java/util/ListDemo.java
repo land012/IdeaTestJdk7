@@ -1,7 +1,8 @@
 package com.umbrella.demo.java.util;
 
 import com.umbrella.vo.People;
-import com.umbrella.vo.User;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Test;
 
 import java.util.*;
@@ -333,5 +334,41 @@ public class ListDemo {
 
         System.out.println(list1); // [People[id=2,name=jim]]
         System.out.println(list2); // [People[id=1,name=tom], People[id=2,name=jim]]
+    }
+
+    /**
+     * list to array[]
+     */
+    @Test
+    public void test10_toArray() {
+        List<User> userList = new ArrayList<>();
+        User u1 = new User();
+        u1.setId(1);
+        User u2 = new User();
+        u2.setId(2);
+        userList.add(u1);
+        userList.add(u2);
+
+        User[] users1 = new User[]{};
+        User[] users2 = userList.toArray(users1);
+        System.out.println(Arrays.toString(users1)); // []
+        System.out.println(Arrays.toString(users2)); // [ListDemo.User[Id=1], ListDemo.User[Id=2]]
+    }
+
+    static class User {
+        private int Id;
+
+        public int getId() {
+            return Id;
+        }
+
+        public void setId(int id) {
+            Id = id;
+        }
+
+        @Override
+        public String toString() {
+            return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+        }
     }
 }

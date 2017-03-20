@@ -1,11 +1,11 @@
 package com.umbrella.demo.json.jackson2;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.umbrella.demo.json.vo.Course;
 import com.umbrella.vo.User;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
@@ -410,5 +410,22 @@ public class Jackson2Demo {
 
         Map<String, String> map2 = om.readValue(json1, om.getTypeFactory().constructMapType(Map.class, String.class, String.class));
         System.out.println(map2); // {k1=电信}
+    }
+
+    @Test
+    public void test12() throws Exception {
+        List<Object> list1 = new ArrayList<>();
+        Course c1 = new Course();
+        c1.setCourseId(1);
+        c1.setCourseName("chinese");
+        List<String> list2 = new ArrayList<>();
+        list2.add("a");
+        list2.add("b");
+        list1.add(c1);
+        list1.add(list2);
+
+        ObjectMapper om = new ObjectMapper();
+        String json1 = om.writeValueAsString(list1);
+        System.out.println(json1); // [{"courseId":1,"courseName":"chinese"},["a","b"]]
     }
 }

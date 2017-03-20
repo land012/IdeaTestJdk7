@@ -120,5 +120,14 @@ public class SimpleDateFormatDemo {
         String d1Str = sdf2.format(d1);
         System.out.println(d1Str); // 2016-01-01 00:00:00
     }
+
+    @Test
+    public void test7_time() {
+        Date d1 = new Date();
+        SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm");
+        System.out.println(sdf1.format(d1)); // 19:02
+        SimpleDateFormat sdf2 = new SimpleDateFormat("HH:00");
+        System.out.println(sdf2.format(d1)); // 19:00
+    }
 }
 

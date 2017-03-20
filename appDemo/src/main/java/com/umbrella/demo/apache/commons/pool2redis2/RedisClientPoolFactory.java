@@ -14,10 +14,18 @@ public class RedisClientPoolFactory implements PooledObjectFactory<Jedis> {
 
     private static Logger log = LoggerFactory.getLogger(RedisClientPoolFactory.class);
 
+    private String host;
+    private int port;
+
+    public RedisClientPoolFactory(String host, int port) {
+        this.host = host;
+        this.port = port;
+    }
+
     @Override
     public PooledObject<Jedis> makeObject() throws Exception {
         log.info("make");
-        return new DefaultPooledObject<>( new Jedis("192.168.186.3", 6379));
+        return new DefaultPooledObject<>( new Jedis(this.host, this.port));
     }
 
     @Override
@@ -29,7 +37,7 @@ public class RedisClientPoolFactory implements PooledObjectFactory<Jedis> {
     @Override
     public boolean validateObject(PooledObject<Jedis> p) {
         log.info("validate");
-        return false;
+        return p.getObject().isConnected();
     }
 
     @Override

@@ -2,6 +2,9 @@ package com.umbrella.demo.java.string;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
+
 /**
  * Created by xudazhou on 2016/5/8.
  */
@@ -10,5 +13,17 @@ public class StringDemoUTF8 {
     public void test1() {
         String str1 = "亲亲袋鼠-VINCI";
         System.out.println(str1.length()); // 10
+    }
+
+    /**
+     * 编码
+     * @throws Exception
+     */
+    @Test
+    public void test2() throws Exception {
+        String str1 = "小a";
+        System.out.println(Arrays.toString(str1.getBytes("utf-8"))); // [-27, -80, -113, 97]
+        System.out.println(Arrays.toString(str1.getBytes("gbk"))); // [-48, -95, 97]
+        System.out.println(Arrays.toString(str1.getBytes("gb18030"))); // [-48, -95, 97]
     }
 }

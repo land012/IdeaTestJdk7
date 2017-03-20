@@ -20,6 +20,7 @@
         <module>demo</module>
         <module>hello-idea-service</module>
         <module>common-domain</module>
+        <module>protobuf-demo</module>
     </modules>
 
     <dependencies>

@@ -5,8 +5,6 @@ import org.junit.Test;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
-import java.io.UnsupportedEncodingException;
-
 /**
  * Created by xudazhou on 2015/10/16.
  */
@@ -36,11 +34,13 @@ public class Base64Demo {
     public void test2() {
         String str1 = "Yukimura";
         try {
-            String base64Str1 = Base64.encodeBase64String(str1.getBytes("utf-8"));
-            System.out.println(base64Str1);                                               // WXVraW11cmE=
-            String base64Str2 = Base64.encodeBase64URLSafeString(str1.getBytes("utf-8")); // WXVraW11cmE
-            System.out.println(base64Str2);
-            System.out.println(new String(Base64.decodeBase64(base64Str2), "utf-8")); // Yukimura
+            byte[] bytes1 = str1.getBytes("utf-8");
+            String base64Str1 = Base64.encodeBase64String(bytes1);
+            System.out.println(base64Str1); // WXVraW11cmE=
+            String base64Str2 = Base64.encodeBase64URLSafeString(bytes1);
+            System.out.println(base64Str2); // WXVraW11cmE
+            byte[] bytes2 = Base64.decodeBase64(base64Str2);
+            System.out.println(new String(bytes2, "utf-8")); // Yukimura
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class Base64Demo {
     public void test3() {
         String str1 = "Yukimura";
         try {
-            System.out.println(new String(Base64.encodeBase64(str1.getBytes("utf-8")), "utf-8")); // WXVraW11cmE=
+            System.out.println(new String(Base64.encodeBase64(str1.getBytes("utf-8")), "utf-8"));       // WXVraW11cmE=
             System.out.println(new String(Base64.encodeBase64(str1.getBytes("utf-8"), true), "utf-8")); // WXVraW11cmE=
         } catch (Exception e) {
             e.printStackTrace();

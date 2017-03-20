@@ -4,8 +4,6 @@ import com.umbrella.vo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import java.io.UnsupportedEncodingException;
-
 /**
  * Created by 大洲 on 15-4-20.
  */
@@ -110,5 +108,26 @@ public class StringDemo {
     @Test
     public void testEqual() {
         System.out.println("s".equals(null)); // false
+    }
+
+    /**
+     * substring
+     * @throws Exception
+     */
+    @Test
+    public void test6_0() throws Exception {
+        String str1 = "abcd";
+        System.out.println(str1.substring(0, 2)); // ab
+        System.out.println(str1); // abcd
+        System.out.println(str1.substring(0, 0)); // 空串
+    }
+
+    @Test
+    public void test6() throws Exception {
+        String str1 = "news_1234567";
+        int index = str1.lastIndexOf("_");
+        System.out.println(index);
+        System.out.println(str1.substring(index + 1));
+        System.out.println(str1.substring(0, index));
     }
 }
