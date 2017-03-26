@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -216,5 +215,19 @@ public class StudentDemo {
             }
         }
         return b.build();
+    }
+
+    @Test
+    public void test7() {
+        StudentSample.Teacher.Builder tBuilder = StudentSample.Teacher.newBuilder();
+        tBuilder.setTid(3);
+        tBuilder.setTname("kakashi");
+
+        StudentSample.Student.Builder sBuilder = StudentSample.Student.newBuilder();
+        sBuilder.setSid(5);
+        sBuilder.setTeacher(tBuilder); // 可以set Teacher 或 Teacher的Builder
+
+        StudentSample.Student s1 = sBuilder.build();
+        System.out.println(s1);
     }
 }

@@ -28,7 +28,7 @@ public class FileDemo {
      * @throws Exception
      */
     @Test
-    public void test2_encode() throws Exception {
+    public void test2_gen_file_charset() throws Exception {
         InputStreamReader isr = new InputStreamReader(new FileInputStream("E:\\TDDOWNLOAD\\aa.txt"), "gbk");
         char[] buf = new char[1024];
         StringBuilder sb = new StringBuilder();
@@ -50,6 +50,21 @@ public class FileDemo {
     }
 
     /**
+     * 生成指定编码的文件
+     * @throws Exception
+     */
+    @Test
+    public void test4_gen_file_charset() throws Exception {
+        String str1 = "哈哈";
+        FileOutputStream fos = new FileOutputStream("E:\\TDDOWNLOAD\\aa.txt");
+        // 可以通过指定编码，输出相应编码的文本
+        OutputStreamWriter osw = new OutputStreamWriter(fos, "gbk");
+        osw.write(str1);
+        osw.flush();
+        osw.close();
+    }
+
+    /**
      * 读取utf-8编码的文件，打印不会乱码
      * 英文1字节，中文3字节
      * @throws Exception
@@ -65,14 +80,5 @@ public class FileDemo {
         System.out.println(c); // 文
     }
 
-    @Test
-    public void test4() throws Exception {
-        String str1 = "哈哈";
-        FileOutputStream fos = new FileOutputStream("E:\\TDDOWNLOAD\\aa.txt");
-        // 可以通过指定编码，输出相应编码的文本
-        OutputStreamWriter osw = new OutputStreamWriter(fos, "gbk");
-        osw.write(str1);
-        osw.flush();
-        osw.close();
-    }
+
 }

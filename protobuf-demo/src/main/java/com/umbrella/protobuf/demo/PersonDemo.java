@@ -213,6 +213,23 @@ public class PersonDemo {
      * 单独修改一个字段
      */
     @Test
+    public void test5_2() {
+        PersonSample.Person.Builder b1 = PersonSample.Person.newBuilder();
+        b1.setId(2);
+        b1.setName(ByteString.copyFromUtf8("zhang"));
+        b1.setEmail(ByteString.copyFromUtf8("zhang@baidu.com"));
+        PersonSample.Person p1 = b1.build();
+
+        PersonSample.Person.Builder b2 = PersonSample.Person.newBuilder(p1);
+        b2.setName(ByteString.copyFromUtf8("wang"));
+        PersonSample.Person p2 = b2.build();
+        System.out.println(p2.toString());
+    }
+
+    /**
+     * 单独修改一个字段
+     */
+    @Test
     public void test6_reflect() {
         PersonSample.Person.Builder b1 = PersonSample.Person.newBuilder();
         b1.setId(2);
