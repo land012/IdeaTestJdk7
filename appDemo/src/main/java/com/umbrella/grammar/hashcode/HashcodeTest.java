@@ -29,5 +29,12 @@ public class HashcodeTest {
 
     }
 
+    @Test
+    public void test3() {
+        String str1 = "abcdefghijklmnopqrst";
+        int hash = str1.hashCode();
+        System.out.println(hash); // -948484790
+        System.out.println(hash & Integer.MAX_VALUE); // 1198998858
+    }
 
 }

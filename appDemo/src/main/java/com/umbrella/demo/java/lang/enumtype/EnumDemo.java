@@ -30,4 +30,12 @@ public class EnumDemo {
         StatusEnum statusEnum1 = StatusEnum.valueOf("SUCCESS");
         System.out.println(statusEnum1); // SUCCESS
     }
+
+    /**
+     * toString()
+     */
+    @Test
+    public void test3() {
+        System.out.println(StatusEnum.SUCCESS.toString()); // SUCCESS
+    }
 }

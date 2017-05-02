@@ -190,6 +190,15 @@ public class StringUtilsTest {
     }
 
     /**
+     * 不会抛 Index 异常
+     */
+    @Test
+    public void test8_1() {
+        String str1 = "abc";
+        System.out.println("substr=" + StringUtils.substring(str1, 3)); // substr=
+    }
+
+    /**
      * isNotBlank(null，空字符串，空格，制表符 都是blank)
      * isNotEmpty(null和空字符串是 empty；空格 和 制表符 不是 empty)
      */
