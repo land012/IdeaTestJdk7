@@ -21,6 +21,7 @@
         <module>hello-idea-service</module>
         <module>common-domain</module>
         <module>protobuf-demo</module>
+        <module>abacihadoop</module>
     </modules>
 
     <dependencies>

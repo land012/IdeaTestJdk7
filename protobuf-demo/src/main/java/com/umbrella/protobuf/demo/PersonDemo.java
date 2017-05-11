@@ -76,11 +76,17 @@ public class PersonDemo {
         builder.setName(ByteString.copyFromUtf8("汤姆"));
         builder.setEmail(ByteString.copyFromUtf8("tom@baidu.com"));
         PersonSample.Person p1 = builder.build();
+
         com.umbrella.protobuf.util.JsonFormat jf = new com.umbrella.protobuf.util.JsonFormat();
         String json1 = jf.printToString(p1);
         System.out.println(json1); // {"id": 1,"name": "汤姆","email": "tom@baidu.com"}
         System.out.println(Arrays.toString(p1.getName().toByteArray())); // [-26, -79, -92, -27, -89, -122]
         System.out.println(StringEscapeUtils.unescapeJava(json1)); // {"id": 1,"name": "汤姆","email": "tom@baidu.com"}
+
+        System.out.println("=============================================");
+
+        JsonFormat jf2 = new JsonFormat();
+        System.out.println(jf2.printToString(p1)); // {"id": 1,"name": "\uffe6\uffb1\uffa4\uffe5\uffa7\uff86","email": "tom@baidu.com"}
 
         // 反序列化后，彻底乱码
         PersonSample.Person.Builder b2 = PersonSample.Person.newBuilder();

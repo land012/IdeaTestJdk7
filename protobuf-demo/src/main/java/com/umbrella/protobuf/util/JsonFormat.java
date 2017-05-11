@@ -198,9 +198,11 @@ public class JsonFormat extends AbstractCharBasedFormatter {
                 break;
 
             case BYTES: {
+                ByteString bs = (ByteString) value;
                 generator.print("\"");
 //                generator.print(escapeBytes((ByteString) value));
-                generator.print(new String(((ByteString) value).toByteArray(), "utf-8"));
+//                generator.print(new String(((ByteString) value).toByteArray(), "utf-8"));
+                generator.print(bs.toStringUtf8());
                 generator.print("\"");
                 break;
             }

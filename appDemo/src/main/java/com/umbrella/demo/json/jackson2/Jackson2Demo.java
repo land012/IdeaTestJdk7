@@ -1,5 +1,6 @@
 package com.umbrella.demo.json.jackson2;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -24,8 +25,9 @@ public class Jackson2Demo {
     private static Logger log = Logger.getLogger(Jackson2Demo.class);
 
     /**
-     * Object - JSON
+     * Object - JSON 中文会被转成unicode
      * JSON - Object
+     *
      */
     @Test
     public void test0() {
@@ -34,8 +36,9 @@ public class Jackson2Demo {
         u1.setUserName("Alphonse Elric");
         u1.setBirthDay(new Date());
         u1.setGender(0);
-        u1.setUrgencyContactName("Leah Dizon");
+        u1.setUrgencyContactName("小张");
         ObjectMapper om = new ObjectMapper();
+        om.configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
         om.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")); // Date类型转化为 JSON 时的样式
         try {
             // 生成JSON串
@@ -78,6 +81,17 @@ public class Jackson2Demo {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void test12Objtojson() throws Exception {
+        String str1 = StringEscapeUtils.escapeJava("小赵");
+        System.out.println(str1);
+        User u1 = new User();
+        u1.setUserName(str1);
+        ObjectMapper om = new ObjectMapper();
+        System.out.println(om.writeValueAsString(u1)); // {"id":0,"userName":"\\u5C0F\\u8D75","birthDay":null,"gender":0,"urgencyContactName":null,"age":null,"enrolDate":null}
+
     }
 
     /**
