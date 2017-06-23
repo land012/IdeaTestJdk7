@@ -111,4 +111,11 @@ public class LongDemo {
         System.out.println(3);
     }
 
+    @Test
+    public void test10() {
+        String str1 = "123,456";
+        str1 = str1.replace(",", "");
+        System.out.println(str1); // 123456
+    }
+
 }

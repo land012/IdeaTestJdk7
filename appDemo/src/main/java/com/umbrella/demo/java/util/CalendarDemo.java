@@ -43,11 +43,16 @@ public class CalendarDemo {
         System.out.println(cal1.getTime());
     }
 
+    /**
+     *
+     * @throws ParseException
+     */
     @Test
     public void test2() throws ParseException {
-        Date d1 = new SimpleDateFormat("yyyy-MM-dd").parse("2015-01-12");
+        Date d1 = new SimpleDateFormat("yyyy-MM-dd").parse("2017-04-29");
         Calendar cal1 = Calendar.getInstance();
         cal1.setTime(d1);
+        cal1.add(Calendar.DAY_OF_MONTH, 280);
         System.out.println(cal1.getTime());
     }
 

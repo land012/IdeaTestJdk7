@@ -2,6 +2,9 @@ package com.umbrella.demo.java.lang.enumtype;
 
 import org.junit.Test;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * Created by xudazhou on 2015/8/31.
  */
@@ -24,5 +27,13 @@ public class DoubleDemo {
             k += k*Math.E;
         }
         System.out.println((System.currentTimeMillis()-start));
+    }
+
+    @Test
+    public void test3() {
+        double d1 = 0.000000045;
+        System.out.println(d1); // 4.5E-8
+        BigDecimal bd1 = new BigDecimal(d1).setScale(9, RoundingMode.HALF_UP);
+        System.out.println(bd1.toPlainString()); // 0.000000045
     }
 }

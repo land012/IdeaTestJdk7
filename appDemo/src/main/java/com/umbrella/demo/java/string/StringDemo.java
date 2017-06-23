@@ -110,6 +110,16 @@ public class StringDemo {
         System.out.println("s".equals(null)); // false
     }
 
+    @Test
+    public void testCompare() {
+        System.out.println("".compareTo("a")); // -1
+        System.out.println("A".compareTo("a")); // -32
+        System.out.println("A".compareTo("B")); // -1
+        System.out.println("A".compareTo("C")); // -2
+        System.out.println("A".compareToIgnoreCase("a")); // 0
+        System.out.println("我".compareTo("你")); // 4785
+    }
+
     /**
      * substring
      * @throws Exception
@@ -129,5 +139,27 @@ public class StringDemo {
         System.out.println(index);
         System.out.println(str1.substring(index + 1));
         System.out.println(str1.substring(0, index));
+    }
+
+    @Test
+    public void test7() {
+        String str1 = "abc d ghi";
+        System.out.println(str1.indexOf(" ")); // 3
+        System.out.println(str1.indexOf(" ", 4)); // 5
+        System.out.println(str1.indexOf(" ", 5)); // 5
+        System.out.println(str1.indexOf(" ", 6)); // -1
+    }
+
+    /**
+     * split
+     */
+    @Test
+    public void test8() {
+        String str1 = "a\tb c d e";
+        String[] arr = str1.split("\\s", 3);
+        System.out.println(arr.length); // 3
+        for(String s1 : arr) {
+            System.out.println(s1);
+        }
     }
 }

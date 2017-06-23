@@ -53,4 +53,16 @@ public class RandomDemo {
         }
         log.info("current=" + current);
     }
+
+    @Test
+    public void test3() {
+        Random r1 = new Random();
+        System.out.println(r1.nextInt(100));
+        System.out.println(r1.nextInt(100));
+
+        System.out.println("========================================");
+        Random r2 = new Random();
+        System.out.println(r2.nextInt(100));
+        System.out.println(r2.nextInt(100));
+    }
 }

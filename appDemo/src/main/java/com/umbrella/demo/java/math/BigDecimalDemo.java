@@ -61,4 +61,17 @@ public class BigDecimalDemo {
         System.out.println(b1);
         System.out.println(b1.longValue());
     }
+
+    @Test
+    public void test5() {
+        double d1 = 1.23549345d;
+        BigDecimal bd1 = new BigDecimal(d1);
+        BigDecimal bd2 = bd1.setScale(4, RoundingMode.HALF_UP);
+        System.out.println(bd1.doubleValue()); // 1.23549345
+        System.out.println(bd2.doubleValue()); // 1.2355
+
+        double d2 = 0.1230001;
+        BigDecimal bd2_1 = new BigDecimal(d2);
+        System.out.println(bd2_1.setScale(4, RoundingMode.HALF_UP)); // 0.1230
+    }
 }
