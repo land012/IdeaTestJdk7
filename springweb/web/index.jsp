@@ -39,9 +39,11 @@
   <body>
   this is springweb!
   <ul>
+      <li><b>Spring MVC</b></li>
       <li><a href="/springmvc/hello" target="_blank">SpringMVC Hello World</a></li>
       <li><a href="/springmvc/greet" target="_blank">SpringMVC Greet World</a></li>
       <li><a href="/springmvc/susanoo?id=2&userName=Susanoo&birthDay=2015-12-12" target="_blank">SpringMVC susanoo</a></li>
+      <li><a href="/springmvc/asuka" target="_blank">飞鸟</a></li>
       <li><hr/></li>
       <li><a href="/servlet/hello" target="_blank">Servlet Hello Velocity</a></li>
       <li><a href="/servlet/greet" target="_blank">Servlet Greet Velocity</a></li>

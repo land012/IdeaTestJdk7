@@ -180,4 +180,20 @@ public class HelloWorldAction extends BaseController {
 //        }
 //        return null;
 //    }
+
+    @RequestMapping("asuka")
+    public String asuka(HttpServletRequest req, HttpServletResponse resp) {
+
+        resp.setContentType("text/plain; charset=utf-8");
+        PrintWriter pw = null;
+        try {
+            pw = resp.getWriter();
+            pw.println("a");
+            pw.write("b");
+            pw.println("c");
+        } catch (Exception e) {
+            log.error("", e);
+        }
+        return null;
+    }
 }
