@@ -3,6 +3,8 @@ package com.umbrella.demo.java.file;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 /**
  * Created by xudazhou on 2017/3/6.
@@ -80,5 +82,40 @@ public class FileDemo {
         System.out.println(c); // 文
     }
 
+    /**
+     * 向文件写入字节
+     * 用 python 读
+     * @throws Exception
+     */
+    @Test
+    public void test4() throws Exception {
+        File f = new File("E:\\TDDOWNLOAD\\file1.dat");
+        FileOutputStream fos = new FileOutputStream(f);
+
+        String str1 = "hello xili, i am hector, how are you, what are you doing, nice to meet you, what is your name, how old are you, dasdkfesfdwekfjgid";
+        String str2 = "你好";
+        byte[] bytearr1 = str1.getBytes("utf-8");
+        byte[] bytearr2 = str2.getBytes("utf-8");
+
+        ByteBuffer bb = ByteBuffer.allocate(8 + bytearr1.length + bytearr2.length);
+        bb.putInt(bytearr1.length);
+        bb.put(bytearr1);
+        bb.putInt(bytearr2.length);
+        bb.put(bytearr2);
+
+        fos.write(bb.array());
+
+        fos.flush();
+        fos.close();
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void test5() {
+        System.out.println(File.separator); // \ 路径分隔符
+        System.out.println(File.pathSeparator); // ; 环境变量路径分隔符
+    }
 
 }

@@ -11,9 +11,9 @@ import java.util.concurrent.Executors;
  * 子线程会抛出异常，但是主线程catch不到
  * 异常会导致原来的子线程死掉，但线程池会再创建一个子线程，继续执行下面的任务
  */
-public class Demo11 {
+public class ExecutorsDemo11 {
 
-    private static final Logger log = Logger.getLogger(Demo11.class);
+    private static final Logger log = Logger.getLogger(ExecutorsDemo11.class);
 
     public static void main(String[] args) {
         try {

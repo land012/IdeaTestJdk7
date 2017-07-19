@@ -12,9 +12,9 @@ import java.util.concurrent.Future;
  * submit + Callable
  * 主线程可以拿到子线程的异常
  */
-public class Demo31 {
+public class ExecutorsDemo31 {
     public static void main(String[] args) {
-        Demo31 demo = new Demo31();
+        ExecutorsDemo31 demo = new ExecutorsDemo31();
         demo.test1();
         System.out.println("this is main");
     }
@@ -33,7 +33,7 @@ public class Demo31 {
             for(Future f : list) {
                 System.out.println("++++++++++++++++++++" + f.get()); // 会抛出子线程中的异常
             }
-            exec.shutdown(); // 当子线程抛异常时，不会执行到这一步，所以异常不能再下面捕捉，要在上面捕捉
+            exec.shutdown(); // 当子线程抛异常时，不会执行到这一步，所以异常不能再下面捕捉，要在上面捕捉??
         } catch (Exception e) {
             System.out.println("=================" + e);
         }

@@ -10,6 +10,7 @@ import java.util.concurrent.FutureTask;
 
 /**
  * Created by xudazhou on 2016/5/12.
+ * 用一个线程来运行 Callable 而不是线程池
  */
 public class FutureTaskDemo {
 

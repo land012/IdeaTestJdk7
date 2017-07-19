@@ -1,5 +1,7 @@
 package com.umbrella.demo.concurrent.submit;
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -9,13 +11,14 @@ import java.util.concurrent.Future;
 /**
  * Created by 大洲 on 15-2-12.
  * submit + Runnable
- * 这种组合的唯一作用似乎就是：主线程能拿到子线程的抛出的异常
- * 抛异常的情况！！！！！！！！！！！！！！！！！
- * 主线程可以拿到子线程的异常
+ * 不抛异常的情况！！！！！！！！！！！！！！！！！
  */
-public class Demo21 {
+public class ExecutorsDemo22 {
+
+    private static Logger log = Logger.getLogger(ExecutorsDemo22.class);
+
     public static void main(String[] args) {
-        Demo21 demo = new Demo21();
+        ExecutorsDemo22 demo = new ExecutorsDemo22();
         demo.test1();
         System.out.println("this is main");
     }
@@ -25,17 +28,22 @@ public class Demo21 {
      * 主线程可以拿到子线程的异常
      */
     private void test1() {
+        ExecutorService exec = Executors.newFixedThreadPool(2);
         try {
-            ExecutorService exec = Executors.newFixedThreadPool(2);
             List<Future> list = new ArrayList<Future>();
-            for(int i=0; i<3; i++) {
+            for(int i=0; i<2; i++) {
                 list.add(exec.submit(new Work(i)));
             }
             for(Future f : list) {
-                f.get(); // 会抛出子线程中的异常
+                Object o = f.get(); // 不抛异常的话，会返回 null
+                Work r = (Work)o;
+                r.getId(); // java.lang.NullPointerException
+                System.out.println("future.get()=" + o); // null
             }
         } catch (Exception e) {
-            System.out.println("=================" + e);
+            log.info("=================", e);
+        } finally {
+            exec.shutdown();
         }
     }
 
@@ -46,9 +54,17 @@ public class Demo21 {
             this.id = id;
         }
 
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
         @Override
         public void run() {
-            if(id==1) throw new RuntimeException("here is an exception");
+            System.out.println("here is sub thread, id=" + id);
         }
     }
 }

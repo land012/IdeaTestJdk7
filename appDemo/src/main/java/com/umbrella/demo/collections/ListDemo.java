@@ -1,4 +1,4 @@
-package com.umbrella.demo.java.util;
+package com.umbrella.demo.collections;
 
 import com.umbrella.vo.People;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;

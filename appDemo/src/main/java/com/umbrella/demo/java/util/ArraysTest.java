@@ -84,4 +84,10 @@ public class ArraysTest {
         String[] arr = null;
         System.out.println(Arrays.toString(arr));
     }
+
+    @Test
+    public void test6() {
+        double[] arr = new double[5];
+        System.out.println(arr[0]); // 0.0
+    }
 }

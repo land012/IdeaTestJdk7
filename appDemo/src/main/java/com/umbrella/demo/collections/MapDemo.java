@@ -1,4 +1,4 @@
-package com.umbrella.demo.java.util;
+package com.umbrella.demo.collections;
 
 import org.junit.Test;
 
