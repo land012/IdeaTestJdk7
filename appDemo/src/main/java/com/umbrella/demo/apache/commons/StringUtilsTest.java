@@ -209,7 +209,8 @@ public class StringUtilsTest {
         info.info(StringUtils.isNotBlank("") + ""); // false
         info.info(StringUtils.isNotBlank(" ") + ""); // false 空格
         info.info(StringUtils.isNotBlank("  ") + ""); // false 制表符
-        info.info(StringUtils.isNotBlank("a") + ""); // true
+        info.info(StringUtils.isNotBlank("\n") + ""); // false 制表符
+        info.info(StringUtils.isNotBlank(" a ") + ""); // true
         info.info("=========================================================");
         info.info(StringUtils.isNotEmpty(null) + ""); // false
         info.info(StringUtils.isNotEmpty("") + ""); // false

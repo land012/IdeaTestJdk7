@@ -59,8 +59,8 @@ public class NumberUtilsTest {
 	public void test2() {
 		/**
 		 * NumberUtils.isNumber() 正整数，零，负数，小数，科学计数法 都是true
-		 * NumberUtils.isDigits()  正整数，零 返回 true 负数，小数，科学计数法 返回 false
-		 * StringUtils.isNumeric() 正整数，零 返回 true 负数，小数，科学计数法 返回 false
+		 * NumberUtils.isDigits()  正整数，零 返回 true； 负数，小数，科学计数法 返回 false
+		 * StringUtils.isNumeric() 正整数，零 返回 true； 负数，小数，科学计数法 返回 false
 		 */
 		// 正整数
 //		String d2Str = "1212340";

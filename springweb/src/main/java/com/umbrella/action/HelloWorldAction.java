@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
@@ -188,9 +189,14 @@ public class HelloWorldAction extends BaseController {
         PrintWriter pw = null;
         try {
             pw = resp.getWriter();
-            pw.println("a");
-            pw.write("b");
+            pw.println("a"); // 会换行
+            pw.write("b"); // 不会换行
             pw.println("c");
+
+            File f = new File(".");
+            pw.write(f.getCanonicalPath()); // D:\ProgramDev\apache-tomcat-8.5.11\bin
+
+            pw.flush();
         } catch (Exception e) {
             log.error("", e);
         }

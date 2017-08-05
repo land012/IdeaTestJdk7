@@ -89,13 +89,19 @@ public class SystemTest {
 //		for(String key : set1) {
 //			System.out.format("%s 是 %s%n", key, map1.get(key));
 //		}
-		
-		
+
 	}
-	
+
+    /**
+     * system.property
+     * -Dk=v
+     */
 	@Test
 	public void test20() {
 		System.out.println(System.getProperty("user.name")); // xudazhou
+        // 作为java参数，用 -Dfoo=bar 的方式传进来
+        System.out.println(System.getProperty("foo")); // bar
+        System.out.println(System.getProperty("idea.launcher.port")); // 7540
 	}
 	
 	@Test

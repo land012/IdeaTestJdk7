@@ -118,4 +118,16 @@ public class FileDemo {
         System.out.println(File.pathSeparator); // ; 环境变量路径分隔符
     }
 
+    /**
+     * 当前目录
+     * @throws Exception
+     */
+    @Test
+    public void test6() throws Exception {
+        File f = new File(".");
+        System.out.println(f.getCanonicalPath()); // D:\_idea\TestApp
+        System.out.println(f.getAbsolutePath()); // D:\_idea\TestApp\.
+        System.out.println(f.getPath()); // .
+    }
+
 }

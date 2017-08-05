@@ -1,4 +1,4 @@
-package com.umbrella.demo.java.util;
+package com.umbrella.demo.java.time;
 
 import org.junit.Test;
 
@@ -21,6 +21,15 @@ public class DateDemo {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * timestamp to time
+     */
+    @Test
+    public void test0() {
+        Date d1 = new Date(1501603368715L);
+        System.out.println(d1);
     }
 
     @Test

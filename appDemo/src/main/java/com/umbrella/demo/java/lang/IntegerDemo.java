@@ -114,4 +114,37 @@ public class IntegerDemo {
         System.out.println(count); // 2
     }
 
+    /**
+     * string to int
+     */
+    @Test
+    public void test8() {
+        String str1 = "1.0";
+        // java.lang.NumberFormatException: For input string: "1.0"
+//        int i1 = Integer.parseInt(str1);
+
+        // java.lang.NumberFormatException: For input string: "1.0"
+//        int i2 = Integer.valueOf(str1);
+
+        // java.lang.NumberFormatException: For input string: ""
+//        Integer.parseInt("");
+
+        // java.lang.NumberFormatException: null
+        Integer.parseInt(null);
+    }
+
+    /**
+     * 2147483648 超过了 int 最大值
+     */
+    @Test
+    public void test9() {
+        String str1 = "2147483648";
+        // java.lang.NumberFormatException: For input string: "2147483648"
+//        int i1 = Integer.parseInt(str1);
+
+        // 不会抛异常
+        int i2 = Integer.parseUnsignedInt(str1);
+        System.out.println(i2); // -2147483648
+    }
+
 }

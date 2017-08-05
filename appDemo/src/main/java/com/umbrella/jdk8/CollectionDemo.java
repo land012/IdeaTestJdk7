@@ -25,6 +25,7 @@ public class CollectionDemo {
         u2.setUserName("Hector");
         userList.add(u1);
         userList.add(u2);
+
         List<Long> ids = userList
                 .stream()
                 .map(User::getId)
@@ -42,23 +43,35 @@ public class CollectionDemo {
         list1.add(" ");
         list1.add("b ");
         list1.add(" a ");
+
         List<String> list2 = list1
                 .stream()
                 .map(str -> StringUtils.trimToEmpty(str))
                 .filter(str -> StringUtils.isNoneEmpty(str))
                 .collect(Collectors.toList());
+
+        List<String> list3 = list1
+                .stream()
+                .map(str -> StringUtils.trimToEmpty(str))
+                .filter(str -> StringUtils.isNoneEmpty(str))
+                .distinct() // 去重
+                .collect(Collectors.toList());
+
         Set<String> set2 = list1
                 .stream()
                 .map(str -> StringUtils.trimToEmpty(str))
                 .filter(str -> StringUtils.isNoneEmpty(str))
                 .collect(Collectors.toSet());
+
         System.out.println(list1); // [ a,  , b ,  a ]
         System.out.println(list2); // [a, b, a]
-        System.out.println(set2); // [a, b]
+        System.out.println(list3); // [a, b]
+        System.out.println(set2);  // [a, b]
     }
 
     /**
      * 遍历
+     * stream.forEach
      */
     @Test
     public void test1_2() {
@@ -73,6 +86,32 @@ public class CollectionDemo {
         userList.add(u2);
         userList.stream()
                 .forEach(user -> System.out.println(user));
+    }
+
+    /**
+     * 遍历
+     * forEach
+     */
+    @Test
+    public void test1_3() {
+        List<String> list1 = new ArrayList<>();
+        list1.add("c");
+        list1.add("a");
+        list1.add("d");
+
+        list1.forEach(x -> System.out.println(x));
+
+        StringBuilder res = new StringBuilder();
+        list1.stream()
+                .filter(x -> !"a".equals(x))
+                .forEach(x -> res.append(x).append("|"));
+        System.out.println(res); // c|d|
+
+        StringBuilder res2 = new StringBuilder();
+        list1.stream()
+                .filter(x -> !"a".equals(x))
+                .map(x -> res2.append(x).append("|"));
+        System.out.println("res2=" + res2); // res2=
     }
 
     /**
@@ -95,4 +134,6 @@ public class CollectionDemo {
         Collections.sort(list1, (a, b) ->  b.compareTo(a));
         System.out.println(list1); // [d, c, b, a]
     }
+
+
 }

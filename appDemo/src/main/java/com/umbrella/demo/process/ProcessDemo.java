@@ -46,6 +46,69 @@ public class ProcessDemo {
     }
 
     /**
+     * 不读输出，直接调用 waitFor
+     * 当执行次数比较少时，可以通过
+     * 当执行次数比较多时，程序会阻塞，因为缓冲区被写满，无法继续写入，程序阻塞在 waitFor
+     * @throws Exception
+     */
+    @Test
+    public void test1_1() throws Exception {
+        ProcessBuilder pb = new ProcessBuilder();
+        List<String> commands = new ArrayList<>();
+        commands.add("ping");
+        commands.add("-n");
+        commands.add("80");
+        commands.add("127.0.0.1");
+        pb.command(commands);
+
+        long start = System.currentTimeMillis();
+        System.out.println("begin = " + start);
+
+        Process process = pb.start();
+
+        System.out.println("waitfor=" + process.waitFor()); // 0
+        int e1 = process.exitValue();
+        System.out.println("exitCode=" + e1); // 0
+
+        long cost = System.currentTimeMillis() - start;
+        System.out.println(cost / 1000.0); // 30.797s
+    }
+
+    /**
+     * 读输出，调用 waitFor，可以通过
+     * @throws Exception
+     */
+    @Test
+    public void test1_2() throws Exception {
+        ProcessBuilder pb = new ProcessBuilder();
+        List<String> commands = new ArrayList<>();
+        commands.add("ping");
+        commands.add("-n");
+        commands.add("80");
+        commands.add("127.0.0.1");
+        pb.command(commands);
+
+        long start = System.currentTimeMillis();
+        System.out.println("begin = " + start);
+
+        Process process = pb.start();
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), "gbk"));
+        String line = null;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+
+
+        System.out.println("waitfor=" + process.waitFor()); // 0
+        int e1 = process.exitValue();
+        System.out.println("exitCode=" + e1); // 0
+
+        long cost = System.currentTimeMillis() - start;
+        System.out.println(cost / 1000.0); // 79.81s
+    }
+
+    /**
      * 测试 exitCode
      * @throws IOException
      * @throws InterruptedException

@@ -1,4 +1,4 @@
-package com.umbrella.demo.concurrent.queue.delay;
+package com.umbrella.queue.delay;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
