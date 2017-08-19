@@ -71,9 +71,15 @@ public class StringUtilsSplitTest {
     public void test4() {
         String str1 = "aasd,";
         String[] str1Arr = StringUtils.split(str1, ",");
+        /*
+         * -aasd-
+         */
         for(int i=0; i<str1Arr.length; i++) {
             System.out.println("-" + str1Arr[i] + "-");
         }
+
+        String[] arr2 = str1.split(",");
+        System.out.println(arr2.length);  // 1
     }
 
     /**
