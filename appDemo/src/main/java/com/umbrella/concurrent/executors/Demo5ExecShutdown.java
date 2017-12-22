@@ -13,9 +13,9 @@ import java.util.concurrent.Executors;
  * Exception in thread "main" java.util.concurrent.RejectedExecutionException
  * 在执行 shutdown 后，队列不会再接受新的任务，但是线程池会执行完队列中的所有任务才会退出
  */
-public class Demo5 {
+public class Demo5ExecShutdown {
 
-    private static final Logger log = Logger.getLogger(Demo5.class);
+    private static final Logger log = Logger.getLogger(Demo5ExecShutdown.class);
 
     public static void main(String[] args) {
         ExecutorService exec = Executors.newFixedThreadPool(3);

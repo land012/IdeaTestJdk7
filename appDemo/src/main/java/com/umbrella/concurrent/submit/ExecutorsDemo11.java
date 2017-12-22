@@ -37,7 +37,7 @@ public class ExecutorsDemo11 {
 
         @Override
         public void run() {
-            if(id==3) throw new RuntimeException("here is an exception, id=" + id);
+            if(id == 3) throw new RuntimeException("here is an exception, id=" + id);
             log.info("i am " + id);
         }
     }

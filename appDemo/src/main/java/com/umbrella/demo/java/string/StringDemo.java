@@ -108,6 +108,11 @@ public class StringDemo {
     @Test
     public void testEqual() {
         System.out.println("s".equals(null)); // false
+        String str1 = "abc";
+        String str2 = "abc";
+        String str3 = new String("abc");
+        System.out.println(str1 == str2); // true
+        System.out.println(str1 == str3); // false
     }
 
     @Test
@@ -161,5 +166,19 @@ public class StringDemo {
         for(String s1 : arr) {
             System.out.println(s1);
         }
+    }
+
+    @Test
+    public void test9() {
+        String logstr = "xxxxxxx copy_sim_doc";
+        int beginInex = logstr.indexOf("copy_sim_doc");
+        int leftQ = beginInex + 14;
+        System.out.println(leftQ); // 22
+        System.out.println(logstr.length()); // 20
+        int rightQ = logstr.indexOf("\"", leftQ + 1); // 不会报下标越界...
+        System.out.println(rightQ); // -1
+
+        System.out.println(logstr.indexOf("")); // 0
+        System.out.println(logstr.indexOf("", 1)); // 1
     }
 }

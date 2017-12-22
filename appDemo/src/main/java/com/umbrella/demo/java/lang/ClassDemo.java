@@ -14,4 +14,11 @@ public class ClassDemo {
         System.out.println(d1 instanceof Date); // true
         System.out.println(Date.class.isAssignableFrom(d1.getClass())); // true
     }
+
+    @Test
+    public void test2() {
+        Date d1 = new Date();
+        Date d2 = new Date();
+        System.out.println(d1.getClass() == d2.getClass()); // true
+    }
 }

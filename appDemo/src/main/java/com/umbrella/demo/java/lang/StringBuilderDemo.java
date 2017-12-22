@@ -18,4 +18,10 @@ public class StringBuilderDemo {
                 .append(str1);
         System.out.println(sb);
     }
+
+    @Test
+    public void test2() {
+        StringBuilder sb1 = new StringBuilder("abcde");
+        System.out.println(sb1.substring(0, sb1.length()-1)); // abcd
+    }
 }

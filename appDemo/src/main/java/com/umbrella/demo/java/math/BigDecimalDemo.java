@@ -74,4 +74,35 @@ public class BigDecimalDemo {
         BigDecimal bd2_1 = new BigDecimal(d2);
         System.out.println(bd2_1.setScale(4, RoundingMode.HALF_UP)); // 0.1230
     }
+
+    @Test
+    public void test6() {
+        // 0.002348248199333753
+        System.out.println(Math.pow(0.997, 2015));
+        // 0.0023482481993337526926882406424511793255791118737202947643809938...
+        System.out.println(new BigDecimal(0.997).pow(2015));
+    }
+
+    /**
+     * 无限循环的时候报异常
+     * java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
+     */
+    @Test
+    public void test7() {
+        BigDecimal b1 = new BigDecimal(10);
+        BigDecimal b2 = new BigDecimal(3);
+        System.out.println(b1.divide(b2));
+    }
+
+    /**
+     * 无限循环
+     * 只用 Rounding 的话，截断为整数
+     */
+    @Test
+    public void test8() {
+        BigDecimal b1 = new BigDecimal(10);
+        BigDecimal b2 = new BigDecimal(3);
+        System.out.println(b1.divide(b2, RoundingMode.HALF_UP)); // 3
+        System.out.println(b1.divide(b2, 2, RoundingMode.HALF_UP)); // 3.33
+    }
 }

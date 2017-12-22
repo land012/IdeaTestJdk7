@@ -1,10 +1,10 @@
-package com.umbrella.concurrent;
+package com.umbrella.concurrent.future;
 
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 /**
  * Created by xudazhou on 2016/5/12.
@@ -30,4 +30,5 @@ public class FutureTaskDemo {
         log.info("I am main");
         log.info(futureTask.get());
     }
+
 }

@@ -12,7 +12,9 @@ public class DoubleDemo {
     @Test
     public void test1() {
         double d1 = 3d; // 双精度浮点数表示法
-
+        double d2 = 2 * 3;
+        long l3 = 5;
+        System.out.println(l3 / d2); // 0.8333333333333334
     }
 
     /**

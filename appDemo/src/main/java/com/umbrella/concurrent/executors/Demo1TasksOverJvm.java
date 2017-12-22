@@ -9,21 +9,27 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by 大洲 on 15-5-27.
- * 执行了 shutdown，会不会执行还没有执行的任务？
- * 线程池会执行完所有队列中的任务才会退出
+ * 当任务远多于线程个数时，任务是不是都会被添加而导致内存溢出?
+ * 是的
+ * 这个实际上取决于线程池使用的 BlockingQueue 的大小
  */
-public class Demo4 {
+public class Demo1TasksOverJvm {
 
-    private static final Logger log = Logger.getLogger(Demo4.class);
+    private static final Logger log = Logger.getLogger(Demo1TasksOverJvm.class);
 
     public static void main(String[] args) {
         ExecutorService exec = Executors.newFixedThreadPool(3);
 
-        for(int i=1; i<=10; i++) {
+        /**
+         * Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+         * 主线程挂掉了，子线程照样跑！！！！！
+         * 阻塞队列没有满，但是 jvm 满了
+         */
+        for(int i=1; i<=1000000; i++) {
             log.info(String.valueOf(i));
             User u = new User();
             u.setId(i);
-            String userName = new String("aaaaaaaaaaaaaa" + i);
+            String userName = new String("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + i);
             u.setUserName(userName);
             exec.execute(new Task(u));
         }

@@ -104,6 +104,20 @@ public class StringUtilsSplitTest {
         for(int i=0; i<str1Arr.length; i++) {
             System.out.println("-" + str1Arr[i] + "-");
         }
-
     }
+
+    /**
+     * split limit
+     */
+    @Test
+    public void test7() {
+        String str1 = "a|b|c";
+        System.out.println(str1.split("|", 1).length); // 1
+        System.out.println(StringUtils.split(str1, "|", 1).length); // 1
+        System.out.println(str1.split("|", 2).length); // 2
+        System.out.println(StringUtils.split(str1, "|", 2).length); // 2
+
+        System.out.println(StringUtils.split(str1, "|", 5).length); // 3
+    }
+
 }

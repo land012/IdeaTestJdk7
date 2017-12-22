@@ -2,6 +2,9 @@ package com.umbrella.demo.java.lang;
 
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 /**
  * Created by xudazhou on 2017/3/26.
  */
@@ -35,5 +38,14 @@ public class CharDemo {
             return true;
         }
         return false;
+    }
+
+    @Test
+    public void test3() throws Exception {
+        String str1 = "\\x66\\x65\\x65\\x64\\x5f\\x70\\x72\\x6f\\x64\\x75\\x63\\x74\\x69\\x6f\\x6e\\x5f\\x73\\x68\\x6f\\x75\\x62\\x61\\x69\\x5f\\x6e\\x6f\\x6e\\x6e\\x65\\x77\\x73\\x5f\\x75\\x6e\\x69\\x71\\x5f\\x62\\x6c\\x6f\\x6f\\x6d\\x2e\\x79\\x6d\\x6c";
+//        System.out.println(str1);
+        String str2 = str1.replace("\\x", "%");
+//        System.out.println(str2);
+        System.out.println(URLDecoder.decode(str2, "utf-8")); // feed_production_shoubai_nonnews_uniq_bloom.yml
     }
 }

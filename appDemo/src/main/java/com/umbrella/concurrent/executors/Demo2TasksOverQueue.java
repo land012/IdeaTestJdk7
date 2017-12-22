@@ -13,18 +13,19 @@ import java.util.concurrent.*;
  * 但子线程消费了任务，主线程也不会继续添加任务了
  *
  */
-public class Demo2 {
-    private static final Logger log = Logger.getLogger(Demo1.class);
+public class Demo2TasksOverQueue {
+    private static final Logger log = Logger.getLogger(Demo2TasksOverQueue.class);
 
     public static void main(String[] args) {
-        ExecutorService exec = new ThreadPoolExecutor(3, 3, 0L, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(1000));
+        ExecutorService exec = new ThreadPoolExecutor(3, 3, 0L, TimeUnit.SECONDS, new ArrayBlockingQueue<>(5));
 
-        for(int i=1; i<=1000000; i++) {
+        for(int i=1; i<=1000; i++) {
             log.info(String.valueOf(i));
             User u = new User();
             u.setId(i);
-            String userName = new String("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + i);
+            String userName = new String("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + i);
             u.setUserName(userName);
+            // RejectedExecutionException
             exec.execute(new Task(u));
         }
         exec.shutdown();
@@ -44,9 +45,9 @@ public class Demo2 {
         public void run() {
             log.info("i am " + user.getId());
             try {
-                Thread.sleep(100);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                log.info(e);
             }
         }
     }

@@ -76,6 +76,7 @@ public class HelloWorldAction extends BaseController {
         try {
             /**
              * 客户端IP
+             * 当客户端修改这个参数 x-forwarded-for 时，获取的 ip 会改变
              */
             String clientIP = "";
             clientIP = req.getHeader("x-forwarded-for");

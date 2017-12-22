@@ -76,6 +76,14 @@ public class IntegerDemo {
         System.out.println(Integer.toHexString(-7)); // fffffff9
     }
 
+    @Test
+    public void test4_2() {
+        int i1 = 0x70;
+        char c1 = 0x70;
+        System.out.println(i1); // 112
+        System.out.println(c1); // p
+    }
+
     /**
      * 二进制
      * 补码表示

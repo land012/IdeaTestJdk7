@@ -1,13 +1,13 @@
 package com.umbrella.concurrent.thread;
 
-import com.umbrella.concurrent.executors.Demo1;
+import com.umbrella.concurrent.executors.Demo1TasksOverJvm;
 import org.apache.log4j.Logger;
 
 /**
  * 最基本的线程写法
  */
 public class ThreadDemo {
-    private static final Logger log = Logger.getLogger(Demo1.class);
+    private static final Logger log = Logger.getLogger(Demo1TasksOverJvm.class);
 
     public static void main(String[] args) {
         new Thread(new Task(0)).start();

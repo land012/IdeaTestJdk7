@@ -39,6 +39,15 @@ public class JodaTimeDemo {
     public void test0_1() {
         DateTime dt1 = new DateTime(2016, 2, 16, 12, 12, 0); // 2016-02-16T12:12:00.000+08:00
         System.out.println(dt1); // 2016-02-16T12:12:00.000+08:00
+
+        LocalDate date1 = dt1.toLocalDate();
+        System.out.println(date1); // 2016-02-16
+
+        LocalDate date2 = date1.minusDays(6);
+        System.out.println(date2); // 2016-02-10
+
+        date1 = date1.minusMonths(2);
+        System.out.println(date1); // 2015-12-16     w
     }
 
     /**
@@ -60,6 +69,8 @@ public class JodaTimeDemo {
         System.out.println(dt2); // 2014-03-01T00:00:00.000+08:00
         DateTime lastMonth2 = dt2.minusMonths(1);
         System.out.println(lastMonth2); // 2014-02-01T00:00:00.000+08:00
+        System.out.println(dt2); // 2014-03-01T00:00:00.000+08:00
+        System.out.println(dt2.isBefore(lastMonth2)); // false
     }
 
     /**
@@ -85,27 +96,10 @@ public class JodaTimeDemo {
         DateTime dt1 = new DateTime(2016, 2, 16, 12, 12, 0); // 2016-02-16T12:12:00.000+08:00
         System.out.println(dt1); // 2016-02-16T12:12:00.000+08:00
         System.out.println(dt1.toString("yyyy-MM-dd HH:mm:ss")); // 2016-02-16 12:12:00
+        System.out.println(dt1.toString("HH:mm:ss")); // 12:12:00
 
         DateTimeFormatter dtfer1 = DateTimeFormat.shortDate();
         System.out.println(dtfer1.print(dt1)); // 16-2-16
-    }
-
-    /**
-     * LocalDateTime
-     */
-    @Test
-    public void test5_localdatetime() {
-        DateTime dt1 = new DateTime(2016, 2, 16, 12, 12, 0); // 2016-02-16T12:12:00.000+08:00
-        System.out.println(dt1); // 2016-02-16T12:12:00.000+08:00
-
-        System.out.println(dt1.dayOfMonth().get()); // 16
-
-        LocalDate ld1 = dt1.toLocalDate();
-        System.out.println(ld1.getDayOfMonth()); // 16
-
-        LocalDateTime ldt1 = dt1.toLocalDateTime();
-        System.out.println(ldt1.get(DateTimeFieldType.dayOfMonth())); // 16
-        System.out.println(DateTimeFieldType.dayOfMonth().getName()); // dayOfMonth
     }
 
     /**
@@ -294,30 +288,7 @@ public class JodaTimeDemo {
         System.out.println(dt2.dayOfMonth().get()-dt1.dayOfMonth().get()); // 3
     }
 
-    /**
-     * 仅获取日期部分
-     */
-    @Test
-    public void test7_1_localdate() {
-        DateTime dt = DateTime.now();
-        System.out.println(dt); // 2017-02-21T18:58:12.586+08:00
 
-        LocalDate ld = new LocalDate();
-        System.out.println(ld); // 2017-02-21
-        System.out.println(ld.toDate()); // Tue Feb 21 00:00:00 CST 2017
-    }
 
-    /**
-     * LocalDate
-     * 可以把 yyyy-MM-dd HH:mm:ss 截断为 yyyy-MM-dd
-     */
-    @Test
-    public void test8_localdate() {
-        Date d1 = new Date();
-        System.out.println(d1); // Tue Feb 21 19:01:30 CST 2017
 
-        LocalDate ld1 = new LocalDate(d1.getTime());
-        System.out.println(ld1); // 2017-02-21
-        System.out.println(ld1.toDate()); // Tue Feb 21 00:00:00 CST 2017
-    }
 }

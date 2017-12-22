@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 /**
  * Created by xudazhou on 2016/2/24.
  * 验证能否在 子线程里打断点
+ * 可以
  */
 public class ThreadPoolDemo {
     @Test

@@ -26,7 +26,7 @@ public class StringEscapeUtilsDemo {
         System.out.println("=================================================");
 
         String str1 = "汉";
-        System.out.println("html:" + getHtmlCharEntity(str1));
+        System.out.println("html:" + getHtmlCharEntity(str1));  // html:&#27721;
     }
 
     public static String getHtmlCharEntity(String str1) {
@@ -38,7 +38,7 @@ public class StringEscapeUtilsDemo {
         int i1 = Integer.valueOf(unicode, 16);
         System.out.println(i1); // 27721
         String charentity = "&#" + String.valueOf(i1) + ";";
-        System.out.println(charentity);
+        System.out.println(charentity);  // &#27721;
         return charentity;
     }
 
