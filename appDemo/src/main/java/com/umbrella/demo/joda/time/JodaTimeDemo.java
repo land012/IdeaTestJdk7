@@ -30,6 +30,10 @@ public class JodaTimeDemo {
         System.out.println(dt1); // 2017-02-21T19:43:19.263+08:00
         System.out.println(dt2); //2017-02-21T19:43:19.263+08:00
         System.out.println(dt1.getChronology()); // ISOChronology[Asia/Shanghai]
+
+        System.out.println(dt1.millisOfSecond().get()); // 263
+        System.out.println(dt1.getMillis()); // 1487677399263
+        System.out.println(dt1.toInstant().getMillis()); // 1487677399263
     }
 
     /**
@@ -74,7 +78,7 @@ public class JodaTimeDemo {
     }
 
     /**
-     * 计算间隔时长
+     * 计算间隔时长 Interval
      */
     @Test
     public void test2_instant() {
@@ -86,178 +90,6 @@ public class JodaTimeDemo {
         }
         System.out.println(start); // 2017-02-21T11:19:21.935Z
         System.out.println(new Interval(start, new Instant()).toDuration().getMillis()); // 3097
-    }
-
-    /**
-     * DateTimeFormatter
-     */
-    @Test
-    public void test4_datetimeformatter() {
-        DateTime dt1 = new DateTime(2016, 2, 16, 12, 12, 0); // 2016-02-16T12:12:00.000+08:00
-        System.out.println(dt1); // 2016-02-16T12:12:00.000+08:00
-        System.out.println(dt1.toString("yyyy-MM-dd HH:mm:ss")); // 2016-02-16 12:12:00
-        System.out.println(dt1.toString("HH:mm:ss")); // 12:12:00
-
-        DateTimeFormatter dtfer1 = DateTimeFormat.shortDate();
-        System.out.println(dtfer1.print(dt1)); // 16-2-16
-    }
-
-    /**
-     * Days
-     * 如果日期中包含 HH:mm:dd，那么不足3天时，显示为 2 天
-     */
-    @Test
-    public void test3_0_days_time() {
-        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        DateTime dt1 = DateTime.parse("2016-02-13 12:12:00", dtfer);
-        System.out.println(dt1); // 2016-02-13T12:12:00.000+08:00
-        DateTime dt2 = DateTime.parse("2016-02-16 12:00:00", dtfer);
-
-        Days days1 = Days.daysBetween(dt1, dt2);
-        System.out.println(days1); // P2D
-        System.out.println(days1.getDays()); // 2
-        System.out.println(days1.getPeriodType().getName()); // Days
-    }
-
-    /**
-     * Days
-     */
-    @Test
-    public void test3_0_2_days() {
-        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd");
-        DateTime dt1 = DateTime.parse("2015-11-09", dtfer);
-        DateTime dt2 = DateTime.parse("2015-12-09", dtfer);
-
-        Days days1 = Days.daysBetween(dt1, dt2);
-        System.out.println(days1); // P30D
-        System.out.println(days1.getDays()); // 30
-        System.out.println(days1.getPeriodType().getName()); // Days
-    }
-
-    /**
-     * Period
-     * 标准 period，日期相差不足一周
-     */
-    @Test
-    public void test3_1_period() {
-        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        DateTime dt1 = DateTime.parse("2016-02-13 12:12:00", dtfer);
-        DateTime dt2 = DateTime.parse("2016-02-16 12:00:00", dtfer);
-
-        Period period1 = new Period(dt1, dt2);
-        System.out.println(period1.getDays()); // 2
-        System.out.println(period1.get(DurationFieldType.days())); // 2
-        System.out.println(period1.toStandardDays()); // P2D
-        System.out.println(period1.getHours()); // 23
-        System.out.println(period1.getMinutes()); // 48
-        System.out.println(period1.getSeconds()); // 0
-    }
-
-    /**
-     * Period
-     * 标准 period，日期相差超过一周
-     */
-    @Test
-    public void test3_2_period() {
-        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        DateTime dt1 = DateTime.parse("2017-02-04 00:00:00", dtfer);
-        DateTime dt2 = DateTime.parse("2017-02-15 00:00:00", dtfer);
-
-        Period period1 = new Period(dt1, dt2);
-        System.out.println(period1.getMonths()); // 0
-        System.out.println(period1.getWeeks()); // 1
-        System.out.println(period1.getDays()); // 4 ????? 因为前面有一个完整的周
-        System.out.println(period1.get(DurationFieldType.days())); // 4
-        System.out.println(period1.toStandardDays()); // P11D
-        System.out.println(period1.getHours()); // 0
-    }
-
-    /**
-     * Period
-     */
-    @Test
-    public void test3_3_period() {
-        // 标准 period，日期相差正好一周
-        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        DateTime dt1 = DateTime.parse("2017-02-04 00:00:00", dtfer);
-        DateTime dt2 = DateTime.parse("2017-02-11 00:00:00", dtfer);
-        Period period1 = new Period(dt1, dt2);
-        System.out.println(period1.getMonths()); // 0
-        System.out.println(period1.getWeeks()); // 1
-        System.out.println(period1.getDays()); // 0
-
-        System.out.println("================== 1 ====================");
-
-        // 日期相差正好一月
-        DateTime dt3 = DateTime.parse("2017-02-04 00:00:00", dtfer);
-        DateTime dt4 = DateTime.parse("2017-03-04 00:00:00", dtfer);
-        Period period2 = new Period(dt3, dt4);
-        System.out.println(period2.getMonths()); // 1
-        System.out.println(period2.getWeeks()); // 0
-        System.out.println(period2.getDays()); // 0
-
-        System.out.println("================== 2 ====================");
-
-        // 日期相差超过一月，但不到一月零一周
-        DateTime dt5 = DateTime.parse("2017-02-04 00:00:00", dtfer);
-        DateTime dt6 = DateTime.parse("2017-03-05 00:00:00", dtfer);
-        Period period3 = new Period(dt5, dt6);
-        System.out.println(period3.getMonths()); // 1
-        System.out.println(period3.getWeeks()); // 0
-        System.out.println(period3.getDays()); // 1
-    }
-
-    /**
-     * Period
-     * Day
-     */
-    @Test
-    public void test3_4_period() {
-        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        DateTime dt1 = DateTime.parse("2017-02-04 00:00:00", dtfer);
-        DateTime dt2 = DateTime.parse("2017-02-14 02:00:00", dtfer);
-
-        Period period1 = new Period(dt1, dt2, PeriodType.days());
-        System.out.println(period1.getMonths()); // 0
-        System.out.println(period1.getWeeks()); // 0
-        System.out.println(period1.getDays()); // 10
-        System.out.println(period1.getHours()); // 0
-    }
-
-    /**
-     * Period
-     * Day
-     */
-    @Test
-    public void test3_5_period() {
-        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        DateTime dt1 = DateTime.parse("2017-02-04 00:00:00", dtfer);
-        DateTime dt2 = DateTime.parse("2018-03-05 02:00:00", dtfer);
-
-        Period period1 = new Period(dt1, dt2, PeriodType.dayTime());
-        System.out.println(period1.getYears()); // 0
-        System.out.println(period1.getMonths()); // 0
-        System.out.println(period1.getWeeks()); // 0
-        System.out.println(period1.getDays()); // 394
-        System.out.println(period1.getHours()); // 2
-    }
-
-    /**
-     * Period
-     * Day
-     */
-    @Test
-    public void test3_6_period() {
-        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        DateTime dt1 = DateTime.parse("2017-02-04 00:00:00", dtfer);
-        DateTime dt2 = DateTime.parse("2019-03-05 02:00:00", dtfer);
-
-        Period period1 = new Period(dt1, dt2, PeriodType.yearMonthDayTime());
-        System.out.println(period1.getYears()); // 2
-        System.out.println(period1.getMonths()); // 1
-        System.out.println(period1.getWeeks()); // 0
-        System.out.println(period1.getDays()); // 1
-        System.out.println(period1.getHours()); // 2
     }
 
     /**
@@ -287,8 +119,5 @@ public class JodaTimeDemo {
 
         System.out.println(dt2.dayOfMonth().get()-dt1.dayOfMonth().get()); // 3
     }
-
-
-
 
 }

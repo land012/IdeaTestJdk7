@@ -2,8 +2,8 @@ package com.umbrella.demo.json.gson;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.*;
-import com.umbrella.demo.json.jackson1.domain.Data;
-import com.umbrella.demo.json.jackson1.domain.User;
+import com.umbrella.demo.json.jackson.codehaus.domain.Data;
+import com.umbrella.demo.json.jackson.codehaus.domain.User;
 import com.umbrella.demo.json.vo.Result;
 import com.umbrella.demo.json.vo.School;
 import com.umbrella.demo.json.vo.Student;

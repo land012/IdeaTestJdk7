@@ -1,4 +1,4 @@
-package com.umbrella.demo.json.jackson1.domain;
+package com.umbrella.demo.json.jackson.codehaus.domain;
 
 
 /**

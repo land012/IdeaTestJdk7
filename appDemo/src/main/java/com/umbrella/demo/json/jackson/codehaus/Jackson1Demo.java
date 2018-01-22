@@ -1,12 +1,13 @@
-package com.umbrella.demo.json.jackson1;
+package com.umbrella.demo.json.jackson.codehaus;
 
-import com.umbrella.demo.json.jackson1.domain.Course;
-import com.umbrella.demo.json.jackson1.domain.School;
-import com.umbrella.demo.json.jackson1.domain.User;
+import com.umbrella.demo.json.jackson.codehaus.domain.Course;
+import com.umbrella.demo.json.jackson.codehaus.domain.School;
+import com.umbrella.demo.json.jackson.codehaus.domain.User;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -67,13 +68,15 @@ public class Jackson1Demo {
     /**
      * Object to JSON
      * 日期处理
-     * TODO null处理 怎么把 null 自动转换为 ""
+     * -------- null处理 怎么把 null 自动转换为 ""
+     * 忽略 null 字段
      */
     @Test
     public void test1() {
         ObjectMapper om1 = new ObjectMapper();
         om1.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
-//        om1.configure(D)
+        om1.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
+
         User u1 = new User();
         u1.setId(10000);
         u1.setUserName("Leah Dizon");
@@ -82,6 +85,7 @@ public class Jackson1Demo {
         try {
 //            om1.writeValue(System.out, u1);
             String json = om1.writeValueAsString(u1);
+            // {"id":10000,"userName":"Leah Dizon","birth":"2017-12-28 11:11:27","age":0,"workAddress":""}
             log.info(json);
             System.out.println();
         } catch (IOException e) {

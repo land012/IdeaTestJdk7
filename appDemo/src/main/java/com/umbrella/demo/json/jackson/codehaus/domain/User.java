@@ -1,7 +1,8 @@
-package com.umbrella.demo.json.jackson1.domain;
+package com.umbrella.demo.json.jackson.codehaus.domain;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 大洲 on 14-12-6.
@@ -13,6 +14,7 @@ public class User {
     private int age;
     private transient String address;
     private static String workAddress;
+    private Map<String, Integer> hobbies;
 
     private School school;
     private List<Course> courses;
@@ -79,5 +81,13 @@ public class User {
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+    }
+
+    public Map<String, Integer> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(Map<String, Integer> hobbies) {
+        this.hobbies = hobbies;
     }
 }

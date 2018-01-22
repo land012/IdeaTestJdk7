@@ -28,4 +28,30 @@ public class FastJsonDemo {
                     System.out.println(x);
                 });
     }
+
+    @Test
+    public void test2() {
+        JSONObject jo1 = new JSONObject();
+        JSONObject jo2 = new JSONObject();
+        jo1.put("k1", "v1");
+        jo1.put("k2", "v2");
+        jo1.put("k3", 12);
+        jo2.put("j1", jo1);
+        jo2.put("s1", "aaa");
+        System.out.println(jo2.toString()); // {"j1":{"k1":"v1","k2":"v2","k3":12},"s1":"aaa"}
+        System.out.println(jo2.toJSONString());
+    }
+
+    /**
+     * 字段用下划线分隔 驼峰
+     * 未实现
+     */
+    @Test
+    public void test3() {
+        User u1 = new User();
+        u1.setuId(1);
+        u1.setUserName("tom");
+        String json = JSON.toJSONString(u1);
+        System.out.println(json);
+    }
 }

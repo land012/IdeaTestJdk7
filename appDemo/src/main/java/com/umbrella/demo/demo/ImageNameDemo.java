@@ -11,7 +11,7 @@ public class ImageNameDemo {
     @Test
     public void test2() {
         DecimalFormat df = new DecimalFormat("000");
-        for(int i=1; i<=188; i++) {
+        for(int i=1; i<=218; i++) {
             System.out.println("<img src=\"images/" + df.format(i) + ".jpg\" />");
             System.out.println("<hr />");
         }

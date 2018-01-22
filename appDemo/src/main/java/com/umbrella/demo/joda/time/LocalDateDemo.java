@@ -66,4 +66,12 @@ public class LocalDateDemo {
             begin = begin.plusDays(1);
         }
     }
+
+    @Test
+    public void test3() {
+        Date d1 = new Date();
+        LocalDate ld1 = new LocalDate(d1);
+        System.out.println(d1); // Sat Dec 30 11:03:15 CST 2017
+        System.out.println(ld1); // 2017-12-30
+    }
 }

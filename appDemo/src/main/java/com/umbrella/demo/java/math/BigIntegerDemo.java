@@ -20,6 +20,7 @@ public class BigIntegerDemo {
 
     /**
      * 数据 10689576657988959934 已经超过了 long 的最大值
+     * 转成 string
      */
     @Test
     public void test2() {
@@ -30,10 +31,17 @@ public class BigIntegerDemo {
         BigInteger bi2 = BigInteger.valueOf(l1);
         System.out.println(bi2); // -7757167415720591682
 
+        // 方式1
         BigInteger bi3 = BigInteger.valueOf(l1 & 0x7FFFFFFFFFFFFFFFL);
         System.out.println(bi3); // 1466204621134184126
         BigInteger bi4 = bi3.setBit(63);
         System.out.println(bi4); // 10689576657988959934
+
+        // 方式2
+        BigInteger bi5 = new BigInteger("1");
+        bi5 = bi5.shiftLeft(64);
+        bi5 = bi5.add(BigInteger.valueOf(l1));
+        System.out.println(bi5.toString()); // 10689576657988959934
     }
 
     /**

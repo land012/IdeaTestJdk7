@@ -2,6 +2,7 @@ package com.umbrella.demo.java.string;
 
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 
@@ -25,5 +26,18 @@ public class StringDemoUTF8 {
         System.out.println(Arrays.toString(str1.getBytes("utf-8"))); // [-27, -80, -113, 97]
         System.out.println(Arrays.toString(str1.getBytes("gbk"))); // [-48, -95, 97]
         System.out.println(Arrays.toString(str1.getBytes("gb18030"))); // [-48, -95, 97]
+    }
+
+    /**
+     * 没啥卵用
+     * @throws UnsupportedEncodingException
+     */
+    @Test
+    public void test3() throws UnsupportedEncodingException {
+        String str1 = "哈哈";
+        byte[] byte1 = str1.getBytes("utf-8");
+        byte[] byte2 = new String(byte1, "utf-8").getBytes("gbk");
+        String str2 = new String(byte2, "gbk");
+        System.out.println(str2); // 哈哈
     }
 }

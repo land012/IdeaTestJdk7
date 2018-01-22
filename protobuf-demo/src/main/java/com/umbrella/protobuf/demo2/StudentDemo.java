@@ -217,6 +217,9 @@ public class StudentDemo {
         return b.build();
     }
 
+    /**
+     * set Builder
+     */
     @Test
     public void test7() {
         StudentSample.Teacher.Builder tBuilder = StudentSample.Teacher.newBuilder();
@@ -228,6 +231,65 @@ public class StudentDemo {
         sBuilder.setTeacher(tBuilder); // 可以set Teacher 或 Teacher的Builder
 
         StudentSample.Student s1 = sBuilder.build();
+        /*
+        sid: 5
+        teacher {
+          tid: 3
+          tname: "kakashi"
+        }
+         */
         System.out.println(s1);
+
+        StudentSample.Student.Builder s2Builder = s1.toBuilder();
+        StudentSample.Teacher.Builder t2Builder = s1.getTeacher().toBuilder();
+        t2Builder.setTname("orichimaru");
+//        s2Builder.setTeacher(t2Builder); // 不加这句，不会更改
+        StudentSample.Student s2 = s2Builder.build();
+        /*
+        sid: 5
+        teacher {
+          tid: 3
+          tname: "kakashi"
+        }
+         */
+        System.out.println(s2);
+    }
+
+    /**
+     * 通过 builder 获取成员变量的 builder 时，修改会生效，不必 set
+     */
+    @Test
+    public void test8() {
+        StudentSample.Teacher.Builder tBuilder = StudentSample.Teacher.newBuilder();
+        tBuilder.setTid(3);
+        tBuilder.setTname("kakashi");
+
+        StudentSample.Student.Builder sBuilder = StudentSample.Student.newBuilder();
+        sBuilder.setSid(5);
+        sBuilder.setTeacher(tBuilder); // 可以set Teacher 或 Teacher的Builder
+
+        StudentSample.Student s1 = sBuilder.build();
+        /*
+        sid: 5
+        teacher {
+          tid: 3
+          tname: "kakashi"
+        }
+         */
+        System.out.println(s1);
+
+        StudentSample.Student.Builder s2Builder = s1.toBuilder();
+        // 通过 builder 获取子对象的 builder
+        StudentSample.Teacher.Builder t2Builder = s2Builder.getTeacherBuilder();
+        t2Builder.setTname("orichimaru");
+        StudentSample.Student s2 = s2Builder.build();
+        /*
+        sid: 5
+        teacher {
+          tid: 3
+          tname: "orichimaru"
+        }
+         */
+        System.out.println(s2);
     }
 }

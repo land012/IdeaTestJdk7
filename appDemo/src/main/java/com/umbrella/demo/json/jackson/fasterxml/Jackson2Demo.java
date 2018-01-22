@@ -1,11 +1,13 @@
-package com.umbrella.demo.json.jackson2;
+package com.umbrella.demo.json.jackson.fasterxml;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.umbrella.demo.json.vo.Course;
 import com.umbrella.vo.User;
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -25,7 +27,8 @@ public class Jackson2Demo {
     private static Logger log = Logger.getLogger(Jackson2Demo.class);
 
     /**
-     * Object - JSON 中文会被转成unicode
+     * Object - JSON
+     * 把中文转成 unicode
      * JSON - Object
      *
      */
@@ -43,7 +46,7 @@ public class Jackson2Demo {
         try {
             // 生成JSON串
             String str1 = om.writeValueAsString(u1);
-            // {"id":1,"userName":"Alphonse Elric","birthDay":"2015-04-21 17:59:36","gender":0,"urgencyContactName":"Leah Dizon","age":null}
+            // {"id":1,"userName":"Alphonse Elric","birthDay":"2017-12-27 16:23:03","gender":0,"urgencyContactName":"\u5C0F\u5F20","age":null,"enrolDate":null}
             System.out.println(str1);
 
             // 从JSON串生成对象
@@ -83,15 +86,25 @@ public class Jackson2Demo {
         }
     }
 
+    /**
+     * null 字段不序列化??
+     * null 字段默认会序列化为 null
+     * 怎样不序列化该字段??
+     * @throws Exception
+     */
     @Test
     public void test12Objtojson() throws Exception {
         String str1 = StringEscapeUtils.escapeJava("小赵");
         System.out.println(str1);
+
         User u1 = new User();
         u1.setUserName(str1);
-        ObjectMapper om = new ObjectMapper();
-        System.out.println(om.writeValueAsString(u1)); // {"id":0,"userName":"\\u5C0F\\u8D75","birthDay":null,"gender":0,"urgencyContactName":null,"age":null,"enrolDate":null}
 
+        ObjectMapper om = new ObjectMapper();
+        // 不序列化 null 字段
+        om.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        // {"id":0,"userName":"\\u5C0F\\u8D75","gender":0}
+        System.out.println(om.writeValueAsString(u1));
     }
 
     /**
@@ -131,15 +144,20 @@ public class Jackson2Demo {
 
     /**
      * 解析 JSON 到 Object
+     * 对象中存在，json中不存在的字段，不会反序列化，且不会报异常，
+     * 对象值为 null
+     * 对于基本类型，如 int gender，如果 json 中不存在，那么不会反序列化该字段，也不会报异常，对象会用相应类型的默认值(int 0)
+     * 对于 Integer 类型，则为 null
      */
     @Test
     public void test2IgnoreUnknownProperties() {
         try {
-            String str1 = "{\"id\":1,\"userName\":\"Alphonse Elric\",\"birthDay\":\"2015-01-07 11:10:52\",\"gender\":0,\"address\":\"Bei Jing\"}";
+            String str1 = "{\"id\":1,\"userName\":\"Alphonse Elric\",\"birthDay\":\"2015-01-07 11:10:52\",\"address\":\"Bei Jing\"}";
             ObjectMapper om = new ObjectMapper();
             om.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
             om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); // 忽略字符串中不识别的属性
             User u1 = om.readValue(str1, User.class);
+            // User[id=1,userName=Alphonse Elric,birthDay=Wed Jan 07 11:10:52 CST 2015,gender=0,urgencyContactName=<null>,age=<null>,enrolDate=<null>]
             System.out.println(u1.toString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -148,6 +166,7 @@ public class Jackson2Demo {
 
     /**
      * 解析 json 为 List
+     * 构建 泛型类
      */
     @Test
     public void test3Jsontolist() {
@@ -155,7 +174,7 @@ public class Jackson2Demo {
             String json1 = "[{\"id\":1,\"userName\":\"Alphonse Elric\",\"birthDay\":\"2015-03-11 11:37:16\",\"gender\":0,\"urgencyContactName\":\"Edward\"},{\"id\":2,\"userName\":\"Leah Dizon\",\"birthDay\":\"2015-03-11 11:37:16\",\"gender\":1,\"urgencyContactName\":\"Oda Nobunaga\"}]";
             ObjectMapper om = new ObjectMapper();
             om.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
-            List<User> list1 = om.readValue(json1, List.class);
+            List<User> list1 = om.readValue(json1, om.getTypeFactory().constructCollectionType(List.class, User.class));
             log.info("list1.size()=" + list1.size());
             log.info(list1);
             for(User u : list1) {
@@ -168,7 +187,7 @@ public class Jackson2Demo {
     }
 
     /**
-     * 复杂 json 解析
+     * 复杂 json 解析: 对象中包含对象
      * 获取 data Node
      */
     @Test
@@ -221,7 +240,7 @@ public class Jackson2Demo {
     }
 
     /**
-     * BOM开关的字符串
+     * BOM 开关的字符串
      */
     @Test
     public void test6_bom() throws Exception {
@@ -253,6 +272,10 @@ public class Jackson2Demo {
         System.out.println(om.writeValueAsString(m1)); // {"k1":["a","b"],"k2":["c","d"]}
     }
 
+    /**
+     * 构建 泛型类
+     * @throws Exception
+     */
     @Test
     public void test7_typefactory() throws Exception {
         String json = "{\"k1\":[\"a\",\"b\"],\"k2\":[\"c\",\"d\"]}";
@@ -314,6 +337,7 @@ public class Jackson2Demo {
     /**
      * key 是 int类型
      * 这样不会报错
+     * 允许key 不用引号
      * @throws Exception
      */
     @Test
@@ -327,105 +351,10 @@ public class Jackson2Demo {
     }
 
     /**
-     * 解析通过
-     */
-    @Test
-    public void test10_controllerchar_1() throws IOException {
-        // json 实际存的值是“["\u7535\t\u4FE1"]”
-        String json = "[\"\\u7535\\t\\u4FE1\"]";
-        ObjectMapper om = new ObjectMapper();
-//        om.configure(JsonParser.Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
-        List<String> list1 = om.readValue(json, om.getTypeFactory().constructCollectionType(List.class, String.class));
-        // 实际解析的结果是 “电\t信”
-        // 只是打印到控制台时 \t 自动为了 制表符
-        System.out.println(list1); // [电	信]
-    }
-
-    /**
-     * 解析失败
-     * 因为有控制字符 \t，解析失败
-     */
-    @Test
-    public void test10_controllerchar_1_1() throws IOException {
-        String json = "[\"\u7535\t\u4FE1\"]";
-        ObjectMapper om = new ObjectMapper();
-//        om.configure(JsonParser.Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
-        List<String> list1 = om.readValue(json, om.getTypeFactory().constructCollectionType(List.class, String.class));
-        System.out.println(list1); // [电	信]
-    }
-
-    /**
-     * json解析失败
-     * com.fasterxml.jackson.databind.JsonMappingException:
-     * Illegal unquoted character ((CTRL-CHAR, code 9)): has to be escaped using backslash to be included in string value
-     */
-    @Test
-    public void test10_controllerchar_2() throws IOException {
-        String json = "[\"\\u7535\\t\\u4FE1\"]";
-        // 加了这句，解析不过了
-        String json2 = StringEscapeUtils.unescapeJson(json);
-        // json2的实际值是“["电\t信"]”
-        // 所以解析会失败
-        System.out.println(json2); // ["电	信"]
-        ObjectMapper om = new ObjectMapper();
-        List<String> list1 = om.readValue(json2, om.getTypeFactory().constructCollectionType(List.class, String.class));
-        System.out.println(list1);
-    }
-
-    /**
-     * 解析成功
-     */
-    @Test
-    public void test10_controllerchar_3() throws IOException {
-        String json = "[\"\\u7535\\t\\u4FE1\"]";
-        String json2 = StringEscapeUtils.unescapeJson(json);
-        System.out.println(json2); // ["电	信"]
-        ObjectMapper om = new ObjectMapper();
-        om.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
-        List<String> list1 = om.readValue(json2, om.getTypeFactory().constructCollectionType(List.class, String.class));
-        System.out.println(list1); // [电	信]
-    }
-
-    /***
-     * 转义字符
+     * 最外层是 List
+     * List 中含不同类型的对象
      * @throws Exception
      */
-    @Test
-    public void test11_escape() throws Exception {
-        Map<String, String> map1 = new HashMap<>();
-        map1.put("k1", "\\u7535\\u4FE1");
-        ObjectMapper om = new ObjectMapper();
-        String json1 = om.writeValueAsString(map1);
-        System.out.println(json1); // {"k1":"\\u7535\\u4FE1"}
-
-        Map<String, String> map2 = om.readValue(json1, om.getTypeFactory().constructMapType(Map.class, String.class, String.class));
-        System.out.println(map2); // {k1=\u7535\u4FE1}
-    }
-
-    @Test
-    public void test11_escape_1_1() throws Exception {
-        String json1 = "{\"k1\":\"\\u7535\\u4FE1\"}";
-        ObjectMapper om = new ObjectMapper();
-        Map<String, String> map2 = om.readValue(json1, om.getTypeFactory().constructMapType(Map.class, String.class, String.class));
-        System.out.println(map2); // {k1=电信}
-    }
-
-    /***
-     * 转义字符
-     * @throws Exception
-     */
-    @Test
-    public void test11_escape_2() throws Exception {
-        Map<String, String> map1 = new HashMap<>();
-        map1.put("k1", "\u7535\u4FE1"); // 这个时候，map中存的就是 "k1"->"电信"
-        ObjectMapper om = new ObjectMapper();
-        String json1 = om.writeValueAsString(map1);
-        System.out.println(json1); // {"k1":"电信"}
-
-        Map<String, String> map2 = om.readValue(json1, om.getTypeFactory().constructMapType(Map.class, String.class, String.class));
-        System.out.println(map2); // {k1=电信}
-    }
-
     @Test
     public void test12() throws Exception {
         List<Object> list1 = new ArrayList<>();
@@ -441,5 +370,29 @@ public class Jackson2Demo {
         ObjectMapper om = new ObjectMapper();
         String json1 = om.writeValueAsString(list1);
         System.out.println(json1); // [{"courseId":1,"courseName":"chinese"},["a","b"]]
+    }
+
+    /**
+     * java 对象是驼峰标识
+     * json 字段是下划线
+     * @throws JsonProcessingException
+     */
+    @Test
+    public void test13_camel() throws IOException {
+        com.umbrella.demo.json.jackson.fasterxml.User u1 = new com.umbrella.demo.json.jackson.fasterxml.User();
+        u1.setuId(2);
+        u1.setUserName("tom");
+        Map<String, Double> hobby = new HashMap<>();
+        hobby.put("fishiing", 9d);
+        hobby.put("readding", 10d);
+        u1.setHobbyPref(hobby);
+        ObjectMapper om = new ObjectMapper();
+        om.setPropertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
+        String json1 = om.writeValueAsString(u1);
+        System.out.println(json1); // {"u_id":2,"user_name":"tom","hobby_pref":{"readding":10.0,"fishiing":9.0}}
+
+        String json2 = "{\"u_id\":3,\"user_name\":\"jim\",\"hobby_pref\":{\"eat\":1.2,\"game\":4.2}}";
+        com.umbrella.demo.json.jackson.fasterxml.User u2 = om.readValue(json2, com.umbrella.demo.json.jackson.fasterxml.User.class);
+        System.out.println(u2); // User[uId=3,userName=jim,hobbyPref={eat=1.2, game=4.2}]
     }
 }

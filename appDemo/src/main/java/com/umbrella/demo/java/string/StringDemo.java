@@ -181,4 +181,11 @@ public class StringDemo {
         System.out.println(logstr.indexOf("")); // 0
         System.out.println(logstr.indexOf("", 1)); // 1
     }
+
+    @Test
+    public void test10_indexof() {
+        String str1 = "abcdefg";
+        System.out.println(str1.indexOf(2));
+        System.out.println(str1.indexOf(97)); // 0
+    }
 }
