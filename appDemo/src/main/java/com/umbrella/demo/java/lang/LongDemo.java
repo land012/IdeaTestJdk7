@@ -104,7 +104,7 @@ public class LongDemo {
         // 19位
         System.out.println(Long.MAX_VALUE); // 922 3372 0368 5477 5807
         // 无符号整数的最大值
-        System.out.println(new DecimalFormat("0").format(Math.pow(2, 64)-1)); // 18446744073709552000
+        System.out.println(new DecimalFormat("0").format(Math.pow(2, 64)-1)); // 18446 74407 37095 52000
         System.out.println(1);
         System.out.println(2.1);
         System.out.println(2.2);

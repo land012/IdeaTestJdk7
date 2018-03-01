@@ -20,17 +20,22 @@ public class CollectionDemo {
         User u1 = new User();
         u1.setId(1);
         u1.setUserName("Mikasa");
+        u1.setGender(0);
+
         User u2 = new User();
         u2.setId(2);
         u2.setUserName("Hector");
+        u2.setGender(1);
+
         userList.add(u1);
         userList.add(u2);
 
         List<Long> ids = userList
                 .stream()
+                .filter(e -> e.getGender() == 0)
                 .map(User::getId)
                 .collect(Collectors.toList());
-        System.out.println(ids); // [1, 2]
+        System.out.println(ids); // [1]
     }
 
     /**
@@ -79,11 +84,14 @@ public class CollectionDemo {
         User u1 = new User();
         u1.setId(1);
         u1.setUserName("Mikasa");
+
         User u2 = new User();
         u2.setId(2);
         u2.setUserName("Hector");
+
         userList.add(u1);
         userList.add(u2);
+
         userList.stream()
                 .forEach(user -> System.out.println(user));
     }

@@ -3,6 +3,7 @@ package com.umbrella.demo.json.jackson.fasterxml;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import java.math.BigInteger;
 import java.util.Map;
 
 /**
@@ -12,6 +13,7 @@ public class User {
     private int uId;
     private String userName;
     private Map<String, Double> hobbyPref;
+    private BigInteger xxid;
 
     public int getuId() {
         return uId;
@@ -35,6 +37,14 @@ public class User {
 
     public void setHobbyPref(Map<String, Double> hobbyPref) {
         this.hobbyPref = hobbyPref;
+    }
+
+    public BigInteger getXxid() {
+        return xxid;
+    }
+
+    public void setXxid(BigInteger xxid) {
+        this.xxid = xxid;
     }
 
     @Override

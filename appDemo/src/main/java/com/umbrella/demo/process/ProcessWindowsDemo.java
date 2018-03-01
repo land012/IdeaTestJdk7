@@ -99,7 +99,7 @@ public class ProcessWindowsDemo {
     }
 
     /**
-     * 进程未结束就调 exitValue
+     * 进程未结束就调 exitValue，抛异常
      * @throws Exception
      */
     @Test
@@ -146,7 +146,7 @@ public class ProcessWindowsDemo {
     }
 
     /**
-     * 等待的时长超过了子进程执行时长，但子进行失败了
+     * 等待的时长超过了子进程执行时长，但子进程失败了???
      * @throws Exception
      */
     @Test
@@ -207,6 +207,10 @@ public class ProcessWindowsDemo {
                 String line = null;
                 while ((line = br.readLine()) != null) {
                     log.error(line);
+                    if (line.length() > 10000) {
+                        process.destroy();
+                        break;
+                    }
                 }
             } catch (Exception e) {
                 log.error("", e);

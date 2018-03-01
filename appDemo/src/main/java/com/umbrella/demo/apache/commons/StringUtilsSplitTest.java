@@ -1,4 +1,4 @@
-package com.umbrella.demo.apache.commons.vo;
+package com.umbrella.demo.apache.commons;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -83,11 +83,11 @@ public class StringUtilsSplitTest {
     }
 
     /**
-     * 长度为2的数组
+     * 返回长度为2的数组
      */
     @Test
     public void test5() {
-        String str1 = "aasd,,bb,";
+        String str1 = ",aasd,,bb,";
         String[] str1Arr = StringUtils.split(str1, ",");
         for(int i=0; i<str1Arr.length; i++) {
             System.out.println("-" + str1Arr[i] + "-");

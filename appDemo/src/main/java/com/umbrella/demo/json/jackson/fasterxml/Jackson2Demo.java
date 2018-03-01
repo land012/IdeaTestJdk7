@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -394,5 +395,33 @@ public class Jackson2Demo {
         String json2 = "{\"u_id\":3,\"user_name\":\"jim\",\"hobby_pref\":{\"eat\":1.2,\"game\":4.2}}";
         com.umbrella.demo.json.jackson.fasterxml.User u2 = om.readValue(json2, com.umbrella.demo.json.jackson.fasterxml.User.class);
         System.out.println(u2); // User[uId=3,userName=jim,hobbyPref={eat=1.2, game=4.2}]
+    }
+
+    /**
+     * 验证 bigInteger
+     * String 反序列化为 int
+     * @throws JsonProcessingException
+     */
+    @Test
+    public void test_biginteger() throws IOException {
+        com.umbrella.demo.json.jackson.fasterxml.User u1 = new com.umbrella.demo.json.jackson.fasterxml.User();
+        u1.setuId(1);
+        u1.setUserName("jim");
+        u1.setXxid(new BigInteger("15456021910131225000"));
+        ObjectMapper om = new ObjectMapper();
+        String json = om.writeValueAsString(u1);
+        System.out.println(json); // {"uId":1,"userName":"jim","hobbyPref":null,"xxid":15456021910131225000}
+
+        String str2 = "{\"uId\":\"3\",\"userName\":\"jim\",\"hobbyPref\":null,\"xxid\":15456021910131225000}";
+        com.umbrella.demo.json.jackson.fasterxml.User u2 = om.readValue(str2, com.umbrella.demo.json.jackson.fasterxml.User.class);
+        System.out.println(u2);
+    }
+
+    /**
+     * jackson 不能序列化内部类
+     */
+    @Test
+    public void test_innerclass() {
+
     }
 }

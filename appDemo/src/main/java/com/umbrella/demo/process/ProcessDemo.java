@@ -26,7 +26,10 @@ public class ProcessDemo {
         commands.add("ping");
         commands.add("127.0.0.1");
         pb.command(commands);
-//        pb.directory(new File("."));
+
+//        pb.command("ping 127.0.0.1"); // 这种方式会失败 java.io.IOException: Cannot run program "ping 127.0.0.1"
+
+        pb.directory(new File("."));
         Process process = pb.start();
 
         // java.lang.IllegalThreadStateException: process has not exited
@@ -98,7 +101,6 @@ public class ProcessDemo {
         while ((line = br.readLine()) != null) {
             System.out.println(line);
         }
-
 
         System.out.println("waitfor=" + process.waitFor()); // 0
         int e1 = process.exitValue();

@@ -24,4 +24,10 @@ public class StringBuilderDemo {
         StringBuilder sb1 = new StringBuilder("abcde");
         System.out.println(sb1.substring(0, sb1.length()-1)); // abcd
     }
+
+    @Test
+    public void test3() {
+        StringBuilder sb1 = new StringBuilder("abcdefg哈哈");
+        System.out.println(sb1.length());
+    }
 }
