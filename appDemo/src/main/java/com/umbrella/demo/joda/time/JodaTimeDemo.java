@@ -93,20 +93,6 @@ public class JodaTimeDemo {
     }
 
     /**
-     * Duration
-     */
-    @Test
-    public void test3_2_duration() {
-        DateTimeFormatter dtfer = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
-        DateTime dt1 = DateTime.parse("2016-02-13 12:12:00", dtfer);
-        DateTime dt2 = DateTime.parse("2016-02-16 12:00:00", dtfer);
-
-        Duration duration1 = new Duration(dt1, dt2);
-        System.out.println(duration1.getStandardDays()); // 2
-        System.out.println(duration1.getStandardHours()); // 71
-    }
-
-    /**
      * 日期 的日间隔
      * 这种算法，必须是在同一年同一个月
      */

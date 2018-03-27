@@ -52,6 +52,13 @@ public class FastJsonDemo {
         u1.setuId(1);
         u1.setUserName("tom");
         String json = JSON.toJSONString(u1);
-        System.out.println(json);
+        System.out.println(json); // {"user_id":1,"user_nameee":"tom"}
+        /**
+         * {
+         "user_id":1,
+         "user_nameee":"tom"
+         }
+         */
+        System.out.println(JSON.toJSONString(u1, true));
     }
 }

@@ -36,6 +36,14 @@ public class CollectionDemo {
                 .map(User::getId)
                 .collect(Collectors.toList());
         System.out.println(ids); // [1]
+
+        List<Long> ids2 = userList
+                .stream()
+                .filter(e -> e.getGender() == 3)
+                .map(User::getId)
+                .collect(Collectors.toList());
+        System.out.println(ids2 == null); // false
+        System.out.println(ids2.size()); // 0
     }
 
     /**
