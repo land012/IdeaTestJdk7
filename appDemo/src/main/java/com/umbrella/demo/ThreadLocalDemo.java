@@ -12,6 +12,7 @@ public class ThreadLocalDemo {
     @Test
     public void test1() {
         tl1.set("aa");
+        
         System.out.println(tl1.get());
         tl1.remove();
     }
