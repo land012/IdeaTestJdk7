@@ -4,6 +4,7 @@ import com.umbrella.vo.People;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Test;
+import scala.collection.Iterable;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -39,6 +40,12 @@ public class ListDemo {
     public void test3() {
         List<String> list1 = new ArrayList<String>();
         list1.addAll(null); // java.lang.NullPointerException
+    }
+
+    @Test
+    public void test3_2() {
+        List<String> list1 = new ArrayList<String>();
+        Iterator<String> it = list1.iterator();
     }
 
     /**

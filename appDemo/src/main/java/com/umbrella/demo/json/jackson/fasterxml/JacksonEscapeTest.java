@@ -1,11 +1,17 @@
 package com.umbrella.demo.json.jackson.fasterxml;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,5 +118,22 @@ public class JacksonEscapeTest {
 
         Map<String, String> map2 = om.readValue(json1, om.getTypeFactory().constructMapType(Map.class, String.class, String.class));
         System.out.println(map2); // {k1=电信}
+    }
+
+    @Test
+    public void test12() {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\_idea2017\\TestApp\\appDemo\\src\\main\\resources\\json_bad.txt"), "utf-8"))) {
+            String line1 = br.readLine();
+            System.out.println(line1);
+
+            ObjectMapper om = new ObjectMapper();
+            om.configure(JsonParser.Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
+            Map m1 = om.readValue(line1, Map.class);
+            System.out.println(m1.get("command_no"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
