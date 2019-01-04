@@ -20,8 +20,10 @@ public class Slf4jLogDemo {
 
     @Test
     public void test2() {
-        String[] arr1 = { "a", "b" };
+        String[] arr1 = { "a", "b", "c" };
         log.info("log is {}", arr1); // log is a
+        log.info("log is {} {}", arr1); // log is a b
+        log.info("log is {} {} {}", arr1); // log is a b c
         log.info("log is {}", Arrays.toString(arr1)); // log is [a, b]
     }
 
@@ -29,5 +31,17 @@ public class Slf4jLogDemo {
     public void test3() {
         String[] arr1 = { "a", "b" };
         log.info("log is {}, {}", arr1, "haha"); // log is [a, b], haha
+
+        // 没有这个方法，会报错
+//        log.info("{} {} {}", "a", "b", "c");
+    }
+
+    @Test
+    public void test4() {
+        try {
+            int i1 = Integer.parseInt("s");
+        } catch (Exception e) {
+            log.info("msg={}, ex={}", "exeeeeee", e);
+        }
     }
 }

@@ -9,13 +9,13 @@ public class EnumDemo {
 
     /**
      * values()
+     * ordinal() 从 0 开始
      */
     @Test
     public void test1() {
         StatusEnum[] statuses = StatusEnum.values();
         for(StatusEnum s : statuses) {
-            System.out.println(s.getValue());
-            System.out.println(s.name());
+            System.out.println(String.format("%s - %d - %s", s.name(), s.ordinal(), s.getValue()));
         }
     }
 

@@ -38,6 +38,7 @@ public class MockitoSpringDemo {
     @BeforeClass
     public static void beforeClass() {
 //        applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
+        String str1 = "";
     }
 
     @Before

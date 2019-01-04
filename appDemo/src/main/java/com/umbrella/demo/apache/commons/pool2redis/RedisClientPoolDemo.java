@@ -13,6 +13,7 @@ public class RedisClientPoolDemo {
     @Test
     public void test1() {
         GenericObjectPoolConfig cfg = new GenericObjectPoolConfig();
+        cfg.setMaxTotal(2);
         GenericObjectPool<Jedis> pool = new GenericObjectPool<>(new RedisClientPoolFactory(), cfg);
 
         Jedis jedis = null;

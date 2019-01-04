@@ -1,5 +1,6 @@
 package com.umbrella.demo.java.util;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -78,11 +79,19 @@ public class ArraysTest {
 
     /**
      * null 安全
+     * 返回 字符串 null
      */
     @Test
     public void test5_null() {
         String[] arr = null;
-        System.out.println(Arrays.toString(arr));
+        String str1 = Arrays.toString(arr);
+        if (null == str1) {
+            System.out.println("null is null");
+        } else if (StringUtils.equals("null", str1)) {
+            System.out.println("null:" + str1); // null:null
+        } else {
+            System.out.println("else:" + str1);
+        }
     }
 
     @Test

@@ -37,6 +37,7 @@ public class CollectionDemo {
                 .collect(Collectors.toList());
         System.out.println(ids); // [1]
 
+        // 找不到符合条件的记录，返回 空List，而不是 null
         List<Long> ids2 = userList
                 .stream()
                 .filter(e -> e.getGender() == 3)
@@ -44,6 +45,12 @@ public class CollectionDemo {
                 .collect(Collectors.toList());
         System.out.println(ids2 == null); // false
         System.out.println(ids2.size()); // 0
+
+        List<User> ids3 = userList
+                .stream()
+                .filter(e -> e.getGender() == 3)
+                .collect(Collectors.toList());
+        System.out.println(ids3.size()); // 0
     }
 
     /**

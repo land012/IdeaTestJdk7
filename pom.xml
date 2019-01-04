@@ -21,7 +21,6 @@
         <module>hello-idea-service</module>
         <module>common-domain</module>
         <module>protobuf-demo</module>
-        <module>abacihadoop</module>
     </modules>
 
     <dependencies>
@@ -97,6 +96,12 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.8.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
         </dependency>
 
         <dependency>

@@ -1,5 +1,7 @@
 package com.umbrella.files;
 
+import com.umbrella.demo.java.string.StringDemoUTF8;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.io.*;
@@ -17,11 +19,14 @@ public class FileDemo {
      */
     @Test
     public void test1_readgbk() throws Exception {
-        BufferedReader br = new BufferedReader(new FileReader("E:\\TDDOWNLOAD\\aa.txt"));
+        File f = new File("E:\\TDDOWNLOAD\\_temp\\aa.txt");
+        System.out.println(f);
+        BufferedReader br = new BufferedReader(new FileReader(f));
         String line = br.readLine();
         System.out.println(line.getBytes().length); // 20
         System.out.println(line.length()); // 12
         System.out.println(line);
+
     }
 
     /**
@@ -110,27 +115,6 @@ public class FileDemo {
     }
 
     /**
-     *
-     */
-    @Test
-    public void test5() {
-        System.out.println(File.separator); // \ 路径分隔符
-        System.out.println(File.pathSeparator); // ; 环境变量路径分隔符
-    }
-
-    /**
-     * 当前目录
-     * @throws Exception
-     */
-    @Test
-    public void test6() throws Exception {
-        File f = new File(".");
-        System.out.println(f.getCanonicalPath()); // D:\_idea\TestApp
-        System.out.println(f.getAbsolutePath()); // D:\_idea\TestApp\.
-        System.out.println(f.getPath()); // .
-    }
-
-    /**
      * 向已存在文件中追加内容
      */
     @Test
@@ -147,6 +131,35 @@ public class FileDemo {
         bw.newLine();
         bw.flush();
         bw.close();
+    }
+
+    /**
+     * test1.txt 不会创建
+     * test2.txt 会创建
+     * @throws Exception
+     */
+    @Test
+    public void test8() throws Exception {
+        File f = new File("E:\\TDDOWNLOAD\\test1.txt");
+
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("E:\\TDDOWNLOAD\\test2.txt"), "utf-8"));
+        bw.close();
+    }
+
+    @Test
+    public void test9() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("E:\\TDDOWNLOAD\\_temp\\1.txt"));
+            String line = null;
+            int i = 1;
+            while ((line = br.readLine()) != null) {
+                System.out.println(i);
+                System.out.println(StringUtils.isEmpty(line));
+                i++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

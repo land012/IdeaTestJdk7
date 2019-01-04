@@ -60,9 +60,11 @@ public class JodaTimeDemo {
     @Test
     public void test1_minusMonth() {
         DateTime dt = DateTime.now();
-        System.out.println(dt); // 2016-02-16T15:54:38.783+08:00
+        System.out.println(dt); // 2018-10-08T17:33:26.513+08:00
         DateTime lastMonth = dt.minusMonths(1);
-        System.out.println(lastMonth); // 2016-01-16T15:54:38.783+08:00
+        // 重新创建了一个新对象 lastMonth，原对象 dt 不变
+        System.out.println(lastMonth); // 2018-09-08T17:33:26.513+08:00
+        System.out.println(dt); // 2018-10-08T17:33:26.513+08:00
 
         DateTime dt1 = DateTime.parse("2014-12-31");
         System.out.println(dt1); // 2014-12-31T00:00:00.000+08:00

@@ -1,6 +1,7 @@
 package com.umbrella.demo.collections;
 
 import com.umbrella.vo.People;
+import com.umbrella.vo.User;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.Test;
@@ -22,6 +23,26 @@ public class ListDemo {
         list1.add("a");
         list1.add("b");
         System.out.println(list1.contains("a")); // true
+    }
+
+    @Test
+    public void testcontain() {
+        Long l1 = new Long(1L);
+        Long l2 = new Long(1L);
+        Long l3 = new Long(2L);
+
+        System.out.println(l1 == l2); // false
+
+        List<Long> list1 = new ArrayList<>();
+        list1.add(l1);
+        list1.add(l3);
+        System.out.println(list1.contains(l2)); // true
+
+        List<Long> list2 = new ArrayList<>();
+        list2.add(l2);
+        list2.add(3L);
+        System.out.println(list1.removeAll(list2));
+        System.out.println(list1); // [2]
     }
 
     /**
@@ -245,6 +266,22 @@ public class ListDemo {
         System.out.println(list2); // [2, 3, 4]
     }
 
+    @Test
+    public void testRemoveall2() {
+        List<Integer> l1 = new ArrayList<>();
+        l1.add(1);
+        l1.add(2);
+        l1.add(3);
+        List<Integer> l2 = new ArrayList<>(l1);
+
+        List<Integer> l3 = new ArrayList<>();
+        l3.add(1);
+
+        l1.removeAll(l3);
+        System.out.println(l1); // [2, 3]
+        System.out.println(l2); // [1, 2, 3]
+    }
+
     /**
      * toArray()
      */
@@ -377,5 +414,31 @@ public class ListDemo {
         public String toString() {
             return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
         }
+    }
+
+    @Test
+    public void test11() {
+
+        com.umbrella.vo.User u1 = new com.umbrella.vo.User();
+        u1.setId(1);
+        com.umbrella.vo.User u2 = new com.umbrella.vo.User();
+        u2.setId(2);
+        com.umbrella.vo.User u3 = new com.umbrella.vo.User();
+        u3.setId(3);
+
+        List<com.umbrella.vo.User> l1 = new ArrayList<>();
+        l1.add(u1);
+        l1.add(u2);
+
+        List<com.umbrella.vo.User> l2 = new ArrayList<>();
+        l2.addAll(l1);
+        l1.add(u3);
+
+        System.out.println(l2); // [1, 2]
+        System.out.println(l1); // [1, 2, 3]
+
+        u1.setId(4);
+        System.out.println(l1); // [4, 2, 3]
+        System.out.println(l2); // [4, 2]
     }
 }

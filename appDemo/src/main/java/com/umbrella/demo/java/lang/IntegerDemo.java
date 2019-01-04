@@ -72,7 +72,7 @@ public class IntegerDemo {
         int hashCode = "abcdsed".hashCode();
         System.out.println(Integer.toHexString(hashCode & 0xff)); // d0
         System.out.println(Integer.toHexString(10 & 0xff)); // a
-        System.out.println(Integer.toHexString(7)); // 7
+        System.out.println(Integer.toHexString(4112)); // 7
         System.out.println(Integer.toHexString(-7)); // fffffff9
     }
 

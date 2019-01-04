@@ -12,20 +12,21 @@ public class StringSplitTest {
     private static final Logger log = LoggerFactory.getLogger(StringSplitTest.class);
 
     /**
-     * 会保留分隔符前面的空串
+     * 会保留分隔符前面和中间的空串，不会保留最后的几个空子串
      */
     @Test
     public void testSplit_1() {
-        String str1 = "abacad";
-        String[] arr1 = str1.split("a");
+        String str1 = ",,bcc, ddc ,,,d,,";
+        String[] arr1 = str1.split(",");
 		/*
 		 * 2016-09-08 20:31:38,992 INFO [main] StringTest.testSplit_1(259) |
 		 * 2016-09-08 20:31:38,996 INFO [main] StringTest.testSplit_1(259) | b
 		 * 2016-09-08 20:31:38,996 INFO [main] StringTest.testSplit_1(259) | c
 		 * 2016-09-08 20:31:38,996 INFO [main] StringTest.testSplit_1(259) | d
 		 */
+		System.out.println(arr1.length);
         for(String s : arr1) {
-            log.info(s);
+            log.info("【{}】", s);
         }
 
     }

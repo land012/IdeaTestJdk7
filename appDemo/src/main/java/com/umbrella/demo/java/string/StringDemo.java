@@ -188,4 +188,26 @@ public class StringDemo {
         System.out.println(str1.indexOf(2));
         System.out.println(str1.indexOf(97)); // 0
     }
+
+    @Test
+    public void test_replace() {
+        String str1 = "abacad";
+        String str2 = str1.replace("a", "x");
+        System.out.println(str2);
+    }
+
+    /**
+     * 内存地址
+     */
+    @Test
+    public void test_mem_site() {
+        String str1 = "abc";
+        String str2 = "abc";
+        StringBuffer sb1 = new StringBuffer(str1);
+        StringBuffer sb2 = new StringBuffer(str1);
+        System.out.println(System.identityHashCode(str1)); // 128526626
+        System.out.println(System.identityHashCode(str2)); // 128526626
+        System.out.println(System.identityHashCode(sb1));  // 1911728085
+        System.out.println(System.identityHashCode(sb2));  // 754666084
+    }
 }

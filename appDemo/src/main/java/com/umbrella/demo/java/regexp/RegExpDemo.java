@@ -26,10 +26,28 @@ public class RegExpDemo {
     @Test
     public void test1() {
         System.out.println(Pattern.matches("a|b|c", "adef")); // false
-        System.out.println(Pattern.matches("^a.*", "adef")); // true
         System.out.println(Pattern.compile("a|b|c").matcher("adef").matches()); // false
-        System.out.println(Pattern.compile("^a.*").matcher("adef").matches()); // true
         System.out.println(Pattern.compile("a|b|c").matcher("adef").find()); // true
+    }
+
+    @Test
+    public void test1_2() {
+        System.out.println(Pattern.matches("^a.*", "adef")); // true
+        System.out.println(Pattern.compile("^a.*").matcher("adef").matches()); // true
+        System.out.println(Pattern.compile("^a.*").matcher("adef").find()); // true
+    }
+
+    @Test
+    public void test1_3() {
+        System.out.println(Pattern.matches("^a", "adef")); // false
+        System.out.println(Pattern.compile("^a").matcher("adef").find()); // true
+    }
+
+    @Test
+    public void test1_4() {
+        System.out.println(Pattern.matches("a", "adef")); // false
+        System.out.println(Pattern.compile("a").matcher("adef").find()); // true
+        System.out.println(Pattern.compile("ba").matcher("adef").find()); // false
     }
 
     /**
@@ -115,5 +133,23 @@ public class RegExpDemo {
         } catch (Exception e) {
             log.error("", e);
         }
+    }
+
+    @Test
+    public void test7() {
+        String str1 = "aaa:1 bbbb:2 ccc:3";
+        Pattern p1 = Pattern.compile(":1(\\s|$)");
+        Pattern p2 = Pattern.compile(":3(\\s|$)");
+        Pattern p3 = Pattern.compile(":4(\\s|$)");
+        System.out.println(p1.matcher(str1).find()); // true
+        System.out.println(p2.matcher(str1).find()); // true
+        System.out.println(p3.matcher(str1).find()); // false
+
+        Pattern p4 = Pattern.compile(":1[\\s$]");
+        Pattern p5 = Pattern.compile(":3[\\s$]");
+        Pattern p6 = Pattern.compile(":4[\\s$]");
+        System.out.println(p4.matcher(str1).find()); // true
+        System.out.println(p5.matcher(str1).find()); // false
+        System.out.println(p6.matcher(str1).find()); // false
     }
 }

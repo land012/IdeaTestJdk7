@@ -12,5 +12,6 @@ public class ObjectDemo {
         Object obj1 = new String("a");
         System.out.println(obj1); // a
         System.out.println(obj1.getClass()); // class java.lang.String
+        System.out.println(System.identityHashCode(obj1)); // 627150481
     }
 }

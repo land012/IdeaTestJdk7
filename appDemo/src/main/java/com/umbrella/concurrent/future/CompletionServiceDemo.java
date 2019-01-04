@@ -38,6 +38,7 @@ public class CompletionServiceDemo {
         });
 
         // 实际业务中，不用能 while true，当所有任务都返回结果时，take() 方法会阻塞
+        // 可以记录 submit 的次数
         while (true) {
             log.info(cs.take().get());
         }

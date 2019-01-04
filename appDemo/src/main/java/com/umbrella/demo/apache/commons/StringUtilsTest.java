@@ -216,11 +216,11 @@ public class StringUtilsTest {
         info.info(StringUtils.isNotEmpty("") + ""); // false
         info.info(StringUtils.isNotEmpty(" ") + ""); // true 空格
         info.info(StringUtils.isNotEmpty("  ") + ""); // true 制表符
-        info.info("=========================================================");
-        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank(null) + ""); // false
-        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank("") + ""); // false
-        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank(" ") + ""); // false
-        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank("    ") + ""); // false
+//        info.info("=========================================================");
+//        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank(null) + ""); // false
+//        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank("") + ""); // false
+//        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank(" ") + ""); // false
+//        info.info(org.apache.commons.lang.xwork.StringUtils.isNotBlank("    ") + ""); // false
     }
 
     /**
@@ -236,8 +236,16 @@ public class StringUtilsTest {
      * 查子串
      */
     @Test
-    public void test3() {
+    public void testIndexof3() {
         info.info("{}", StringUtils.indexOf("abcdef", "g")); // -1
+    }
+
+    /**
+     * 查找时包含 startPos
+     */
+    @Test
+    public void testIndexof4() {
+        System.out.println(StringUtils.indexOf("abcab", "a", 0)); // 0
     }
 
 }

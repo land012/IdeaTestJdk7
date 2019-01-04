@@ -33,6 +33,9 @@ public class StudentDemo {
         s1.setSid(2);
         s1.setSname("naruto");
         s1.setTeacher(t1);
+        System.out.println(s1.toString());
+
+        System.out.println("========================== 1 ==========================");
 
         ObjectMapper om = new ObjectMapper();
         String json1 = om.writeValueAsString(s1);
