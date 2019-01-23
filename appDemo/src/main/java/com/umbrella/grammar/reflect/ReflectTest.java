@@ -169,12 +169,22 @@ public class ReflectTest {
         Field[] fs1 = User.class.getDeclaredFields();
         System.out.println(fs1.length);
         /*
-         *     birth    2
-         *     address    1
-         *     this$0    4112 内部类会返回这个标签
+            birth|2|class java.util.Date|Date|java.util.Date|java.util.Date|java.util.Date
+            address|1|class java.lang.String|String|java.lang.String|java.lang.String|java.lang.String
+            id1|2|class java.lang.Long|Long|java.lang.Long|java.lang.Long|java.lang.Long
+            distance|2|long|long|long|long|long
+            age|2|int|int|int|int|int
+            gender|2|boolean|boolean|boolean|boolean|boolean
+            this$0|4112|class com.umbrella.grammar.reflect.ReflectTest|ReflectTest|com.umbrella.grammar.reflect.ReflectTest|com.umbrella.grammar.reflect.ReflectTest|com.umbrella.grammar.reflect.ReflectTest
          */
         for(Field f : fs1) {
-            System.out.println("    " + f.getName() + "    " + f.getModifiers() + " " + f.getType());
+            System.out.println(f.getName()
+                    + "|" + f.getModifiers()
+                    + "|" + f.getType()
+                    + "|" + f.getType().getSimpleName()
+                    + "|" + f.getType().getName()
+                    + "|" + f.getType().getTypeName()
+                    + "|" + f.getType().getCanonicalName());
         }
 
     }
@@ -251,4 +261,32 @@ public class ReflectTest {
 
         }
     }
+
+    /**
+     * java.lang.IllegalArgumentException: Can not set java.lang.Long field com.umbrella.grammar.reflect.ReflectTest$User.id1 to (long)2247483647
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     */
+    @Test
+    public void testsetLong() throws NoSuchFieldException, IllegalAccessException {
+        User u = new User();
+        Field f = User.class.getDeclaredField("id1");
+        f.setAccessible(true);
+        f.setLong(u, new Long(2247483647L));
+    }
+
+    /**
+     * 对 基础类型可以调用  setLong
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     */
+    @Test
+    public void testsetLong2() throws NoSuchFieldException, IllegalAccessException {
+        User u = new User();
+        Field f = User.class.getDeclaredField("distance");
+        f.setAccessible(true);
+        f.setLong(u, new Long(2247483647L));
+    }
+
+
 }

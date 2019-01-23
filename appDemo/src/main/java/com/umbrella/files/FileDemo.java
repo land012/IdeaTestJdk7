@@ -1,12 +1,10 @@
 package com.umbrella.files;
 
-import com.umbrella.demo.java.string.StringDemoUTF8;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 
 /**
  * Created by xudazhou on 2017/3/6.
@@ -160,6 +158,34 @@ public class FileDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 写文件，路径不存在，
+     * 会报错
+     */
+    @Test
+    public void testwrite() throws IOException {
+        File dir = new File("E:\\TDDOWNLOAD\\_temp\\dir1");
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        FileWriter fw = new FileWriter(new File(dir, "dir2\\1.txt"));
+        fw.write("haha");
+        fw.close();
+    }
+
+    /**
+     * rename 可以 mv 文件
+     */
+    @Test
+    public void testrename() {
+        File f1 = new File("E:\\TDDOWNLOAD\\_temp\\1.png");
+        System.out.println(f1.renameTo(new File("E:\\TDDOWNLOAD\\1.png")));
+
+        File dir1 = new File("E:\\TDDOWNLOAD\\_temp\\dir1");
+        System.out.println(dir1.renameTo(new File("E:\\TDDOWNLOAD\\dir1")));
     }
 
 }

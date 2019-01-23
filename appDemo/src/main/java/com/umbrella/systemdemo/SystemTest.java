@@ -138,4 +138,9 @@ public class SystemTest {
 		}
 	}
 
+	@Test
+	public void testLibraryPath() {
+		System.out.println(System.getProperty("java.library.path"));
+	}
+
 }

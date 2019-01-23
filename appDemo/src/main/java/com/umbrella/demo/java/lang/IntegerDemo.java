@@ -111,8 +111,8 @@ public class IntegerDemo {
     @Test
     public void test5() {
         System.out.println(Integer.SIZE); // 32
-        System.out.println(Character.SIZE);
-        System.out.println(Byte.SIZE);
+        System.out.println(Character.SIZE); // 16
+        System.out.println(Byte.SIZE); // 8
     }
 
     @Test
