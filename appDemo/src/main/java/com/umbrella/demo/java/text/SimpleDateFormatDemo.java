@@ -128,6 +128,8 @@ public class SimpleDateFormatDemo {
         System.out.println(sdf1.format(d1)); // 19:02
         SimpleDateFormat sdf2 = new SimpleDateFormat("HH:00");
         System.out.println(sdf2.format(d1)); // 19:00
+
+        System.out.println(new SimpleDateFormat("yyyyMMddHHmmssSSS", Locale.getDefault()).format(new Date()));
     }
 }
 

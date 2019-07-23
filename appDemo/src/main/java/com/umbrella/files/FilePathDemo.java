@@ -52,6 +52,7 @@ public class FilePathDemo {
     public void testPath2() throws IOException {
         File f2 = new File(".\\files\\1.txt");
         System.out.println(f2.getName()); // 1.png
+        System.out.println(f2); // .\files\1.txt
         System.out.println(f2.getPath()); // .\files\1.txt
         System.out.println(f2.getAbsolutePath()); // D:\_idea2017\TestApp\appDemo\.\files\1.txt
         System.out.println(f2.getCanonicalPath()); // D:\_idea2017\TestApp\appDemo\files\1.txt

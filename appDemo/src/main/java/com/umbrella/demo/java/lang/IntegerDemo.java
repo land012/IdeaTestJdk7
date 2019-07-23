@@ -74,6 +74,7 @@ public class IntegerDemo {
         System.out.println(Integer.toHexString(10 & 0xff)); // a
         System.out.println(Integer.toHexString(4112)); // 7
         System.out.println(Integer.toHexString(-7)); // fffffff9
+        System.out.println(Integer.toHexString(142));
     }
 
     @Test

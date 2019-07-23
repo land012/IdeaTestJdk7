@@ -142,6 +142,8 @@ public class FileDemo {
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("E:\\TDDOWNLOAD\\test2.txt"), "utf-8"));
         bw.close();
+
+        FileOutputStream fos = new FileOutputStream("E:\\TDDOWNLOAD\\test3.txt");
     }
 
     @Test

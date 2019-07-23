@@ -1,6 +1,7 @@
-package com.umbrella.demo.apache.commons;
+package com.umbrella.demo.apache.commons.lang3;
 
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 /**
@@ -14,6 +15,7 @@ public class StringEscapeUtilsDemo {
         System.out.println(StringEscapeUtils.escapeJava(".")); // .
         System.out.println(StringEscapeUtils.escapeJava("。")); // \u3002
         System.out.println(StringEscapeUtils.escapeJava(":")); // \u3002
+        System.out.println(StringEscapeUtils.unescapeJava("\u63A8\u5168\u6743\u9650"));
     }
 
     /**

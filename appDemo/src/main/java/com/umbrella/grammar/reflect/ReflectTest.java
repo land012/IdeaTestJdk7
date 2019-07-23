@@ -263,6 +263,7 @@ public class ReflectTest {
     }
 
     /**
+     * 不能对 Long 类型调用 setLong
      * java.lang.IllegalArgumentException: Can not set java.lang.Long field com.umbrella.grammar.reflect.ReflectTest$User.id1 to (long)2247483647
      * @throws NoSuchFieldException
      * @throws IllegalAccessException
@@ -286,6 +287,19 @@ public class ReflectTest {
         Field f = User.class.getDeclaredField("distance");
         f.setAccessible(true);
         f.setLong(u, new Long(2247483647L));
+    }
+
+    /**
+     * get 不存在的 字段
+     * java.lang.NoSuchFieldException: idxxx
+     */
+    @Test
+    public void test41() {
+        try {
+            Field f = User.class.getDeclaredField("idxxx");
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
     }
 
 

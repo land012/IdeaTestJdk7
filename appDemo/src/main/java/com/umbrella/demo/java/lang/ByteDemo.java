@@ -37,4 +37,22 @@ public class ByteDemo {
         String str3 = new String(bytes3, "utf-8");
         System.out.println(str3); // 你好
     }
+
+    @Test
+    public void test3() {
+        byte b1 = (byte) 0b11111111;
+        int i1 = b1;
+        System.out.println(i1); // -1
+        System.out.println(0b11111111); // 255
+        System.out.println(b1); // -1
+
+        byte b2 = (byte) 0b10000001; // 第一位是符号位，并当成补码处理
+        System.out.println(b2); // -127
+
+        byte b3 = (byte) 0b10000000;
+        System.out.println(b3); // -128
+
+        byte b4 = (byte) 0b100000000;
+        System.out.println(b4); // 0 被截断了
+    }
 }
