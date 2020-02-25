@@ -49,6 +49,7 @@ public class SetDemo {
             System.out.println(it1.next());
         }
 
+        // 可以重复获取 iterator
         Iterator<String> it2 = set1.iterator();
         while (it2.hasNext()) {
             System.out.println(it2.next());

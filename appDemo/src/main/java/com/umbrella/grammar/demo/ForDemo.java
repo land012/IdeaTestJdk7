@@ -32,6 +32,9 @@ public class ForDemo {
 
     }
 
+    /**
+     * for 循环
+     */
     @Test
     public void test3() {
         int i = 5;
