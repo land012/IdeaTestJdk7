@@ -25,4 +25,12 @@ public class LineNumberReaderDemo {
         System.out.println(lnr.getLineNumber()); // 2
         lnr.close();
     }
+
+    @Test
+    public void test2() throws IOException {
+        LineNumberReader lnr = new LineNumberReader(new FileReader("../files/3.txt"));
+        lnr.skip(Long.MAX_VALUE);
+        System.out.println(lnr.getLineNumber()); // 0
+        lnr.close();
+    }
 }

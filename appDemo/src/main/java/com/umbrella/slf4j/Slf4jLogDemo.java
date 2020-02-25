@@ -36,12 +36,27 @@ public class Slf4jLogDemo {
 //        log.info("{} {} {}", "a", "b", "c");
     }
 
+    /**
+     * 不会打印异常栈
+     */
     @Test
     public void test4() {
         try {
             int i1 = Integer.parseInt("s");
         } catch (Exception e) {
             log.info("msg={}, ex={}", "exeeeeee", e);
+        }
+    }
+
+    /**
+     * 会打印异常栈
+     */
+    @Test
+    public void test5() {
+        try {
+            int i1 = Integer.parseInt("s");
+        } catch (Exception e) {
+            log.info("msg={}, ex=", "exeeeeee", e);
         }
     }
 }

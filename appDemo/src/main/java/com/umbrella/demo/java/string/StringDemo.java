@@ -133,6 +133,7 @@ public class StringDemo {
     public void test6_0() throws Exception {
         String str1 = "abcd";
         System.out.println(str1.substring(0, 2)); // ab
+        System.out.println(str1.substring(4, 4)); //
         System.out.println(str1); // abcd
         System.out.println(str1.substring(0, 0)); // 空串
     }

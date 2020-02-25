@@ -31,4 +31,13 @@ public class ForDemo {
         }
 
     }
+
+    @Test
+    public void test3() {
+        int i = 5;
+        for (int j = 1; j < 3; --i) {
+            j++;
+        }
+        System.out.println(i); // 3
+    }
 }

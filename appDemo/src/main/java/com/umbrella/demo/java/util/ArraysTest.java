@@ -49,6 +49,16 @@ public class ArraysTest {
     }
 
     /**
+     * copyOf
+     */
+    @Test
+    public void test2_2() {
+        char[] value = {'a', 'b', 'c'};
+        value = Arrays.copyOf(value, 5);
+        System.out.println(value.length); // 5
+    }
+
+    /**
      * 传引用
      */
     @Test
