@@ -255,6 +255,10 @@ public class PersonDemo {
         }
     }
 
+    /**
+     * pb 写到文件
+     * @throws Exception
+     */
     @Test
     public void test7_writefile() throws Exception {
         PersonSample.Person.Builder builder = PersonSample.Person.newBuilder();
@@ -271,7 +275,7 @@ public class PersonDemo {
 
     @Test
     public void test7_readfile() throws IOException {
-        FileInputStream fis = new FileInputStream("E:\\TDDOWNLOAD\\file2.dat");
+        FileInputStream fis = new FileInputStream("E:\\TDDOWNLOAD\\file3.dat");
 //        int i1 = fis.read();
 //        System.out.println(i1);
 
@@ -293,6 +297,30 @@ public class PersonDemo {
 
         PersonSample.Person p1 = PersonSample.Person.parseFrom(byteBuffer.array());
         System.out.println(p1.toString());
+    }
+
+    @Test
+    public void test7_readfile2() throws IOException {
+        FileInputStream fis = new FileInputStream("E:\\TDDOWNLOAD\\file3.dat");
+//        int i1 = fis.read();
+//        System.out.println(i1);
+
+        byte[] buf = new byte[15];
+        int len = fis.read(buf);
+        System.out.println(len);
+
+        for (int i=0; i < buf.length; i++) {
+            System.out.print(buf[i] + "|");
+        }
+        System.out.println("=========== 1 ===========");
+
+        ByteBuffer byteBuffer = ByteBuffer.allocate(len);
+        byteBuffer.put(buf, 0, len);
+        for (int i=0; i<byteBuffer.array().length; i++) {
+            System.out.print(byteBuffer.get(i) + "|");
+        }
+        System.out.println("=========== 2 ===========");
+
     }
 
 }
